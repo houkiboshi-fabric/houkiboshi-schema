@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "index.json",
+  "title": "Schema index",
+  "description": "参照用",
+  "properties": {
+    "product": {
+      "$ref": "product.json#"
+    },
+    "raw-material": {
+      "$ref": "raw-material.json#"
+    },
+    "dyeing-material": {
+      "$ref": "dyeing-material.json#"
+    },
+    "dyeing-material-type": {
+      "$ref": "dyeing-material-type.json#"
+    }
+  },
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$"
+    },
+    "name_kana": {
+      "type": "string",
+      "pattern": "^[0-9ぁ-んー]+$"
+    }
+  }
+}

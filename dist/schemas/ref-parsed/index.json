@@ -1,0 +1,984 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "index.json",
+  "title": "Schema index",
+  "description": "参照用",
+  "properties": {
+    "product": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "product.json",
+      "title": "Product",
+      "description": "製品です。",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "name_kana",
+        "image",
+        "size",
+        "weight_g",
+        "raw_materials",
+        "dyeing_materials"
+      ],
+      "additionalProperties": false,
+      "dependencies": {
+        "name_alt": [
+          "name_alt_kana"
+        ]
+      },
+      "properties": {
+        "id": {
+          "description": "Product の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "rakuda",
+            "yama-no-odori",
+            "akane-ni-tachibana",
+            "sakeori-no-kaban"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "name": {
+          "description": "Product の銘となる名前です。",
+          "examples": [
+            "駱駝",
+            "山の踊り",
+            "茜に橘",
+            "裂織のかばん"
+          ],
+          "type": "string"
+        },
+        "name_kana": {
+          "description": "Product の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+          "examples": [
+            "らくだ",
+            "やまのおどり",
+            "あかねにたちばな",
+            "さきおりのかばん"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "name_alt": {
+          "type": "string",
+          "description": "Product の別名です。\n省略可能です。\nname_alt が存在する Product は name_alt_kana も必須プロパティになります。",
+          "examples": [
+            "草木染め糸のストール",
+            "飾る布",
+            "草木染色腹帯"
+          ]
+        },
+        "name_alt_kana": {
+          "description": "Product の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。\nname_alt が存在する Product は name_alt_kana も必須プロパティになります。",
+          "examples": [
+            "くさきぞめいとのすとーる",
+            "かざるぬの",
+            "くさきせんしょくはらおび"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "image": {
+          "description": "Product を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "https://houkiboshi.co/products/product-1/images/main.jpg"
+          ]
+        },
+        "images_alt": {
+          "description": "Product の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage で指定した URI を含める必要はありません。",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "examples": [
+            [
+              "https://houkiboshi.co/products/product-1/images/01.jpg",
+              "https://houkiboshi.co/products/product-1/images/02.jpg",
+              "https://houkiboshi.co/products/product-1/images/03.jpg"
+            ]
+          ]
+        },
+        "price": {
+          "description": "Product の日本円価格を表す整数値です。\n非売品・売り切れなどの場合はこのプロパティを省略します。",
+          "type": "integer",
+          "minimum": 0
+        },
+        "links_to_shop": {
+          "description": "この Product を販売・展示している URI のリストです。",
+          "type": "array",
+          "items": {
+            "description": "この Product を販売・展示している URI です。\nURI は RFC3986 に準拠します。",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "https://minne.com/items/14938131",
+              "https://www.creema.jp/item/5890223/detail"
+            ]
+          }
+        },
+        "description": {
+          "description": "Product の説明です。",
+          "type": "string",
+          "examples": [
+            "水面のような織り柄の布を織りました。\n新書がすっぽり入るくらいの大きさのポーチです。"
+          ]
+        },
+        "size": {
+          "description": "Product のサイズを WDH で表します。\n単位はいずれも mm です。\n参考画像 https://i.imgur.com/Fmfthey.png",
+          "type": "object",
+          "required": [
+            "width_mm",
+            "depth_mm"
+          ],
+          "additionalItems": false,
+          "properties": {
+            "width_mm": {
+              "description": "Product を設置してその正面に立ったとき、自分自身から見て横方向の幅を単位 mm で表した整数値です。\n参考画像 https://i.imgur.com/Fmfthey.png",
+              "type": "integer",
+              "minimum": 0,
+              "examples": [
+                250
+              ]
+            },
+            "depth_mm": {
+              "description": "Product を設置してその正面に立ったとき、自分自身から見て前方向への奥行きを単位 mm で表した整数値です。\n参考画像 https://i.imgur.com/Fmfthey.png",
+              "type": "integer",
+              "minimum": 0,
+              "examples": [
+                250
+              ]
+            },
+            "height_mm": {
+              "description": "Product を設置してその正面に立ったとき、地面からの高さを単位 mm で表した整数値です。\n高さを表記する必要のない Product の場合はこのプロパティを省略します。\n参考画像 https://i.imgur.com/Fmfthey.png",
+              "type": "integer",
+              "minimum": 0,
+              "examples": [
+                0
+              ]
+            },
+            "notes": {
+              "description": "サイズについて補足する説明のリストです。",
+              "type": "array",
+              "items": {
+                "description": "サイズについて補足する説明文です。",
+                "type": "string",
+                "examples": [
+                  "開口部 約 23 cm",
+                  "幅計測 フリンジ込み"
+                ]
+              }
+            }
+          }
+        },
+        "weight_g": {
+          "description": "Product の重量を単位 g で表した整数値です。",
+          "type": "integer",
+          "examples": [
+            52
+          ]
+        },
+        "raw_materials": {
+          "description": "Product に使用している原材料のリストです。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "raw_material_ids"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "raw_material_ids": {
+                "description": "Raw material の id のリストです。",
+                "type": "array",
+                "items": {
+                  "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                  "examples": [
+                    "cotton",
+                    "wool",
+                    "hakushu-cotton"
+                  ],
+                  "type": "string",
+                  "pattern": "^[a-z0-9\\-]+$"
+                }
+              },
+              "used_at": {
+                "description": "この原材料が使われている Product の場所です。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+                "type": "string",
+                "examples": [
+                  "表生地",
+                  "裏生地"
+                ]
+              },
+              "mixing_ratio": {
+                "description": "Product を構成する原材料の混用率です。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+                "type": "object",
+                "required": [
+                  "percentage",
+                  "decorator"
+                ],
+                "dependencies": {
+                  "decorator": [
+                    "percentage"
+                  ]
+                },
+                "properties": {
+                  "percentage": {
+                    "description": "Product を構成する原材料の混用率を表す整数値です。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "examples": [
+                      100,
+                      50,
+                      15
+                    ]
+                  },
+                  "decorator": {
+                    "description": "Product を構成する原材料の混用率に対して '以上' または '未満' の修飾子を追加します。\n'以上' は '>=',\n'未満' は '<',\n何も追加しない場合は '=' の値を取ります。\npercentage が 100 の場合は必ず '=' になります。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+                    "type": "string",
+                    "enum": [
+                      "=",
+                      ">=",
+                      "<"
+                    ],
+                    "examples": [
+                      "="
+                    ]
+                  }
+                },
+                "if": {
+                  "properties": {
+                    "percentage": {
+                      "const": 100
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "decorator": {
+                      "enum": [
+                        "="
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "dyeing_materials": {
+          "description": "Product に使用している染料のリストです。",
+          "type": "array",
+          "items": {
+            "description": "Product に使用している染料です。",
+            "type": "object",
+            "required": [
+              "dyeing_material_ids"
+            ],
+            "properties": {
+              "dyeing_material_ids": {
+                "description": "Dyeing material の id のリストです。",
+                "type": "array",
+                "items": {
+                  "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                  "examples": [
+                    "cherry",
+                    "kumquat",
+                    "citrus",
+                    "madder"
+                  ],
+                  "type": "string",
+                  "pattern": "^[a-z0-9\\-]+$"
+                }
+              },
+              "used_at": {
+                "description": "この原材料が使われている Product の場所です。",
+                "type": "string",
+                "examples": [
+                  "表生地",
+                  "裏生地"
+                ]
+              }
+            }
+          }
+        },
+        "notes_maintenance": {
+          "description": "Product の保管・手入れについての説明を補足するテキストのリストです。",
+          "type": "array",
+          "items": {
+            "description": "Product の保管・手入れについての説明を補足するテキストです。",
+            "type": "string"
+          }
+        }
+      },
+      "definitions": {
+        "id": {
+          "description": "Product の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "rakuda",
+            "yama-no-odori",
+            "akane-ni-tachibana",
+            "sakeori-no-kaban"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "name": {
+          "description": "Product の銘となる名前です。",
+          "examples": [
+            "駱駝",
+            "山の踊り",
+            "茜に橘",
+            "裂織のかばん"
+          ],
+          "type": "string"
+        },
+        "name_kana": {
+          "description": "Product の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+          "examples": [
+            "らくだ",
+            "やまのおどり",
+            "あかねにたちばな",
+            "さきおりのかばん"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "name_alt": {
+          "type": "string",
+          "description": "Product の別名です。\n省略可能です。\nname_alt が存在する Product は name_alt_kana も必須プロパティになります。",
+          "examples": [
+            "草木染め糸のストール",
+            "飾る布",
+            "草木染色腹帯"
+          ]
+        },
+        "name_alt_kana": {
+          "description": "Product の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。\nname_alt が存在する Product は name_alt_kana も必須プロパティになります。",
+          "examples": [
+            "くさきぞめいとのすとーる",
+            "かざるぬの",
+            "くさきせんしょくはらおび"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "image": {
+          "description": "Product を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "https://houkiboshi.co/products/product-1/images/main.jpg"
+          ]
+        },
+        "images_alt": {
+          "description": "Product の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage で指定した URI を含める必要はありません。",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "examples": [
+            [
+              "https://houkiboshi.co/products/product-1/images/01.jpg",
+              "https://houkiboshi.co/products/product-1/images/02.jpg",
+              "https://houkiboshi.co/products/product-1/images/03.jpg"
+            ]
+          ]
+        },
+        "price": {
+          "description": "Product の日本円価格を表す整数値です。\n非売品・売り切れなどの場合はこのプロパティを省略します。",
+          "type": "integer",
+          "minimum": 0
+        },
+        "links_to_shop": {
+          "description": "この Product を販売・展示している URI のリストです。",
+          "type": "array",
+          "items": {
+            "description": "この Product を販売・展示している URI です。\nURI は RFC3986 に準拠します。",
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "https://minne.com/items/14938131",
+              "https://www.creema.jp/item/5890223/detail"
+            ]
+          }
+        },
+        "description": {
+          "description": "Product の説明です。",
+          "type": "string",
+          "examples": [
+            "水面のような織り柄の布を織りました。\n新書がすっぽり入るくらいの大きさのポーチです。"
+          ]
+        },
+        "size": {
+          "description": "Product のサイズを WDH で表します。\n単位はいずれも mm です。\n参考画像 https://i.imgur.com/Fmfthey.png",
+          "type": "object",
+          "required": [
+            "width_mm",
+            "depth_mm"
+          ],
+          "additionalItems": false,
+          "properties": {
+            "width_mm": {
+              "description": "Product を設置してその正面に立ったとき、自分自身から見て横方向の幅を単位 mm で表した整数値です。\n参考画像 https://i.imgur.com/Fmfthey.png",
+              "type": "integer",
+              "minimum": 0,
+              "examples": [
+                250
+              ]
+            },
+            "depth_mm": {
+              "description": "Product を設置してその正面に立ったとき、自分自身から見て前方向への奥行きを単位 mm で表した整数値です。\n参考画像 https://i.imgur.com/Fmfthey.png",
+              "type": "integer",
+              "minimum": 0,
+              "examples": [
+                250
+              ]
+            },
+            "height_mm": {
+              "description": "Product を設置してその正面に立ったとき、地面からの高さを単位 mm で表した整数値です。\n高さを表記する必要のない Product の場合はこのプロパティを省略します。\n参考画像 https://i.imgur.com/Fmfthey.png",
+              "type": "integer",
+              "minimum": 0,
+              "examples": [
+                0
+              ]
+            },
+            "notes": {
+              "description": "サイズについて補足する説明のリストです。",
+              "type": "array",
+              "items": {
+                "description": "サイズについて補足する説明文です。",
+                "type": "string",
+                "examples": [
+                  "開口部 約 23 cm",
+                  "幅計測 フリンジ込み"
+                ]
+              }
+            }
+          }
+        },
+        "weight_g": {
+          "description": "Product の重量を単位 g で表した整数値です。",
+          "type": "integer",
+          "examples": [
+            52
+          ]
+        },
+        "raw_materials": {
+          "description": "Product に使用している原材料のリストです。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "raw_material_ids"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "raw_material_ids": {
+                "description": "Raw material の id のリストです。",
+                "type": "array",
+                "items": {
+                  "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                  "examples": [
+                    "cotton",
+                    "wool",
+                    "hakushu-cotton"
+                  ],
+                  "type": "string",
+                  "pattern": "^[a-z0-9\\-]+$"
+                }
+              },
+              "used_at": {
+                "description": "この原材料が使われている Product の場所です。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+                "type": "string",
+                "examples": [
+                  "表生地",
+                  "裏生地"
+                ]
+              },
+              "mixing_ratio": {
+                "description": "Product を構成する原材料の混用率です。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+                "type": "object",
+                "required": [
+                  "percentage",
+                  "decorator"
+                ],
+                "dependencies": {
+                  "decorator": [
+                    "percentage"
+                  ]
+                },
+                "properties": {
+                  "percentage": {
+                    "description": "Product を構成する原材料の混用率を表す整数値です。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "examples": [
+                      100,
+                      50,
+                      15
+                    ]
+                  },
+                  "decorator": {
+                    "description": "Product を構成する原材料の混用率に対して '以上' または '未満' の修飾子を追加します。\n'以上' は '>=',\n'未満' は '<',\n何も追加しない場合は '=' の値を取ります。\npercentage が 100 の場合は必ず '=' になります。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
+                    "type": "string",
+                    "enum": [
+                      "=",
+                      ">=",
+                      "<"
+                    ],
+                    "examples": [
+                      "="
+                    ]
+                  }
+                },
+                "if": {
+                  "properties": {
+                    "percentage": {
+                      "const": 100
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "decorator": {
+                      "enum": [
+                        "="
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "dyeing_materials": {
+          "description": "Product に使用している染料のリストです。",
+          "type": "array",
+          "items": {
+            "description": "Product に使用している染料です。",
+            "type": "object",
+            "required": [
+              "dyeing_material_ids"
+            ],
+            "properties": {
+              "dyeing_material_ids": {
+                "description": "Dyeing material の id のリストです。",
+                "type": "array",
+                "items": {
+                  "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                  "examples": [
+                    "cherry",
+                    "kumquat",
+                    "citrus",
+                    "madder"
+                  ],
+                  "type": "string",
+                  "pattern": "^[a-z0-9\\-]+$"
+                }
+              },
+              "used_at": {
+                "description": "この原材料が使われている Product の場所です。",
+                "type": "string",
+                "examples": [
+                  "表生地",
+                  "裏生地"
+                ]
+              }
+            }
+          }
+        },
+        "maintenance_notes": {
+          "description": "Product の保管・手入れについての説明を補足するテキストのリストです。",
+          "type": "array",
+          "items": {
+            "description": "Product の保管・手入れについての説明を補足するテキストです。",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "raw-material": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "raw-material.json",
+      "title": "Raw material",
+      "description": "Product の原材料です。",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "name_kana"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "cotton",
+            "wool",
+            "hakushu-cotton"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "name": {
+          "description": "Raw material の名前です。",
+          "type": "string",
+          "examples": [
+            "綿",
+            "ウール",
+            "伯州綿"
+          ]
+        },
+        "name_kana": {
+          "description": "Raw material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+          "examples": [
+            "めん",
+            "うーる",
+            "はくしゅうめん"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "description": {
+          "description": "Raw material の概要です。",
+          "type": "string",
+          "examples": [
+            null
+          ]
+        },
+        "image": {
+          "description": "Raw material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "https://houkiboshi.co/raw-materials/cotton/images/main.jpg"
+          ]
+        },
+        "images_alt": {
+          "description": "Raw material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "examples": [
+            "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
+            "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
+            "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+          ]
+        }
+      },
+      "definitions": {
+        "id": {
+          "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "cotton",
+            "wool",
+            "hakushu-cotton"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "name": {
+          "description": "Raw material の名前です。",
+          "type": "string",
+          "examples": [
+            "綿",
+            "ウール",
+            "伯州綿"
+          ]
+        },
+        "name_kana": {
+          "description": "Raw material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+          "examples": [
+            "めん",
+            "うーる",
+            "はくしゅうめん"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "description": {
+          "description": "Raw material の概要です。",
+          "type": "string",
+          "examples": [
+            null
+          ]
+        },
+        "image": {
+          "description": "Raw material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "https://houkiboshi.co/raw-materials/cotton/images/main.jpg"
+          ]
+        },
+        "images_alt": {
+          "description": "Raw material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "examples": [
+            "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
+            "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
+            "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+          ]
+        }
+      }
+    },
+    "dyeing-material": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "dyeing-material.json",
+      "title": "Dyeing material",
+      "description": "Product に使用されている染色素材です。",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "name_kana",
+        "dyeing_material_type_id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "cherry",
+            "kumquat",
+            "citrus",
+            "madder"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "name": {
+          "description": "Dyeing material の名前です。",
+          "type": "string",
+          "examples": [
+            "桜",
+            "金柑",
+            "柚子",
+            "茜"
+          ]
+        },
+        "name_kana": {
+          "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+          "examples": [
+            "さくら",
+            "きんかん",
+            "ゆず",
+            "あかね"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "description": {
+          "description": "Dyeing material の概要です。",
+          "type": "string"
+        },
+        "image": {
+          "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg"
+          ]
+        },
+        "images_alt": {
+          "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "examples": [
+            "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
+            "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
+            "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+          ]
+        },
+        "dyeing_material_type_id": {
+          "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "plant-dyes",
+            "resin-pigments",
+            "ready-made"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        }
+      },
+      "definitions": {
+        "id": {
+          "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "cherry",
+            "kumquat",
+            "citrus",
+            "madder"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "name": {
+          "description": "Dyeing material の名前です。",
+          "type": "string",
+          "examples": [
+            "桜",
+            "金柑",
+            "柚子",
+            "茜"
+          ]
+        },
+        "name_kana": {
+          "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+          "examples": [
+            "さくら",
+            "きんかん",
+            "ゆず",
+            "あかね"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "dyeing_material_type_id": {
+          "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "plant-dyes",
+            "resin-pigments",
+            "ready-made"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "description": {
+          "description": "Dyeing material の概要です。",
+          "type": "string"
+        },
+        "image": {
+          "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg"
+          ]
+        },
+        "images_alt": {
+          "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "examples": [
+            "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
+            "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
+            "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+          ]
+        }
+      }
+    },
+    "dyeing-material-type": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "dyeing-material-type.json",
+      "title": "Dyeing material type",
+      "description": "Dyeing material の分類です。",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "name_kana"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "plant-dyes",
+            "resin-pigments",
+            "ready-made"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "name": {
+          "description": "Dyeing material type の名前です。",
+          "type": "string",
+          "examples": [
+            "植物染料",
+            "樹脂顔料",
+            "既製品"
+          ]
+        },
+        "name_kana": {
+          "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+          "examples": [
+            "しょくぶつせんりょう",
+            "じゅしがんりょう",
+            "きせいひん"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        }
+      },
+      "definitions": {
+        "id": {
+          "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+          "examples": [
+            "plant-dyes",
+            "resin-pigments",
+            "ready-made"
+          ],
+          "type": "string",
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "name": {
+          "description": "Dyeing material type の名前です。",
+          "type": "string",
+          "examples": [
+            "植物染料",
+            "樹脂顔料",
+            "既製品"
+          ]
+        },
+        "name_kana": {
+          "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+          "examples": [
+            "しょくぶつせんりょう",
+            "じゅしがんりょう",
+            "きせいひん"
+          ],
+          "type": "string",
+          "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "description": {
+          "description": "Dyeing material type の概要です。",
+          "type": "string",
+          "examples": [
+            "植物由来の天然染料です。水や油などを溶媒として色素を持つ分子を対象の分子と結合させることで染色します。",
+            "色素を持つ不溶性の粒子を対象に樹脂で接着することで色をつけます。",
+            "市販の既製品です。"
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$"
+    },
+    "name_kana": {
+      "type": "string",
+      "pattern": "^[0-9ぁ-んー]+$"
+    }
+  }
+}

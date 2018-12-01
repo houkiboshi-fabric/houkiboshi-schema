@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "dyeing-material.json",
+  "title": "Dyeing material",
+  "description": "Product に使用されている染色素材です。",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "name_kana",
+    "dyeing_material_type_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "examples": [
+        "cherry",
+        "kumquat",
+        "citrus",
+        "madder"
+      ],
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$"
+    },
+    "name": {
+      "description": "Dyeing material の名前です。",
+      "type": "string",
+      "examples": [
+        "桜",
+        "金柑",
+        "柚子",
+        "茜"
+      ]
+    },
+    "name_kana": {
+      "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+      "examples": [
+        "さくら",
+        "きんかん",
+        "ゆず",
+        "あかね"
+      ],
+      "type": "string",
+      "pattern": "^[0-9ぁ-んー]+$"
+    },
+    "description": {
+      "description": "Dyeing material の概要です。",
+      "type": "string"
+    },
+    "image": {
+      "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
+      "type": "string",
+      "format": "uri",
+      "examples": [
+        "https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg"
+      ]
+    },
+    "images_alt": {
+      "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "examples": [
+        "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
+        "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
+        "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+      ]
+    },
+    "dyeing_material_type_id": {
+      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "examples": [
+        "plant-dyes",
+        "resin-pigments",
+        "ready-made"
+      ],
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$"
+    }
+  },
+  "definitions": {
+    "id": {
+      "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "examples": [
+        "cherry",
+        "kumquat",
+        "citrus",
+        "madder"
+      ],
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$"
+    },
+    "name": {
+      "description": "Dyeing material の名前です。",
+      "type": "string",
+      "examples": [
+        "桜",
+        "金柑",
+        "柚子",
+        "茜"
+      ]
+    },
+    "name_kana": {
+      "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+      "examples": [
+        "さくら",
+        "きんかん",
+        "ゆず",
+        "あかね"
+      ],
+      "type": "string",
+      "pattern": "^[0-9ぁ-んー]+$"
+    },
+    "dyeing_material_type_id": {
+      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "examples": [
+        "plant-dyes",
+        "resin-pigments",
+        "ready-made"
+      ],
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$"
+    },
+    "description": {
+      "description": "Dyeing material の概要です。",
+      "type": "string"
+    },
+    "image": {
+      "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
+      "type": "string",
+      "format": "uri",
+      "examples": [
+        "https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg"
+      ]
+    },
+    "images_alt": {
+      "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "examples": [
+        "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
+        "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
+        "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+      ]
+    }
+  }
+}

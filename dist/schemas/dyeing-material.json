@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "dyeing-material.json",
+  "title": "Dyeing material",
+  "description": "Product に使用されている染色素材です。",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "name_kana",
+    "dyeing_material_type_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/id"
+    },
+    "name": {
+      "$ref": "#/definitions/name"
+    },
+    "name_kana": {
+      "$ref": "#/definitions/name_kana"
+    },
+    "description": {
+      "$ref": "#/definitions/description"
+    },
+    "image": {
+      "$ref": "#/definitions/image"
+    },
+    "images_alt": {
+      "$ref": "#/definitions/images_alt"
+    },
+    "dyeing_material_type_id": {
+      "$ref": "#/definitions/dyeing_material_type_id"
+    }
+  },
+  "definitions": {
+    "id": {
+      "$ref": "index.json#/definitions/id",
+      "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "examples": [
+        "cherry",
+        "kumquat",
+        "citrus",
+        "madder"
+      ]
+    },
+    "name": {
+      "description": "Dyeing material の名前です。",
+      "type": "string",
+      "examples": [
+        "桜",
+        "金柑",
+        "柚子",
+        "茜"
+      ]
+    },
+    "name_kana": {
+      "$ref": "index.json#/definitions/name_kana",
+      "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+      "examples": [
+        "さくら",
+        "きんかん",
+        "ゆず",
+        "あかね"
+      ]
+    },
+    "dyeing_material_type_id": {
+      "$ref": "dyeing-material-type.json#/definitions/id"
+    },
+    "description": {
+      "description": "Dyeing material の概要です。",
+      "type": "string"
+    },
+    "image": {
+      "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
+      "type": "string",
+      "format": "uri",
+      "examples": [
+        "https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg"
+      ]
+    },
+    "images_alt": {
+      "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "examples": [
+        "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
+        "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
+        "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+      ]
+    }
+  }
+}

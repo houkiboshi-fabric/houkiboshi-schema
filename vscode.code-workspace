@@ -1,0 +1,68 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "redhat.vscode-yaml",
+      "EditorConfig.EditorConfig",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  },
+  "settings": {
+    "json.schemas": [
+      {
+        "fileMatch": [
+          "/dist/schemas/*.json"
+        ],
+        "url": "http://json-schema.org/draft-07/schema"
+      },
+      {
+        "fileMatch": [
+          "/examples/product.json"
+        ],
+        "url": "./dist/schemas/product.json"
+      },
+      {
+        "fileMatch": [
+          "/examples/raw-material.json"
+        ],
+        "url": "./dist/schemas/raw-material.json"
+      },
+      {
+        "fileMatch": [
+          "/examples/dyeing-material.json"
+        ],
+        "url": "./dist/schemas/dyeing-material.json"
+      },
+      {
+        "fileMatch": [
+          "/examples/dyeing-material-type.json"
+        ],
+        "url": "./dist/schemas/dyeing-material-type.json"
+      }
+    ],
+    "yaml.completion": true,
+    "yaml.hover": true,
+    "yaml.validate": true,
+    "yaml.format.enable": false,
+    "yaml.trace.server": "verbose",
+    "yaml.schemas": {
+      "http://json-schema.org/draft-07/schema": "/src/schemas/*.yml",
+      "./dist/schemas/product.json": "/examples/product.yml",
+      "./dist/schemas/raw-material.json": "/examples/raw-material.yml",
+      "./dist/schemas/dyeing-material.json": "/examples/dyeing-material.yml",
+      "./dist/schemas/dyeing-material-type.json": "/examples/dyeing-material-type.yml"
+    },
+    "[yaml]": {
+      "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+      }
+    }
+  }
+}

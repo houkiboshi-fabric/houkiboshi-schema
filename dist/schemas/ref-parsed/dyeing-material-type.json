@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "dyeing-material-type.json",
+  "title": "Dyeing material type",
+  "description": "Dyeing material の分類です。",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "name_kana"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "examples": [
+        "plant-dyes",
+        "resin-pigments",
+        "ready-made"
+      ],
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$"
+    },
+    "name": {
+      "description": "Dyeing material type の名前です。",
+      "type": "string",
+      "examples": [
+        "植物染料",
+        "樹脂顔料",
+        "既製品"
+      ]
+    },
+    "name_kana": {
+      "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+      "examples": [
+        "しょくぶつせんりょう",
+        "じゅしがんりょう",
+        "きせいひん"
+      ],
+      "type": "string",
+      "pattern": "^[0-9ぁ-んー]+$"
+    }
+  },
+  "definitions": {
+    "id": {
+      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "examples": [
+        "plant-dyes",
+        "resin-pigments",
+        "ready-made"
+      ],
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$"
+    },
+    "name": {
+      "description": "Dyeing material type の名前です。",
+      "type": "string",
+      "examples": [
+        "植物染料",
+        "樹脂顔料",
+        "既製品"
+      ]
+    },
+    "name_kana": {
+      "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+      "examples": [
+        "しょくぶつせんりょう",
+        "じゅしがんりょう",
+        "きせいひん"
+      ],
+      "type": "string",
+      "pattern": "^[0-9ぁ-んー]+$"
+    },
+    "description": {
+      "description": "Dyeing material type の概要です。",
+      "type": "string",
+      "examples": [
+        "植物由来の天然染料です。水や油などを溶媒として色素を持つ分子を対象の分子と結合させることで染色します。",
+        "色素を持つ不溶性の粒子を対象に樹脂で接着することで色をつけます。",
+        "市販の既製品です。"
+      ]
+    }
+  }
+}

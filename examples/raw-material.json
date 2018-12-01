@@ -1,0 +1,11 @@
+{
+  "id": "cotton",
+  "name": "綿",
+  "name_kana": "めん",
+  "description": "ワタの種子から取れる繊維です。",
+  "image": "https://houkiboshi.co/raw-materials/cotton/images/main.jpg",
+  "images_alt": [
+    "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
+    "https://houkiboshi.co/raw-materials/cotton/images/02.jpg"
+  ]
+}
