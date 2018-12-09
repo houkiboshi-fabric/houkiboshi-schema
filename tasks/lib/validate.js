@@ -15,7 +15,7 @@ const readJson = path => {
 };
 
 // Exclude ref-parsed json from validation targets
-const schemaPattern = resolve(dist, 'schemas', '*.json');
+const schemaPattern = resolve(dist, '*.json');
 
 const createAjv = () => {
   const schemas = glob.sync(schemaPattern).map(readJson);
