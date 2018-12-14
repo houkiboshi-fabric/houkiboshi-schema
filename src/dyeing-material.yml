@@ -1,4 +1,4 @@
-$schema: http://json-schema.org/draft-07/schema#
+$schema: http://json-schema.org/draft-06/schema#
 $id: dyeing-material.json
 title: Dyeing material
 description: Product に使用されている染色素材です。

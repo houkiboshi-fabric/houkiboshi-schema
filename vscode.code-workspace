@@ -18,7 +18,7 @@
         "fileMatch": [
           "/docs/*.json"
         ],
-        "url": "http://json-schema.org/draft-07/schema"
+        "url": "http://json-schema.org/draft-06/schema"
       },
       {
         "fileMatch": [
@@ -51,7 +51,7 @@
     "yaml.format.enable": false,
     "yaml.trace.server": "verbose",
     "yaml.schemas": {
-      "http://json-schema.org/draft-07/schema": "/src/*.yml",
+      "http://json-schema.org/draft-06/schema": "/src/*.yml",
       "./docs/product.json": "/examples/product.yml",
       "./docs/raw-material.json": "/examples/raw-material.yml",
       "./docs/dyeing-material.json": "/examples/dyeing-material.yml",

@@ -1,11 +1,11 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
   "$id": "index.json",
   "title": "Schema index",
   "description": "参照用",
   "properties": {
     "product": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$schema": "http://json-schema.org/draft-06/schema#",
       "$id": "product.json",
       "title": "Product",
       "description": "製品です。",
@@ -604,7 +604,7 @@
       }
     },
     "raw-material": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$schema": "http://json-schema.org/draft-06/schema#",
       "$id": "raw-material.json",
       "title": "Raw material",
       "description": "Product の原材料です。",
@@ -735,7 +735,7 @@
       }
     },
     "dyeing-material": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$schema": "http://json-schema.org/draft-06/schema#",
       "$id": "dyeing-material.json",
       "title": "Dyeing material",
       "description": "Product に使用されている染色素材です。",
@@ -887,7 +887,7 @@
       }
     },
     "dyeing-material-type": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$schema": "http://json-schema.org/draft-06/schema#",
       "$id": "dyeing-material-type.json",
       "title": "Dyeing material type",
       "description": "Dyeing material の分類です。",

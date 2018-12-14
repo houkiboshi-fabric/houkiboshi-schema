@@ -23,7 +23,8 @@ const createAjv = () => {
     schemas,
     allErrors: true,
     logger: consola,
-    validateSchema: true
+    validateSchema: true,
+    meta: require('ajv/lib/refs/json-schema-draft-06.json')
   });
 };
 
