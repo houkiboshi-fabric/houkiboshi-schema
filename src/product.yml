@@ -127,6 +127,8 @@ definitions:
       非売品・売り切れなどの場合はこのプロパティを省略します。
     type: integer
     minimum: 0
+    examples:
+      - 100000
   links_to_shop:
     description: この Product を販売・展示している URI のリストです。
     type: array
@@ -138,6 +140,9 @@ definitions:
       format: uri
       examples:
         - https://minne.com/items/14938131
+        - https://www.creema.jp/item/5890223/detail
+    examples:
+      - - https://minne.com/items/14938131
         - https://www.creema.jp/item/5890223/detail
   description:
     description: Product の説明です。
@@ -156,6 +161,12 @@ definitions:
       - width_mm
       - depth_mm
     additionalItems: false
+    examples:
+      - width_mm: 250
+        depth_mm: 250
+      - width_mm: 250
+        depth_mm: 250
+        height_mm: 250
     properties:
       width_mm:
         description: |-
@@ -203,11 +214,27 @@ definitions:
       Product に使用している原材料のリストです。
       参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html
     type: array
+    examples:
+      - - raw_material_ids:
+            - cotton
+          used_at: 表生地
+          mixing_ratio:
+            percentage: 100
+            decorator: =
+        - raw_material_ids:
+            - wool
+          used_at: 裏生地
+          mixing_ratio:
+            percentage: 100
+            decorator: =
     items:
       type: object
       required:
         - raw_material_ids
       additionalProperties: false
+      examples:
+        - raw_material_ids:
+            - cotton
       properties:
         raw_material_ids:
           description: Raw material の id のリストです。
@@ -233,6 +260,9 @@ definitions:
           dependencies:
             decorator:
               - percentage
+          examples:
+            - percentage: 100
+              decorator: =
           properties:
             percentage:
               description: |-
@@ -273,10 +303,22 @@ definitions:
     description: |-
       Product に使用している染料のリストです。
     type: array
+    examples:
+      - - dyeing_material_ids:
+            - cherry
+          used_at: 表生地
+        - dyeing_material_ids:
+            - madder
+            - mint
+          used_at: 裏生地
     items:
       description: |-
         Product に使用している染料です。
       type: object
+      examples:
+        - dyeing_material_ids:
+            - cherry
+          used_at: 表生地
       required:
         - dyeing_material_ids
       properties:

@@ -61,6 +61,9 @@ definitions:
   description:
     description: Dyeing material の概要です。
     type: string
+    examples:
+      - 赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。
+        染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。
   image:
     description: |-
       Dyeing material を象徴する画像ファイル URI です。
