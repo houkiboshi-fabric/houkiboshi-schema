@@ -62,9 +62,6 @@
     },
     "dyeing_materials": {
       "$ref": "#/definitions/dyeing_materials"
-    },
-    "notes_maintenance": {
-      "$ref": "#/definitions/maintenance_notes"
     }
   },
   "definitions": {
@@ -408,14 +405,6 @@
             ]
           }
         }
-      }
-    },
-    "maintenance_notes": {
-      "description": "Product の保管・手入れについての説明を補足するテキストのリストです。",
-      "type": "array",
-      "items": {
-        "description": "Product の保管・手入れについての説明を補足するテキストです。",
-        "type": "string"
       }
     }
   }

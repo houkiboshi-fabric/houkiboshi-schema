@@ -380,14 +380,6 @@
           }
         }
       }
-    },
-    "notes_maintenance": {
-      "description": "Product の保管・手入れについての説明を補足するテキストのリストです。",
-      "type": "array",
-      "items": {
-        "description": "Product の保管・手入れについての説明を補足するテキストです。",
-        "type": "string"
-      }
     }
   },
   "definitions": {
@@ -749,14 +741,6 @@
             ]
           }
         }
-      }
-    },
-    "maintenance_notes": {
-      "description": "Product の保管・手入れについての説明を補足するテキストのリストです。",
-      "type": "array",
-      "items": {
-        "description": "Product の保管・手入れについての説明を補足するテキストです。",
-        "type": "string"
       }
     }
   }

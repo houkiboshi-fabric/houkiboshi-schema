@@ -46,8 +46,6 @@ properties:
     $ref: '#/definitions/raw_materials'
   dyeing_materials:
     $ref: '#/definitions/dyeing_materials'
-  notes_maintenance:
-    $ref: '#/definitions/maintenance_notes'
 
 definitions:
   id:
@@ -335,9 +333,3 @@ definitions:
           examples:
             - 表生地
             - 裏生地
-  maintenance_notes:
-    description: Product の保管・手入れについての説明を補足するテキストのリストです。
-    type: array
-    items:
-      description: Product の保管・手入れについての説明を補足するテキストです。
-      type: string
