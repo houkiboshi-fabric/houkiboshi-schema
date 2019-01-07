@@ -1164,7 +1164,8 @@
       "required": [
         "id",
         "name",
-        "name_kana"
+        "name_kana",
+        "description"
       ],
       "additionalProperties": false,
       "properties": {
@@ -1196,6 +1197,15 @@
           ],
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "description": {
+          "description": "Dyeing material type の概要です。",
+          "type": "string",
+          "examples": [
+            "植物由来の天然染料です。水や油などを溶媒として色素を持つ分子を対象の分子と結合させることで染色します。",
+            "色素を持つ不溶性の粒子を対象に樹脂で接着することで色をつけます。",
+            "市販の既製品です。"
+          ]
         }
       },
       "definitions": {

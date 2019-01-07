@@ -7,6 +7,7 @@ required:
   - id
   - name
   - name_kana
+  - description
 additionalProperties: false
 
 properties:
@@ -16,6 +17,8 @@ properties:
     $ref: '#/definitions/name'
   name_kana:
     $ref: '#/definitions/name_kana'
+  description:
+    $ref: '#/definitions/description'
 
 definitions:
   id:

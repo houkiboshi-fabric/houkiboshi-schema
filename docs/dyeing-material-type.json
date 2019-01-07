@@ -7,7 +7,8 @@
   "required": [
     "id",
     "name",
-    "name_kana"
+    "name_kana",
+    "description"
   ],
   "additionalProperties": false,
   "properties": {
@@ -19,6 +20,9 @@
     },
     "name_kana": {
       "$ref": "#/definitions/name_kana"
+    },
+    "description": {
+      "$ref": "#/definitions/description"
     }
   },
   "definitions": {
