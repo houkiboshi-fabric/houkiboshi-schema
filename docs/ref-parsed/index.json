@@ -847,7 +847,8 @@
           "description": "Raw material の概要です。",
           "type": "string",
           "examples": [
-            null
+            "",
+            "木でできたビーズです。"
           ]
         },
         "image": {
@@ -921,7 +922,8 @@
           "description": "Raw material の概要です。",
           "type": "string",
           "examples": [
-            null
+            "",
+            "木でできたビーズです。"
           ]
         },
         "image": {
