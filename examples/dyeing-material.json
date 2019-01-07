@@ -2,6 +2,8 @@
   "id": "cherry",
   "name": "桜",
   "name_kana": "さくら",
+  "image": null,
+  "images_alt": [],
   "dyeing_material_type_id": "plant-dyes",
   "description": "桜の花から抽出した染料です。"
 }

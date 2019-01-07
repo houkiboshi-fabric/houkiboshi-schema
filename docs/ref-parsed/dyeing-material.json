@@ -8,6 +8,9 @@
     "id",
     "name",
     "name_kana",
+    "description",
+    "image",
+    "images_alt",
     "dyeing_material_type_id"
   ],
   "additionalProperties": false,
@@ -52,25 +55,40 @@
       ]
     },
     "image": {
-      "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
-      "type": "string",
-      "format": "uri",
+      "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "examples": [
         "https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg"
       ]
     },
     "images_alt": {
-      "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+      "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
+      "examples": [
+        [],
+        [
+          "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
+          "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
+          "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+        ]
+      ],
       "items": {
         "type": "string",
-        "format": "uri"
-      },
-      "examples": [
-        "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
-        "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
-        "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
-      ]
+        "format": "uri",
+        "examples": [
+          "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
+          "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
+          "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+        ]
+      }
     },
     "dyeing_material_type_id": {
       "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
@@ -134,25 +152,40 @@
       ]
     },
     "image": {
-      "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
-      "type": "string",
-      "format": "uri",
+      "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "examples": [
         "https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg"
       ]
     },
     "images_alt": {
-      "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+      "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
+      "examples": [
+        [],
+        [
+          "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
+          "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
+          "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+        ]
+      ],
       "items": {
         "type": "string",
-        "format": "uri"
-      },
-      "examples": [
-        "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
-        "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
-        "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
-      ]
+        "format": "uri",
+        "examples": [
+          "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
+          "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
+          "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+        ]
+      }
     }
   }
 }

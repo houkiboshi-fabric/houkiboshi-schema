@@ -7,7 +7,10 @@
   "required": [
     "id",
     "name",
-    "name_kana"
+    "name_kana",
+    "description",
+    "image",
+    "images_alt"
   ],
   "additionalProperties": false,
   "properties": {
@@ -48,25 +51,40 @@
       ]
     },
     "image": {
-      "description": "Raw material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
-      "type": "string",
-      "format": "uri",
+      "description": "Raw material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "examples": [
         "https://houkiboshi.co/raw-materials/cotton/images/main.jpg"
       ]
     },
     "images_alt": {
-      "description": "Raw material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+      "description": "Raw material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
+      "examples": [
+        [],
+        [
+          "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
+          "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
+          "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+        ]
+      ],
       "items": {
         "type": "string",
-        "format": "uri"
-      },
-      "examples": [
-        "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
-        "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
-        "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
-      ]
+        "format": "uri",
+        "examples": [
+          "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
+          "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
+          "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+        ]
+      }
     }
   },
   "definitions": {
@@ -107,25 +125,40 @@
       ]
     },
     "image": {
-      "description": "Raw material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
-      "type": "string",
-      "format": "uri",
+      "description": "Raw material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "examples": [
         "https://houkiboshi.co/raw-materials/cotton/images/main.jpg"
       ]
     },
     "images_alt": {
-      "description": "Raw material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。",
+      "description": "Raw material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
+      "examples": [
+        [],
+        [
+          "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
+          "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
+          "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+        ]
+      ],
       "items": {
         "type": "string",
-        "format": "uri"
-      },
-      "examples": [
-        "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
-        "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
-        "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
-      ]
+        "format": "uri",
+        "examples": [
+          "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
+          "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
+          "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+        ]
+      }
     }
   }
 }

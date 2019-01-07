@@ -8,18 +8,19 @@
     "id",
     "name",
     "name_kana",
+    "name_alt",
+    "name_alt_kana",
     "image",
+    "images_alt",
+    "price",
+    "links_to_shop",
+    "description",
     "size",
     "weight_g",
     "raw_materials",
     "dyeing_materials"
   ],
   "additionalProperties": false,
-  "dependencies": {
-    "name_alt": [
-      "name_alt_kana"
-    ]
-  },
   "properties": {
     "id": {
       "description": "Product の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
@@ -55,7 +56,7 @@
     },
     "name_alt": {
       "type": "string",
-      "description": "Product の別名です。\n省略可能です。\nname_alt が存在する Product は name_alt_kana も必須プロパティになります。",
+      "description": "Product の別名です。\n省略可能です。",
       "examples": [
         "草木染め糸のストール",
         "飾る布",
@@ -63,7 +64,7 @@
       ]
     },
     "name_alt_kana": {
-      "description": "Product の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。\nname_alt が存在する Product は name_alt_kana も必須プロパティになります。",
+      "description": "Product の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
       "examples": [
         "くさきぞめいとのすとーる",
         "かざるぬの",
@@ -73,21 +74,34 @@
       "pattern": "^[0-9ぁ-んー]+$"
     },
     "image": {
-      "description": "Product を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
-      "type": "string",
-      "format": "uri",
+      "description": "Product を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "examples": [
         "https://houkiboshi.co/products/product-1/images/main.jpg"
       ]
     },
     "images_alt": {
-      "description": "Product の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage で指定した URI を含める必要はありません。",
+      "description": "Product の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
       "items": {
         "type": "string",
-        "format": "uri"
+        "format": "uri",
+        "examples": [
+          "https://houkiboshi.co/products/product-1/images/01.jpg",
+          "https://houkiboshi.co/products/product-1/images/02.jpg",
+          "https://houkiboshi.co/products/product-1/images/03.jpg"
+        ]
       },
       "examples": [
+        [],
         [
           "https://houkiboshi.co/products/product-1/images/01.jpg",
           "https://houkiboshi.co/products/product-1/images/02.jpg",
@@ -96,16 +110,31 @@
       ]
     },
     "price": {
-      "description": "Product の日本円価格を表す整数値です。\n非売品・売り切れなどの場合はこのプロパティを省略します。",
-      "type": "integer",
-      "minimum": 0,
+      "description": "Product の日本円価格を表す整数値です。\n非売品・売り切れなどの場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
       "examples": [
-        100000
+        100000,
+        null
       ]
     },
     "links_to_shop": {
-      "description": "この Product を販売・展示している URI のリストです。",
+      "description": "この Product を販売・展示している URI のリストです。\nURI がひとつもない場合は空の配列を指定します。",
       "type": "array",
+      "examples": [
+        [],
+        [
+          "https://minne.com/items/14938131",
+          "https://www.creema.jp/item/5890223/detail"
+        ]
+      ],
       "items": {
         "description": "この Product を販売・展示している URI です。\nURI は RFC3986 に準拠します。",
         "type": "string",
@@ -114,13 +143,7 @@
           "https://minne.com/items/14938131",
           "https://www.creema.jp/item/5890223/detail"
         ]
-      },
-      "examples": [
-        [
-          "https://minne.com/items/14938131",
-          "https://www.creema.jp/item/5890223/detail"
-        ]
-      ]
+      }
     },
     "description": {
       "description": "Product の説明です。",
@@ -174,8 +197,9 @@
           ]
         },
         "notes": {
-          "description": "サイズについて補足する説明のリストです。",
+          "description": "サイズについて補足する説明のリストです。\n最低 1 つの説明を含む配列である必要があります。",
           "type": "array",
+          "minItems": 1,
           "items": {
             "description": "サイズについて補足する説明文です。",
             "type": "string",
@@ -417,7 +441,7 @@
     },
     "name_alt": {
       "type": "string",
-      "description": "Product の別名です。\n省略可能です。\nname_alt が存在する Product は name_alt_kana も必須プロパティになります。",
+      "description": "Product の別名です。\n省略可能です。",
       "examples": [
         "草木染め糸のストール",
         "飾る布",
@@ -425,7 +449,7 @@
       ]
     },
     "name_alt_kana": {
-      "description": "Product の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。\nname_alt が存在する Product は name_alt_kana も必須プロパティになります。",
+      "description": "Product の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
       "examples": [
         "くさきぞめいとのすとーる",
         "かざるぬの",
@@ -435,21 +459,34 @@
       "pattern": "^[0-9ぁ-んー]+$"
     },
     "image": {
-      "description": "Product を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。",
-      "type": "string",
-      "format": "uri",
+      "description": "Product を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "examples": [
         "https://houkiboshi.co/products/product-1/images/main.jpg"
       ]
     },
     "images_alt": {
-      "description": "Product の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage で指定した URI を含める必要はありません。",
+      "description": "Product の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
       "items": {
         "type": "string",
-        "format": "uri"
+        "format": "uri",
+        "examples": [
+          "https://houkiboshi.co/products/product-1/images/01.jpg",
+          "https://houkiboshi.co/products/product-1/images/02.jpg",
+          "https://houkiboshi.co/products/product-1/images/03.jpg"
+        ]
       },
       "examples": [
+        [],
         [
           "https://houkiboshi.co/products/product-1/images/01.jpg",
           "https://houkiboshi.co/products/product-1/images/02.jpg",
@@ -458,16 +495,31 @@
       ]
     },
     "price": {
-      "description": "Product の日本円価格を表す整数値です。\n非売品・売り切れなどの場合はこのプロパティを省略します。",
-      "type": "integer",
-      "minimum": 0,
+      "description": "Product の日本円価格を表す整数値です。\n非売品・売り切れなどの場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ],
       "examples": [
-        100000
+        100000,
+        null
       ]
     },
     "links_to_shop": {
-      "description": "この Product を販売・展示している URI のリストです。",
+      "description": "この Product を販売・展示している URI のリストです。\nURI がひとつもない場合は空の配列を指定します。",
       "type": "array",
+      "examples": [
+        [],
+        [
+          "https://minne.com/items/14938131",
+          "https://www.creema.jp/item/5890223/detail"
+        ]
+      ],
       "items": {
         "description": "この Product を販売・展示している URI です。\nURI は RFC3986 に準拠します。",
         "type": "string",
@@ -476,13 +528,7 @@
           "https://minne.com/items/14938131",
           "https://www.creema.jp/item/5890223/detail"
         ]
-      },
-      "examples": [
-        [
-          "https://minne.com/items/14938131",
-          "https://www.creema.jp/item/5890223/detail"
-        ]
-      ]
+      }
     },
     "description": {
       "description": "Product の説明です。",
@@ -536,8 +582,9 @@
           ]
         },
         "notes": {
-          "description": "サイズについて補足する説明のリストです。",
+          "description": "サイズについて補足する説明のリストです。\n最低 1 つの説明を含む配列である必要があります。",
           "type": "array",
+          "minItems": 1,
           "items": {
             "description": "サイズについて補足する説明文です。",
             "type": "string",

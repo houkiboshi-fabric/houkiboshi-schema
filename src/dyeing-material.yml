@@ -7,6 +7,9 @@ required:
   - id
   - name
   - name_kana
+  - description
+  - image
+  - images_alt
   - dyeing_material_type_id
 additionalProperties: false
 
@@ -24,7 +27,7 @@ properties:
   images_alt:
     $ref: '#/definitions/images_alt'
   dyeing_material_type_id:
-    $ref:  '#/definitions/dyeing_material_type_id'
+    $ref: '#/definitions/dyeing_material_type_id'
 
 definitions:
   id:
@@ -69,8 +72,11 @@ definitions:
       Dyeing material を象徴する画像ファイル URI です。
       URI は RFC3986 に準拠します。
       OGP や JSON-LD などの image の値として利用できる必要があります。
-    type: string
-    format: uri
+      画像がない場合は null を指定します。
+    oneOf:
+      - type: string
+        format: uri
+      - type: 'null'
     examples:
       - https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg
   images_alt:
@@ -78,11 +84,17 @@ definitions:
       Dyeing material の画像ファイル URI のリストです。
       URI は RFC3986 に準拠します。
       image プロパティで指定した URI を含める必要はありません。
+      画像がない場合は空の配列を指定します。
     type: array
+    examples:
+      - []
+      - - https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg
+        - https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg
+        - https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg
     items:
       type: string
       format: uri
-    examples:
-      - https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg
-      - https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg
-      - https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg
+      examples:
+        - https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg
+        - https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg
+        - https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg
