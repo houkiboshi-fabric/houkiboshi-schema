@@ -34,10 +34,11 @@ const validate = (data, ajv, schemaId, path) => {
 
   if (!isValid) {
     consola.error(path, validation.errors);
-    return;
+    return validation.errors;
   }
 
   consola.success('Valid.', path);
+  return null;
 };
 
 const validateAll = () => {
@@ -45,11 +46,13 @@ const validateAll = () => {
   const pattern = resolve(examplesDir, '**', '*.json');
   const examplePaths = glob.sync(pattern);
   const examples = examplePaths.map(readJson);
-  examples.forEach((example, i) => {
-    const examplePath = examplePaths[i];
-    const schemaId = parse(examplePath).base;
-    validate(example, ajv, schemaId, relative(rootDir, examplePath));
-  });
+  return examples
+    .map((example, i) => {
+      const examplePath = examplePaths[i];
+      const schemaId = parse(examplePath).base;
+      return validate(example, ajv, schemaId, relative(rootDir, examplePath));
+    })
+    .filter(e => e);
 };
 
 module.exports = validateAll;

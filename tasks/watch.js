@@ -16,11 +16,19 @@ const onReady = () => {
 const onError = err => consola.error(`Watcher error: ${err}`);
 const onAdd = path => {
   consola.info(`Added file: ${relative(rootDir, path)}`);
-  validateAll();
+  const errors = validateAll();
+  if (errors.length > 0) {
+    return;
+  }
+  buildAll();
 };
 const onChange = path => {
   consola.info(`Changed file: ${relative(rootDir, path)}`);
-  validateAll();
+  const errors = validateAll();
+  if (errors.length > 0) {
+    return;
+  }
+  buildAll();
 };
 const onUnlink = path => {
   consola.info(`Removed file: ${relative(rootDir, path)}`);
@@ -32,6 +40,7 @@ const onUnlink = path => {
   });
   del.sync([distPath]);
   consola.info(`Removed file: ${relative(rootDir, distPath)}`);
+  buildAll();
 };
 const onUnlinkDir = path => {
   consola.info(`Removed directory: ${relative(rootDir, path)}`);
@@ -42,6 +51,7 @@ const onUnlinkDir = path => {
   });
   del.sync([distPath]);
   consola.info(`Removed directory: ${relative(rootDir, distPath)}`);
+  buildAll();
 };
 
 buildAll();
