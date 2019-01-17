@@ -69,32 +69,34 @@ definitions:
         染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。
   image:
     description: |-
-      Dyeing material を象徴する画像ファイル URI です。
-      URI は RFC3986 に準拠します。
-      OGP や JSON-LD などの image の値として利用できる必要があります。
+      この Dyeing material を象徴するメイン画像のファイルパスです。
+      assets repository からオリジナル画像を取得する際に利用します。
+      フォーマットは RFC3986 Section-4.1 に準拠する相対パスです。
+      参考 https://tools.ietf.org/html/rfc3986#section-4.1
       画像がない場合は null を指定します。
     oneOf:
       - type: string
-        format: uri
+        format: uri-reference
       - type: 'null'
     examples:
-      - https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg
+      - dyeing-materials/cherry/main.jpg
   images_alt:
     description: |-
-      Dyeing material の画像ファイル URI のリストです。
-      URI は RFC3986 に準拠します。
-      image プロパティで指定した URI を含める必要はありません。
+      この Dyeing material の画像ファイルパスのリストです。
+      assets repository からオリジナル画像を取得する際に利用します。
+      フォーマットは RFC3986 Section-4.1 に準拠する相対パスです。
+      参考 https://tools.ietf.org/html/rfc3986#section-4.1
       画像がない場合は空の配列を指定します。
     type: array
     examples:
       - []
-      - - https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg
-        - https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg
-        - https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg
+      - - dyeing-materials/cherry/01.jpg
+        - dyeing-materials/cherry/02.jpg
+        - dyeing-materials/cherry/03.jpg
     items:
       type: string
-      format: uri
+      format: uri-reference
       examples:
-        - https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg
-        - https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg
-        - https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg
+        - dyeing-materials/cherry/01.jpg
+        - dyeing-materials/cherry/02.jpg
+        - dyeing-materials/cherry/03.jpg

@@ -115,38 +115,38 @@
       ]
     },
     "image": {
-      "description": "Product を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+      "description": "この Product を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
       "oneOf": [
         {
           "type": "string",
-          "format": "uri"
+          "format": "uri-reference"
         },
         {
           "type": "null"
         }
       ],
       "examples": [
-        "https://houkiboshi.co/products/product-1/images/main.jpg"
+        "products/product-1/main.jpg"
       ]
     },
     "images_alt": {
-      "description": "Product の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
+      "description": "この Product の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
       "items": {
         "type": "string",
-        "format": "uri",
+        "format": "uri-reference",
         "examples": [
-          "https://houkiboshi.co/products/product-1/images/01.jpg",
-          "https://houkiboshi.co/products/product-1/images/02.jpg",
-          "https://houkiboshi.co/products/product-1/images/03.jpg"
+          "products/product-1/01.jpg",
+          "products/product-1/02.jpg",
+          "products/product-1/03.jpg"
         ]
       },
       "examples": [
         [],
         [
-          "https://houkiboshi.co/products/product-1/images/01.jpg",
-          "https://houkiboshi.co/products/product-1/images/02.jpg",
-          "https://houkiboshi.co/products/product-1/images/03.jpg"
+          "products/product-1/01.jpg",
+          "products/product-1/02.jpg",
+          "products/product-1/03.jpg"
         ]
       ]
     },

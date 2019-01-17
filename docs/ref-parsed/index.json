@@ -80,38 +80,38 @@
           "pattern": "^[0-9ぁ-んー]+$"
         },
         "image": {
-          "description": "Product を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+          "description": "この Product を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
           "oneOf": [
             {
               "type": "string",
-              "format": "uri"
+              "format": "uri-reference"
             },
             {
               "type": "null"
             }
           ],
           "examples": [
-            "https://houkiboshi.co/products/product-1/images/main.jpg"
+            "products/product-1/main.jpg"
           ]
         },
         "images_alt": {
-          "description": "Product の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
+          "description": "この Product の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
           "type": "array",
           "items": {
             "type": "string",
-            "format": "uri",
+            "format": "uri-reference",
             "examples": [
-              "https://houkiboshi.co/products/product-1/images/01.jpg",
-              "https://houkiboshi.co/products/product-1/images/02.jpg",
-              "https://houkiboshi.co/products/product-1/images/03.jpg"
+              "products/product-1/01.jpg",
+              "products/product-1/02.jpg",
+              "products/product-1/03.jpg"
             ]
           },
           "examples": [
             [],
             [
-              "https://houkiboshi.co/products/product-1/images/01.jpg",
-              "https://houkiboshi.co/products/product-1/images/02.jpg",
-              "https://houkiboshi.co/products/product-1/images/03.jpg"
+              "products/product-1/01.jpg",
+              "products/product-1/02.jpg",
+              "products/product-1/03.jpg"
             ]
           ]
         },
@@ -465,38 +465,38 @@
           "pattern": "^[0-9ぁ-んー]+$"
         },
         "image": {
-          "description": "Product を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+          "description": "この Product を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
           "oneOf": [
             {
               "type": "string",
-              "format": "uri"
+              "format": "uri-reference"
             },
             {
               "type": "null"
             }
           ],
           "examples": [
-            "https://houkiboshi.co/products/product-1/images/main.jpg"
+            "products/product-1/main.jpg"
           ]
         },
         "images_alt": {
-          "description": "Product の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
+          "description": "この Product の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
           "type": "array",
           "items": {
             "type": "string",
-            "format": "uri",
+            "format": "uri-reference",
             "examples": [
-              "https://houkiboshi.co/products/product-1/images/01.jpg",
-              "https://houkiboshi.co/products/product-1/images/02.jpg",
-              "https://houkiboshi.co/products/product-1/images/03.jpg"
+              "products/product-1/01.jpg",
+              "products/product-1/02.jpg",
+              "products/product-1/03.jpg"
             ]
           },
           "examples": [
             [],
             [
-              "https://houkiboshi.co/products/product-1/images/01.jpg",
-              "https://houkiboshi.co/products/product-1/images/02.jpg",
-              "https://houkiboshi.co/products/product-1/images/03.jpg"
+              "products/product-1/01.jpg",
+              "products/product-1/02.jpg",
+              "products/product-1/03.jpg"
             ]
           ]
         },
@@ -852,38 +852,38 @@
           ]
         },
         "image": {
-          "description": "Raw material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+          "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
           "oneOf": [
             {
               "type": "string",
-              "format": "uri"
+              "format": "uri-reference"
             },
             {
               "type": "null"
             }
           ],
           "examples": [
-            "https://houkiboshi.co/raw-materials/cotton/images/main.jpg"
+            "raw-materials/cotton/main.jpg"
           ]
         },
         "images_alt": {
-          "description": "Raw material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
+          "description": "この Raw material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
           "type": "array",
           "examples": [
             [],
             [
-              "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
-              "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
-              "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+              "raw-materials/cotton/01.jpg",
+              "raw-materials/cotton/02.jpg",
+              "raw-materials/cotton/03.jpg"
             ]
           ],
           "items": {
             "type": "string",
-            "format": "uri",
+            "format": "uri-reference",
             "examples": [
-              "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
-              "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
-              "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+              "raw-materials/cotton/01.jpg",
+              "raw-materials/cotton/02.jpg",
+              "raw-materials/cotton/03.jpg"
             ]
           }
         }
@@ -927,38 +927,38 @@
           ]
         },
         "image": {
-          "description": "Raw material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+          "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
           "oneOf": [
             {
               "type": "string",
-              "format": "uri"
+              "format": "uri-reference"
             },
             {
               "type": "null"
             }
           ],
           "examples": [
-            "https://houkiboshi.co/raw-materials/cotton/images/main.jpg"
+            "raw-materials/cotton/main.jpg"
           ]
         },
         "images_alt": {
-          "description": "Raw material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
+          "description": "この Raw material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
           "type": "array",
           "examples": [
             [],
             [
-              "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
-              "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
-              "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+              "raw-materials/cotton/01.jpg",
+              "raw-materials/cotton/02.jpg",
+              "raw-materials/cotton/03.jpg"
             ]
           ],
           "items": {
             "type": "string",
-            "format": "uri",
+            "format": "uri-reference",
             "examples": [
-              "https://houkiboshi.co/raw-materials/cotton/images/01.jpg",
-              "https://houkiboshi.co/raw-materials/cotton/images/02.jpg",
-              "https://houkiboshi.co/raw-materials/cotton/images/03.jpg"
+              "raw-materials/cotton/01.jpg",
+              "raw-materials/cotton/02.jpg",
+              "raw-materials/cotton/03.jpg"
             ]
           }
         }
@@ -1021,38 +1021,38 @@
           ]
         },
         "image": {
-          "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+          "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
           "oneOf": [
             {
               "type": "string",
-              "format": "uri"
+              "format": "uri-reference"
             },
             {
               "type": "null"
             }
           ],
           "examples": [
-            "https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg"
+            "dyeing-materials/cherry/main.jpg"
           ]
         },
         "images_alt": {
-          "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
+          "description": "この Dyeing material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は空の配列を指定します。",
           "type": "array",
           "examples": [
             [],
             [
-              "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
-              "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
-              "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+              "dyeing-materials/cherry/01.jpg",
+              "dyeing-materials/cherry/02.jpg",
+              "dyeing-materials/cherry/03.jpg"
             ]
           ],
           "items": {
             "type": "string",
-            "format": "uri",
+            "format": "uri-reference",
             "examples": [
-              "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
-              "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
-              "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+              "dyeing-materials/cherry/01.jpg",
+              "dyeing-materials/cherry/02.jpg",
+              "dyeing-materials/cherry/03.jpg"
             ]
           }
         },
@@ -1118,38 +1118,38 @@
           ]
         },
         "image": {
-          "description": "Dyeing material を象徴する画像ファイル URI です。\nURI は RFC3986 に準拠します。\nOGP や JSON-LD などの image の値として利用できる必要があります。\n画像がない場合は null を指定します。",
+          "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
           "oneOf": [
             {
               "type": "string",
-              "format": "uri"
+              "format": "uri-reference"
             },
             {
               "type": "null"
             }
           ],
           "examples": [
-            "https://houkiboshi.co/dyeing-materials/cherry/images/main.jpg"
+            "dyeing-materials/cherry/main.jpg"
           ]
         },
         "images_alt": {
-          "description": "Dyeing material の画像ファイル URI のリストです。\nURI は RFC3986 に準拠します。\nimage プロパティで指定した URI を含める必要はありません。\n画像がない場合は空の配列を指定します。",
+          "description": "この Dyeing material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は空の配列を指定します。",
           "type": "array",
           "examples": [
             [],
             [
-              "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
-              "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
-              "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+              "dyeing-materials/cherry/01.jpg",
+              "dyeing-materials/cherry/02.jpg",
+              "dyeing-materials/cherry/03.jpg"
             ]
           ],
           "items": {
             "type": "string",
-            "format": "uri",
+            "format": "uri-reference",
             "examples": [
-              "https://houkiboshi.co/dyeing-materials/cherry/images/01.jpg",
-              "https://houkiboshi.co/dyeing-materials/cherry/images/02.jpg",
-              "https://houkiboshi.co/dyeing-materials/cherry/images/03.jpg"
+              "dyeing-materials/cherry/01.jpg",
+              "dyeing-materials/cherry/02.jpg",
+              "dyeing-materials/cherry/03.jpg"
             ]
           }
         }
