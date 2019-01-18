@@ -378,6 +378,15 @@
                   ]
                 }
               }
+            },
+            "else": {
+              "properties": {
+                "decorator": {
+                  "enum": {
+                    "$ref": "#/definitions/raw_materials/items/properties/mixing_ratio/properties/decorator/enum"
+                  }
+                }
+              }
             }
           }
         }

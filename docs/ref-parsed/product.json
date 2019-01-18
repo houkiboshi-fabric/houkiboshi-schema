@@ -344,6 +344,17 @@
                   ]
                 }
               }
+            },
+            "else": {
+              "properties": {
+                "decorator": {
+                  "enum": [
+                    "=",
+                    ">=",
+                    "<"
+                  ]
+                }
+              }
             }
           }
         }
@@ -733,6 +744,17 @@
                 "decorator": {
                   "enum": [
                     "="
+                  ]
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "decorator": {
+                  "enum": [
+                    "=",
+                    ">=",
+                    "<"
                   ]
                 }
               }

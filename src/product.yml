@@ -323,6 +323,11 @@ definitions:
               decorator:
                 enum:
                   - '='
+          else:
+            properties:
+              decorator:
+                enum:
+                  $ref: '#/definitions/raw_materials/items/properties/mixing_ratio/properties/decorator/enum'
   dyeing_materials:
     description: |-
       Product に使用している染料のリストです。
