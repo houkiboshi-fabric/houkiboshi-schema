@@ -87,6 +87,7 @@
     "images_alt": {
       "description": "この Raw material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
+      "uniqueItems": true,
       "examples": [
         [],
         [

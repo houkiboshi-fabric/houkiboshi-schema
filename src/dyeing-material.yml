@@ -88,6 +88,7 @@ definitions:
       参考 https://tools.ietf.org/html/rfc3986#section-4.1
       画像がない場合は空の配列を指定します。
     type: array
+    uniqueItems: true
     examples:
       - []
       - - dyeing-materials/cherry/01.jpg

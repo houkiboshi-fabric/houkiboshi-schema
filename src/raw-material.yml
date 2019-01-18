@@ -81,6 +81,7 @@ definitions:
       image プロパティで指定したパスを含める必要はありません。
       画像がない場合は空の配列を指定します。
     type: array
+    uniqueItems: true
     examples:
       - []
       - - raw-materials/cotton/01.jpg

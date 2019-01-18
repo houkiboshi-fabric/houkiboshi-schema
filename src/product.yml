@@ -120,6 +120,7 @@ definitions:
       image プロパティで指定したパスを含める必要はありません。
       画像がない場合は空の配列を指定します。
     type: array
+    uniqueItems: true
     items:
       type: string
       format: uri-reference
@@ -148,6 +149,7 @@ definitions:
       この Product を販売・展示している URI のリストです。
       URI がひとつもない場合は空の配列を指定します。
     type: array
+    uniqueItems: true
     examples:
       - []
       - - https://minne.com/items/14938131
@@ -215,6 +217,7 @@ definitions:
           サイズについて補足する説明のリストです。
           最低 1 つの説明を含む配列である必要があります。
         type: array
+        uniqueItems: true
         minItems: 1
         items:
           description: |-
@@ -233,6 +236,7 @@ definitions:
       Product に使用している原材料のリストです。
       参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html
     type: array
+    uniqueItems: true
     examples:
       - - raw_material_ids:
             - cotton
@@ -258,6 +262,7 @@ definitions:
         raw_material_ids:
           description: Raw material の id のリストです。
           type: array
+          uniqueItems: true
           items:
             $ref: 'raw-material.json#/properties/id'
         used_at:
@@ -322,6 +327,7 @@ definitions:
     description: |-
       Product に使用している染料のリストです。
     type: array
+    uniqueItems: true
     examples:
       - - dyeing_material_ids:
             - cherry
@@ -345,6 +351,7 @@ definitions:
           description: |-
             Dyeing material の id のリストです。
           type: array
+          uniqueItems: true
           items:
             $ref: 'dyeing-material.json#/properties/id'
         used_at:

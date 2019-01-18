@@ -91,6 +91,7 @@
     "images_alt": {
       "description": "この Product の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "format": "uri-reference",
@@ -128,6 +129,7 @@
     "links_to_shop": {
       "description": "この Product を販売・展示している URI のリストです。\nURI がひとつもない場合は空の配列を指定します。",
       "type": "array",
+      "uniqueItems": true,
       "examples": [
         [],
         [
@@ -199,6 +201,7 @@
         "notes": {
           "description": "サイズについて補足する説明のリストです。\n最低 1 つの説明を含む配列である必要があります。",
           "type": "array",
+          "uniqueItems": true,
           "minItems": 1,
           "items": {
             "description": "サイズについて補足する説明文です。",
@@ -221,6 +224,7 @@
     "raw_materials": {
       "description": "Product に使用している原材料のリストです。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
       "type": "array",
+      "uniqueItems": true,
       "examples": [
         [
           {
@@ -262,6 +266,7 @@
           "raw_material_ids": {
             "description": "Raw material の id のリストです。",
             "type": "array",
+            "uniqueItems": true,
             "items": {
               "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
               "examples": [
@@ -347,6 +352,7 @@
     "dyeing_materials": {
       "description": "Product に使用している染料のリストです。",
       "type": "array",
+      "uniqueItems": true,
       "examples": [
         [
           {
@@ -382,6 +388,7 @@
           "dyeing_material_ids": {
             "description": "Dyeing material の id のリストです。",
             "type": "array",
+            "uniqueItems": true,
             "items": {
               "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
               "examples": [
@@ -476,6 +483,7 @@
     "images_alt": {
       "description": "この Product の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
       "type": "array",
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "format": "uri-reference",
@@ -513,6 +521,7 @@
     "links_to_shop": {
       "description": "この Product を販売・展示している URI のリストです。\nURI がひとつもない場合は空の配列を指定します。",
       "type": "array",
+      "uniqueItems": true,
       "examples": [
         [],
         [
@@ -584,6 +593,7 @@
         "notes": {
           "description": "サイズについて補足する説明のリストです。\n最低 1 つの説明を含む配列である必要があります。",
           "type": "array",
+          "uniqueItems": true,
           "minItems": 1,
           "items": {
             "description": "サイズについて補足する説明文です。",
@@ -606,6 +616,7 @@
     "raw_materials": {
       "description": "Product に使用している原材料のリストです。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
       "type": "array",
+      "uniqueItems": true,
       "examples": [
         [
           {
@@ -647,6 +658,7 @@
           "raw_material_ids": {
             "description": "Raw material の id のリストです。",
             "type": "array",
+            "uniqueItems": true,
             "items": {
               "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
               "examples": [
@@ -732,6 +744,7 @@
     "dyeing_materials": {
       "description": "Product に使用している染料のリストです。",
       "type": "array",
+      "uniqueItems": true,
       "examples": [
         [
           {
@@ -767,6 +780,7 @@
           "dyeing_material_ids": {
             "description": "Dyeing material の id のリストです。",
             "type": "array",
+            "uniqueItems": true,
             "items": {
               "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
               "examples": [
