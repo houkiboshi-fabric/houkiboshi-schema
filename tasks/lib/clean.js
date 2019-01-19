@@ -1,6 +1,6 @@
 'use strict';
 
-const {resolve} = require('path');
+const { resolve } = require('path');
 
 const del = require('del');
 

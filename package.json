@@ -11,9 +11,10 @@
   "private": true,
   "scripts": {
     "start": "yarn run watch",
-    "build": "node ./tasks/build.js",
-    "watch": "node ./tasks/watch.js",
-    "validate": "node ./tasks/validate.js"
+    "build": "yarn format && node ./tasks/build.js",
+    "watch": "yarn format && node ./tasks/watch.js",
+    "validate": "yarn format && node ./tasks/validate.js",
+    "format": " prettier --write '{README.md,{tasks,examples}/**/*.{js,json}}'"
   },
   "devDependencies": {
     "ajv": "^6.7.0",

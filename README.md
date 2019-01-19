@@ -1,14 +1,13 @@
-houkiboshi-fabric schema
-====
+# houkiboshi-fabric schema
 
 ## Overview
 
 ## Files
 
-* `docs/*.json`
-  * generated schemas
-* `docs/ref-parsed/*.json`
-  * generated schemas parsed `$ref` pointer
+- `docs/*.json`
+  - generated schemas
+- `docs/ref-parsed/*.json`
+  - generated schemas parsed `$ref` pointer
 
 ## Updating schemas
 
@@ -26,7 +25,7 @@ houkiboshi-fabric schema
 
 ### Install
 
-``` console
+```console
 $ git clone git@github.com:houkiboshi-fabric/schema.git
 $ cd schema/
 $ nodenv update-version-defs && nodenv install # <-- optional
@@ -37,7 +36,7 @@ $ yarn install
 
 Run following to show task list:
 
-``` console
+```console
 $ yarn run
 ```
 
@@ -45,7 +44,7 @@ $ yarn run
 
 build task for production:
 
-``` console
+```console
 $ yarn run build
 ```
 
@@ -53,10 +52,9 @@ $ yarn run build
 
 build & watch task for development:
 
-``` console
+```console
 $ yarn start
 ```
-
 
 ## Author
 

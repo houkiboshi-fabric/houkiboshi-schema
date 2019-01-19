@@ -45,8 +45,8 @@ const writeFile = (distPath, data) => {
   consola.success('Export:', path.relative(rootDir, distPath));
 };
 
-const srcPathToDist = (yamlPath) => {
-  const {dir, name} = path.parse(yamlPath);
+const srcPathToDist = yamlPath => {
+  const { dir, name } = path.parse(yamlPath);
   return path.format({
     dir: dir.replace(src, dist),
     name,
@@ -54,14 +54,14 @@ const srcPathToDist = (yamlPath) => {
   });
 };
 
-const buildSchema = ({yamlPath, data}) => {
+const buildSchema = ({ yamlPath, data }) => {
   const json = JSON.stringify(data, null, 2);
   const distPath = srcPathToDist(yamlPath);
   writeFile(distPath, json);
 };
 
-const buildSchemaRefParsed = ({yamlPath}) => {
-  const {dir, name} = path.parse(yamlPath);
+const buildSchemaRefParsed = ({ yamlPath }) => {
+  const { dir, name } = path.parse(yamlPath);
   const jsonPath = srcPathToDist(yamlPath);
   const refParsedData = dereference(jsonPath);
   const refParsedDistPath = path.format({
