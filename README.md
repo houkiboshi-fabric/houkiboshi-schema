@@ -14,19 +14,22 @@ houkiboshi-fabric schema
 
 ### Requirement
 
-- [Node.js](https://nodejs.org/) 11+
+- [Node.js](https://nodejs.org/)
+  - See [.node-version](./.node-version)
 - [Yarn](https://yarnpkg.com/)
 
-### Recommendation
+## Recommended
 
-* [nodenv/nodenv](https://github.com/nodenv/nodenv)
+- [nodenv/nodenv](https://github.com/nodenv/nodenv)
+- [nodenv/node-build](https://github.com/nodenv/node-build)
+- [EditorConfig](https://editorconfig.org/)
 
 ### Install
 
 ``` console
 $ git clone git@github.com:houkiboshi-fabric/schema.git
 $ cd schema/
-$ nodenv install # <-- optional
+$ nodenv update-version-defs && nodenv install # <-- optional
 $ yarn install
 ```
 
