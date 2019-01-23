@@ -12,6 +12,8 @@ properties:
     $ref: 'dyeing-material.json#'
   dyeing-material-type:
     $ref: 'dyeing-material-type.json#'
+  page:
+    $ref: 'page.json#'
 
 definitions:
   id:

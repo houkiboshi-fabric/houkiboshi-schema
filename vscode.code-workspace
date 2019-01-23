@@ -43,7 +43,13 @@
           "/examples/dyeing-material-type.json"
         ],
         "url": "./docs/dyeing-material-type.json"
-      }
+      },
+      {
+        "fileMatch": [
+          "/examples/page.json"
+        ],
+        "url": "./docs/page.json"
+      },
     ],
     "yaml.completion": true,
     "yaml.hover": true,

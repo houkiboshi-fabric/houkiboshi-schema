@@ -1,0 +1,80 @@
+$schema: http://json-schema.org/draft-06/schema#
+$id: page.json
+title: Page
+description: 任意の Web page のメタデータです。
+type: object
+required:
+  - title
+  - description
+  - media_image
+  - body
+additionalProperties: false
+
+properties:
+  title:
+    $ref: '#/definitions/title'
+  description:
+    $ref: '#/definitions/description'
+  media_image:
+    $ref: '#/definitions/media_image'
+  body:
+    $ref: '#/definitions/body'
+
+definitions:
+  title:
+    description: |-
+      ページタイトルです。
+      文字数に規定はありません。目安は次の通りです。
+      半角: 約 60 文字以下
+      全角: 約 30 文字以下
+      これらの文字数を超える場合、Google などの検索結果で
+      表示しきれなかったタイトルの一部が省略される可能性があります。
+      より詳細な title の説明は次のページを参照してください。
+      https://support.google.com/webmasters/answer/35624
+    type: string
+    examples:
+      - 製品一覧
+      - 使用している染色材一覧
+      - 手織り草木染ホウキボシについて
+  description:
+    description: |-
+      概要です。
+      この値は Google などの検索結果に表示されることがあります。
+      文字数に規定はありません。目安は次の通りです。
+      半角: 約 240 文字前後
+      全角: 約 120 文字前後
+      より詳細な description の説明は次のページを参照してください。
+      https://support.google.com/webmasters/answer/35624
+    type: string
+    examples:
+      - 手織り草木染ホウキボシは、手織り･型染め・草木染めを専門とする鳥取県の工房です。
+  media_image:
+    description: |-
+      OGP や Twitter Card で利用する画像です。
+      画像がない場合は null を指定します。
+      推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。
+
+      推奨解像度: 1200 * 630 px 以上
+      推奨アスペクト比: 1.91:1
+      サポートされる画像フォーマット: jpg, png, webp, gif
+
+      ファイルパスは assets repository からオリジナル画像を取得する際に利用します。
+      ファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。
+      参考 https://tools.ietf.org/html/rfc3986#section-4.1
+    oneOf:
+      - type: string
+        format: uri-reference
+      - type: 'null'
+    examples:
+      - media.jpg
+      - about/media.jpg
+  body:
+    description: |-
+      本文の情報を持つファイルへの相対パスです。
+      ファイルフォーマットは Markdown 形式です。
+      本文を必要としない場合は null を指定します。
+    oneOf:
+      - type: string
+      - type: 'null'
+    examples:
+      - body.md

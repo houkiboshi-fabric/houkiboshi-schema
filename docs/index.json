@@ -15,6 +15,9 @@
     },
     "dyeing-material-type": {
       "$ref": "dyeing-material-type.json#"
+    },
+    "page": {
+      "$ref": "page.json#"
     }
   },
   "definitions": {
