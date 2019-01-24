@@ -101,12 +101,12 @@ definitions:
       - かざるぬの
       - くさきせんしょくはらおび
   description:
-    description: Product の説明です。
-    type: string
+    $ref: 'page.json#/definitions/description'
     examples:
       - |-
-        水面のような織り柄の布を織りました。
-        新書がすっぽり入るくらいの大きさのポーチです。
+        冬に道ばたで見た白い椿がきれいだったので、形にしたいと思って布を染めました。
+        内側の布は葛で染めたので、冬の終わりと春の終わりが合体したポーチになりました。
+        A4 の紙を三つ折りして入れられるくらいの大きさで、ノートなら B6, A6 が入ります。
   image:
     description: |-
       この Product を象徴するメイン画像のファイルパスです。

@@ -48,8 +48,6 @@ definitions:
       より詳細な description の説明は次のページを参照してください。
       https://support.google.com/webmasters/answer/35624
     type: string
-    examples:
-      - 手織り草木染ホウキボシは、手織り･型染め・草木染めを専門とする鳥取県の工房です。
   media_image:
     description: |-
       OGP や Twitter Card で利用する画像です。

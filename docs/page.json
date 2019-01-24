@@ -40,10 +40,7 @@
     },
     "description": {
       "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
-      "type": "string",
-      "examples": [
-        "手織り草木染ホウキボシは、手織り･型染め・草木染めを専門とする鳥取県の工房です。"
-      ]
+      "type": "string"
     },
     "media_image": {
       "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",

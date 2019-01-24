@@ -82,11 +82,11 @@
       "pattern": "^[0-9ぁ-んー]+$"
     },
     "description": {
-      "description": "Product の説明です。",
-      "type": "string",
       "examples": [
-        "水面のような織り柄の布を織りました。\n新書がすっぽり入るくらいの大きさのポーチです。"
-      ]
+        "冬に道ばたで見た白い椿がきれいだったので、形にしたいと思って布を染めました。\n内側の布は葛で染めたので、冬の終わりと春の終わりが合体したポーチになりました。\nA4 の紙を三つ折りして入れられるくらいの大きさで、ノートなら B6, A6 が入ります。"
+      ],
+      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+      "type": "string"
     },
     "image": {
       "description": "この Product を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
@@ -485,11 +485,11 @@
       "pattern": "^[0-9ぁ-んー]+$"
     },
     "description": {
-      "description": "Product の説明です。",
-      "type": "string",
       "examples": [
-        "水面のような織り柄の布を織りました。\n新書がすっぽり入るくらいの大きさのポーチです。"
-      ]
+        "冬に道ばたで見た白い椿がきれいだったので、形にしたいと思って布を染めました。\n内側の布は葛で染めたので、冬の終わりと春の終わりが合体したポーチになりました。\nA4 の紙を三つ折りして入れられるくらいの大きさで、ノートなら B6, A6 が入ります。"
+      ],
+      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+      "type": "string"
     },
     "image": {
       "description": "この Product を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",

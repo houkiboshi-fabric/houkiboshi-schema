@@ -52,12 +52,11 @@
       "pattern": "^[0-9ぁ-んー]+$"
     },
     "description": {
-      "description": "Raw material の概要です。",
-      "type": "string",
       "examples": [
-        "",
-        "木でできたビーズです。"
-      ]
+        "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
+      ],
+      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+      "type": "string"
     },
     "image": {
       "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
@@ -128,12 +127,11 @@
       "pattern": "^[0-9ぁ-んー]+$"
     },
     "description": {
-      "description": "Raw material の概要です。",
-      "type": "string",
       "examples": [
-        "",
-        "木でできたビーズです。"
-      ]
+        "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
+      ],
+      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+      "type": "string"
     },
     "image": {
       "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
