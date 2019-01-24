@@ -9,11 +9,11 @@ required:
   - name_kana
   - name_alt
   - name_alt_kana
+  - description
   - image
   - images_alt
   - price
   - links_to_shop
-  - description
   - size
   - weight_g
   - raw_materials
@@ -31,6 +31,8 @@ properties:
     $ref: '#/definitions/name_alt'
   name_alt_kana:
     $ref: '#/definitions/name_alt_kana'
+  description:
+    $ref: '#/definitions/description'
   image:
     $ref: '#/definitions/image'
   images_alt:
@@ -39,8 +41,6 @@ properties:
     $ref: '#/definitions/price'
   links_to_shop:
     $ref: '#/definitions/links_to_shop'
-  description:
-    $ref: '#/definitions/description'
   size:
     $ref: '#/definitions/size'
   weight_g:
@@ -98,6 +98,13 @@ definitions:
       - くさきぞめいとのすとーる
       - かざるぬの
       - くさきせんしょくはらおび
+  description:
+    description: Product の説明です。
+    type: string
+    examples:
+      - |-
+        水面のような織り柄の布を織りました。
+        新書がすっぽり入るくらいの大きさのポーチです。
   image:
     description: |-
       この Product を象徴するメイン画像のファイルパスです。
@@ -163,13 +170,6 @@ definitions:
       examples:
         - https://minne.com/items/14938131
         - https://www.creema.jp/item/5890223/detail
-  description:
-    description: Product の説明です。
-    type: string
-    examples:
-      - |-
-        水面のような織り柄の布を織りました。
-        新書がすっぽり入るくらいの大きさのポーチです。
   size:
     description: |-
       Product のサイズを WDH で表します。

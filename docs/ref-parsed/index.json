@@ -16,11 +16,11 @@
         "name_kana",
         "name_alt",
         "name_alt_kana",
+        "description",
         "image",
         "images_alt",
         "price",
         "links_to_shop",
-        "description",
         "size",
         "weight_g",
         "raw_materials",
@@ -78,6 +78,13 @@
           ],
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
+        },
+        "description": {
+          "description": "Product の説明です。",
+          "type": "string",
+          "examples": [
+            "水面のような織り柄の布を織りました。\n新書がすっぽり入るくらいの大きさのポーチです。"
+          ]
         },
         "image": {
           "description": "この Product を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
@@ -152,13 +159,6 @@
               "https://www.creema.jp/item/5890223/detail"
             ]
           }
-        },
-        "description": {
-          "description": "Product の説明です。",
-          "type": "string",
-          "examples": [
-            "水面のような織り柄の布を織りました。\n新書がすっぽり入るくらいの大きさのポーチです。"
-          ]
         },
         "size": {
           "description": "Product のサイズを WDH で表します。\n単位はいずれも mm です。\n参考画像 https://i.imgur.com/Fmfthey.png",
@@ -482,6 +482,13 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "description": {
+          "description": "Product の説明です。",
+          "type": "string",
+          "examples": [
+            "水面のような織り柄の布を織りました。\n新書がすっぽり入るくらいの大きさのポーチです。"
+          ]
+        },
         "image": {
           "description": "この Product を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
           "oneOf": [
@@ -555,13 +562,6 @@
               "https://www.creema.jp/item/5890223/detail"
             ]
           }
-        },
-        "description": {
-          "description": "Product の説明です。",
-          "type": "string",
-          "examples": [
-            "水面のような織り柄の布を織りました。\n新書がすっぽり入るくらいの大きさのポーチです。"
-          ]
         },
         "size": {
           "description": "Product のサイズを WDH で表します。\n単位はいずれも mm です。\n参考画像 https://i.imgur.com/Fmfthey.png",
@@ -1139,6 +1139,13 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "description": {
+          "description": "Dyeing material の概要です。",
+          "type": "string",
+          "examples": [
+            "赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。 染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。"
+          ]
+        },
         "dyeing_material_type_id": {
           "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
           "examples": [
@@ -1148,13 +1155,6 @@
           ],
           "type": "string",
           "pattern": "^[a-z0-9\\-]+$"
-        },
-        "description": {
-          "description": "Dyeing material の概要です。",
-          "type": "string",
-          "examples": [
-            "赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。 染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。"
-          ]
         },
         "image": {
           "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
