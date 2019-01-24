@@ -34,10 +34,6 @@ definitions:
       より詳細な title の説明は次のページを参照してください。
       https://support.google.com/webmasters/answer/35624
     type: string
-    examples:
-      - 製品一覧
-      - 使用している染色材一覧
-      - 手織り草木染ホウキボシについて
   description:
     description: |-
       概要です。
@@ -65,9 +61,6 @@ definitions:
       - type: string
         format: uri-reference
       - type: 'null'
-    examples:
-      - media.jpg
-      - about/media.jpg
   body:
     description: |-
       本文の情報を持つファイルへの相対パスです。

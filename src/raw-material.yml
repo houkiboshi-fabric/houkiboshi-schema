@@ -7,7 +7,10 @@ required:
   - id
   - name
   - name_kana
+  - title
   - description
+  - body
+  - media_image
   - image
   - images_alt
 additionalProperties: false
@@ -21,8 +24,14 @@ properties:
     $ref: '#/definitions/name'
   name_kana:
     $ref: '#/definitions/name_kana'
+  title:
+    $ref: '#/definitions/title'
   description:
     $ref: '#/definitions/description'
+  body:
+    $ref: '#/definitions/body'
+  media_image:
+    $ref: '#/definitions/media_image'
   image:
     $ref: '#/definitions/image'
   images_alt:
@@ -55,6 +64,12 @@ definitions:
       - めん
       - うーる
       - はくしゅうめん
+  title:
+    $ref: 'page.json#/definitions/title'
+    examples:
+      - 綿
+      - ウール
+      - 伯州綿
   description:
     $ref: 'page.json#/definitions/description'
     examples:
@@ -63,6 +78,12 @@ definitions:
         綿にはタンパク質が少ないため、染めるには工夫が必要です。\
         高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、\
         いろんな工夫がなされます。"
+  body:
+    $ref: 'page.json#/definitions/body'
+  media_image:
+    $ref: 'page.json#/definitions/media_image'
+    examples:
+      - raw-materials/cotton/media.jpg
   image:
     description: |-
       この Raw material を象徴するメイン画像のファイルパスです。

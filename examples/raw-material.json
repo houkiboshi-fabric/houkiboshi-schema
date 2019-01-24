@@ -2,7 +2,10 @@
   "id": "cotton",
   "name": "綿",
   "name_kana": "めん",
+  "title": "綿",
   "description": "ワタの種子から取れる繊維です。",
+  "body": "body.md",
+  "media_image": "raw-materials/cotton/media.jpg",
   "image": "raw-materials/cotton/main.jpg",
   "images_alt": ["raw-materials/cotton/01.jpg", "raw-materials/cotton/02.jpg"]
 }

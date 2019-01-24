@@ -8,7 +8,10 @@
     "id",
     "name",
     "name_kana",
+    "title",
     "description",
+    "body",
+    "media_image",
     "image",
     "images_alt",
     "dyeing_material_type_id"
@@ -27,8 +30,17 @@
     "name_kana": {
       "$ref": "#/definitions/name_kana"
     },
+    "title": {
+      "$ref": "#/definitions/title"
+    },
     "description": {
       "$ref": "#/definitions/description"
+    },
+    "body": {
+      "$ref": "#/definitions/body"
+    },
+    "media_image": {
+      "$ref": "#/definitions/media_image"
     },
     "image": {
       "$ref": "#/definitions/image"
@@ -71,10 +83,28 @@
         "あかね"
       ]
     },
+    "title": {
+      "$ref": "page.json#/definitions/title",
+      "examples": [
+        "桜",
+        "金柑",
+        "柚子",
+        "茜"
+      ]
+    },
     "description": {
       "$ref": "page.json#/definitions/description",
       "examples": [
         "赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。"
+      ]
+    },
+    "body": {
+      "$ref": "page.json#/definitions/body"
+    },
+    "media_image": {
+      "$ref": "page.json#/definitions/media_image",
+      "examples": [
+        "dyeing-materials/dyeing-material-1/media.jpg"
       ]
     },
     "dyeing_material_type_id": {

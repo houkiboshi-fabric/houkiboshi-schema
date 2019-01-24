@@ -31,12 +31,7 @@
   "definitions": {
     "title": {
       "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
-      "type": "string",
-      "examples": [
-        "製品一覧",
-        "使用している染色材一覧",
-        "手織り草木染ホウキボシについて"
-      ]
+      "type": "string"
     },
     "description": {
       "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
@@ -52,10 +47,6 @@
         {
           "type": "null"
         }
-      ],
-      "examples": [
-        "media.jpg",
-        "about/media.jpg"
       ]
     },
     "body": {

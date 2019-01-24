@@ -11,7 +11,10 @@
     "products/shiro-tsubaki/03.jpg",
     "products/shiro-tsubaki/04.jpg"
   ],
+  "title": "ポーチ 白椿",
   "description": "冬に道ばたで見た白い椿がきれいだったので、形にしたいと思って布を染めました。\n内側の布は葛で染めたので、冬の終わりと春の終わりが合体したポーチになりました。\n\nA4の紙を三つ折りして入れられるくらいの大きさで、ノートならB6、A6が入ります（写真はA6ノート)。\n母子手帳と予防接種などのお知らせの紙をいっしょに入れたり、メモ帳とペン、文庫本、いろいろ入ります。",
+  "body": "body.md",
+  "media_image": "products/shiro-tsubaki/media.jpg",
   "price": 3900,
   "size": {
     "width_mm": 250,

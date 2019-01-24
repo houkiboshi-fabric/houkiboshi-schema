@@ -16,7 +16,10 @@
         "name_kana",
         "name_alt",
         "name_alt_kana",
+        "title",
         "description",
+        "body",
+        "media_image",
         "image",
         "images_alt",
         "price",
@@ -87,12 +90,49 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "title": {
+          "examples": [
+            "草木染め糸のストール 駱駝",
+            "飾る布 山の踊り"
+          ],
+          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+          "type": "string"
+        },
         "description": {
           "examples": [
             "冬に道ばたで見た白い椿がきれいだったので、形にしたいと思って布を染めました。\n内側の布は葛で染めたので、冬の終わりと春の終わりが合体したポーチになりました。\nA4 の紙を三つ折りして入れられるくらいの大きさで、ノートなら B6, A6 が入ります。"
           ],
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
           "type": "string"
+        },
+        "body": {
+          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "examples": [
+            "body.md"
+          ]
+        },
+        "media_image": {
+          "examples": [
+            "products/product-1/media.jpg"
+          ],
+          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "image": {
           "description": "この Product を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
@@ -490,12 +530,49 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "title": {
+          "examples": [
+            "草木染め糸のストール 駱駝",
+            "飾る布 山の踊り"
+          ],
+          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+          "type": "string"
+        },
         "description": {
           "examples": [
             "冬に道ばたで見た白い椿がきれいだったので、形にしたいと思って布を染めました。\n内側の布は葛で染めたので、冬の終わりと春の終わりが合体したポーチになりました。\nA4 の紙を三つ折りして入れられるくらいの大きさで、ノートなら B6, A6 が入ります。"
           ],
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
           "type": "string"
+        },
+        "body": {
+          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "examples": [
+            "body.md"
+          ]
+        },
+        "media_image": {
+          "examples": [
+            "products/product-1/media.jpg"
+          ],
+          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "image": {
           "description": "この Product を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
@@ -852,7 +929,10 @@
         "id",
         "name",
         "name_kana",
+        "title",
         "description",
+        "body",
+        "media_image",
         "image",
         "images_alt"
       ],
@@ -895,12 +975,50 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "title": {
+          "examples": [
+            "綿",
+            "ウール",
+            "伯州綿"
+          ],
+          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+          "type": "string"
+        },
         "description": {
           "examples": [
             "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
           ],
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
           "type": "string"
+        },
+        "body": {
+          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "examples": [
+            "body.md"
+          ]
+        },
+        "media_image": {
+          "examples": [
+            "raw-materials/cotton/media.jpg"
+          ],
+          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "image": {
           "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
@@ -970,12 +1088,50 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "title": {
+          "examples": [
+            "綿",
+            "ウール",
+            "伯州綿"
+          ],
+          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+          "type": "string"
+        },
         "description": {
           "examples": [
             "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
           ],
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
           "type": "string"
+        },
+        "body": {
+          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "examples": [
+            "body.md"
+          ]
+        },
+        "media_image": {
+          "examples": [
+            "raw-materials/cotton/media.jpg"
+          ],
+          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "image": {
           "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
@@ -1026,7 +1182,10 @@
         "id",
         "name",
         "name_kana",
+        "title",
         "description",
+        "body",
+        "media_image",
         "image",
         "images_alt",
         "dyeing_material_type_id"
@@ -1073,12 +1232,51 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "title": {
+          "examples": [
+            "桜",
+            "金柑",
+            "柚子",
+            "茜"
+          ],
+          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+          "type": "string"
+        },
         "description": {
           "examples": [
             "赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。"
           ],
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
           "type": "string"
+        },
+        "body": {
+          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "examples": [
+            "body.md"
+          ]
+        },
+        "media_image": {
+          "examples": [
+            "dyeing-materials/dyeing-material-1/media.jpg"
+          ],
+          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "image": {
           "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
@@ -1161,12 +1359,51 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "title": {
+          "examples": [
+            "桜",
+            "金柑",
+            "柚子",
+            "茜"
+          ],
+          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+          "type": "string"
+        },
         "description": {
           "examples": [
             "赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。"
           ],
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
           "type": "string"
+        },
+        "body": {
+          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "examples": [
+            "body.md"
+          ]
+        },
+        "media_image": {
+          "examples": [
+            "dyeing-materials/dyeing-material-1/media.jpg"
+          ],
+          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "dyeing_material_type_id": {
           "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
@@ -1227,7 +1464,10 @@
         "id",
         "name",
         "name_kana",
-        "description"
+        "title",
+        "description",
+        "body",
+        "media_image"
       ],
       "additionalProperties": false,
       "properties": {
@@ -1268,6 +1508,15 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "title": {
+          "examples": [
+            "植物染料",
+            "樹脂顔料",
+            "既製品"
+          ],
+          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+          "type": "string"
+        },
         "description": {
           "examples": [
             "草や木、花や根など、植物の色素を染料とします。多くの植物染料が高温で煮出すことによって使用できるようになり、金属イオンとの結合によって発色し、色が定着します。金属イオンとの結合を媒染と呼び、ミョウバンに含まれるアルミ、銅・鉄などがよく用いられます。",
@@ -1276,6 +1525,36 @@
           ],
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
           "type": "string"
+        },
+        "body": {
+          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "examples": [
+            "body.md"
+          ]
+        },
+        "media_image": {
+          "examples": [
+            null,
+            "dyeing-material-types/dyeing-material-type-1/media.jpg"
+          ],
+          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "definitions": {
@@ -1308,6 +1587,15 @@
           "type": "string",
           "pattern": "^[0-9ぁ-んー]+$"
         },
+        "title": {
+          "examples": [
+            "植物染料",
+            "樹脂顔料",
+            "既製品"
+          ],
+          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+          "type": "string"
+        },
         "description": {
           "examples": [
             "草や木、花や根など、植物の色素を染料とします。多くの植物染料が高温で煮出すことによって使用できるようになり、金属イオンとの結合によって発色し、色が定着します。金属イオンとの結合を媒染と呼び、ミョウバンに含まれるアルミ、銅・鉄などがよく用いられます。",
@@ -1316,6 +1604,36 @@
           ],
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
           "type": "string"
+        },
+        "body": {
+          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "examples": [
+            "body.md"
+          ]
+        },
+        "media_image": {
+          "examples": [
+            null,
+            "dyeing-material-types/dyeing-material-type-1/media.jpg"
+          ],
+          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri-reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       }
     },
@@ -1343,12 +1661,7 @@
         },
         "title": {
           "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
-          "type": "string",
-          "examples": [
-            "製品一覧",
-            "使用している染色材一覧",
-            "手織り草木染ホウキボシについて"
-          ]
+          "type": "string"
         },
         "description": {
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
@@ -1364,10 +1677,6 @@
             {
               "type": "null"
             }
-          ],
-          "examples": [
-            "media.jpg",
-            "about/media.jpg"
           ]
         },
         "body": {
@@ -1388,12 +1697,7 @@
       "definitions": {
         "title": {
           "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
-          "type": "string",
-          "examples": [
-            "製品一覧",
-            "使用している染色材一覧",
-            "手織り草木染ホウキボシについて"
-          ]
+          "type": "string"
         },
         "description": {
           "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
@@ -1409,10 +1713,6 @@
             {
               "type": "null"
             }
-          ],
-          "examples": [
-            "media.jpg",
-            "about/media.jpg"
           ]
         },
         "body": {

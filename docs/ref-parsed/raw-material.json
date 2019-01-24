@@ -8,7 +8,10 @@
     "id",
     "name",
     "name_kana",
+    "title",
     "description",
+    "body",
+    "media_image",
     "image",
     "images_alt"
   ],
@@ -51,12 +54,50 @@
       "type": "string",
       "pattern": "^[0-9ぁ-んー]+$"
     },
+    "title": {
+      "examples": [
+        "綿",
+        "ウール",
+        "伯州綿"
+      ],
+      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+      "type": "string"
+    },
     "description": {
       "examples": [
         "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
       ],
       "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
       "type": "string"
+    },
+    "body": {
+      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "examples": [
+        "body.md"
+      ]
+    },
+    "media_image": {
+      "examples": [
+        "raw-materials/cotton/media.jpg"
+      ],
+      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "image": {
       "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
@@ -126,12 +167,50 @@
       "type": "string",
       "pattern": "^[0-9ぁ-んー]+$"
     },
+    "title": {
+      "examples": [
+        "綿",
+        "ウール",
+        "伯州綿"
+      ],
+      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+      "type": "string"
+    },
     "description": {
       "examples": [
         "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
       ],
       "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
       "type": "string"
+    },
+    "body": {
+      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "examples": [
+        "body.md"
+      ]
+    },
+    "media_image": {
+      "examples": [
+        "raw-materials/cotton/media.jpg"
+      ],
+      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "image": {
       "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",

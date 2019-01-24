@@ -8,7 +8,10 @@
     "id",
     "name",
     "name_kana",
-    "description"
+    "title",
+    "description",
+    "body",
+    "media_image"
   ],
   "additionalProperties": false,
   "properties": {
@@ -24,8 +27,17 @@
     "name_kana": {
       "$ref": "#/definitions/name_kana"
     },
+    "title": {
+      "$ref": "#/definitions/title"
+    },
     "description": {
       "$ref": "#/definitions/description"
+    },
+    "body": {
+      "$ref": "#/definitions/body"
+    },
+    "media_image": {
+      "$ref": "#/definitions/media_image"
     }
   },
   "definitions": {
@@ -56,12 +68,30 @@
         "きせいひん"
       ]
     },
+    "title": {
+      "$ref": "page.json#/definitions/title",
+      "examples": [
+        "植物染料",
+        "樹脂顔料",
+        "既製品"
+      ]
+    },
     "description": {
       "$ref": "page.json#/definitions/description",
       "examples": [
         "草や木、花や根など、植物の色素を染料とします。多くの植物染料が高温で煮出すことによって使用できるようになり、金属イオンとの結合によって発色し、色が定着します。金属イオンとの結合を媒染と呼び、ミョウバンに含まれるアルミ、銅・鉄などがよく用いられます。",
         "型染めに使う絵の具です。バインダーという定着剤を同時に用いることで、樹脂顔料を布に定着させます。バインダーが多ければ仕上がりが固く、少なければ布の風合いを残します。型染めは沖縄の紅型が有名です。布用絵の具も樹脂顔料の一種でバインダーが予め混ざっているんじゃないかと思います。",
         "染色工程を省き、綿・羊毛本来の色のまま利用したもの、または染色済みの既製品・加工済みの部品を利用したものです。"
+      ]
+    },
+    "body": {
+      "$ref": "page.json#/definitions/body"
+    },
+    "media_image": {
+      "$ref": "page.json#/definitions/media_image",
+      "examples": [
+        null,
+        "dyeing-material-types/dyeing-material-type-1/media.jpg"
       ]
     }
   }

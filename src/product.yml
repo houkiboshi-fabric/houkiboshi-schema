@@ -9,7 +9,10 @@ required:
   - name_kana
   - name_alt
   - name_alt_kana
+  - title
   - description
+  - body
+  - media_image
   - image
   - images_alt
   - price
@@ -33,8 +36,14 @@ properties:
     $ref: '#/definitions/name_alt'
   name_alt_kana:
     $ref: '#/definitions/name_alt_kana'
+  title:
+    $ref: '#/definitions/title'
   description:
     $ref: '#/definitions/description'
+  body:
+    $ref: '#/definitions/body'
+  media_image:
+    $ref: '#/definitions/media_image'
   image:
     $ref: '#/definitions/image'
   images_alt:
@@ -100,6 +109,11 @@ definitions:
       - くさきぞめいとのすとーる
       - かざるぬの
       - くさきせんしょくはらおび
+  title:
+    $ref: 'page.json#/definitions/title'
+    examples:
+      - 草木染め糸のストール 駱駝
+      - 飾る布 山の踊り
   description:
     $ref: 'page.json#/definitions/description'
     examples:
@@ -107,6 +121,12 @@ definitions:
         冬に道ばたで見た白い椿がきれいだったので、形にしたいと思って布を染めました。
         内側の布は葛で染めたので、冬の終わりと春の終わりが合体したポーチになりました。
         A4 の紙を三つ折りして入れられるくらいの大きさで、ノートなら B6, A6 が入ります。
+  body:
+    $ref: 'page.json#/definitions/body'
+  media_image:
+    $ref: 'page.json#/definitions/media_image'
+    examples:
+      - products/product-1/media.jpg
   image:
     description: |-
       この Product を象徴するメイン画像のファイルパスです。
