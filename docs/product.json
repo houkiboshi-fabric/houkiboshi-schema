@@ -22,6 +22,9 @@
   ],
   "additionalProperties": false,
   "properties": {
+    "$schema": {
+      "$ref": "index.json#/definitions/$schema"
+    },
     "id": {
       "$ref": "#/definitions/id"
     },

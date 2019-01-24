@@ -16,6 +16,15 @@ properties:
     $ref: 'page.json#'
 
 definitions:
+  $schema:
+    type: string
+    description: |-
+      validation に利用する schema ファイルへのパスです。
+      URI を指定すると remote ファイルを参照できます。
+      相対パスで指定することで local ファイルを参照できます。
+    examples:
+      - ../../schemas/product.json
+      - https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json
   id:
     type: string
     pattern: '^[a-z0-9\-]+$'

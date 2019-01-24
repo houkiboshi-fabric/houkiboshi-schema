@@ -12,6 +12,14 @@
   ],
   "additionalProperties": false,
   "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+      "examples": [
+        "../../schemas/product.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+      ]
+    },
     "id": {
       "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
       "examples": [

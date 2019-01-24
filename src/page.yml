@@ -11,6 +11,8 @@ required:
 additionalProperties: false
 
 properties:
+  $schema:
+    $ref: 'index.json#/definitions/$schema'
   title:
     $ref: '#/definitions/title'
   description:
