@@ -11,6 +11,7 @@
       "description": "製品です。",
       "type": "object",
       "required": [
+        "$schema",
         "id",
         "name",
         "name_kana",
@@ -926,6 +927,7 @@
       "description": "Product の原材料です。",
       "type": "object",
       "required": [
+        "$schema",
         "id",
         "name",
         "name_kana",
@@ -1179,6 +1181,7 @@
       "description": "Product に使用されている染色素材です。",
       "type": "object",
       "required": [
+        "$schema",
         "id",
         "name",
         "name_kana",
@@ -1461,6 +1464,7 @@
       "description": "Dyeing material の分類です。",
       "type": "object",
       "required": [
+        "$schema",
         "id",
         "name",
         "name_kana",
@@ -1644,6 +1648,7 @@
       "description": "任意の Web page のメタデータです。",
       "type": "object",
       "required": [
+        "$schema",
         "title",
         "description",
         "media_image",

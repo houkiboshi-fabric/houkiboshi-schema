@@ -1,4 +1,5 @@
 {
+  "$schema": "../docs/ref-parsed/dyeing-material-type.json",
   "id": "plant-dyes",
   "name": "植物染料",
   "name_kana": "しょくぶつせんりょう",

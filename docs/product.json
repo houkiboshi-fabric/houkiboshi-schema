@@ -5,6 +5,7 @@
   "description": "製品です。",
   "type": "object",
   "required": [
+    "$schema",
     "id",
     "name",
     "name_kana",

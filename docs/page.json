@@ -5,6 +5,7 @@
   "description": "任意の Web page のメタデータです。",
   "type": "object",
   "required": [
+    "$schema",
     "title",
     "description",
     "media_image",

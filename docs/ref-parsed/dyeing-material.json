@@ -5,6 +5,7 @@
   "description": "Product に使用されている染色素材です。",
   "type": "object",
   "required": [
+    "$schema",
     "id",
     "name",
     "name_kana",

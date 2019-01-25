@@ -5,6 +5,7 @@
   "description": "Dyeing material の分類です。",
   "type": "object",
   "required": [
+    "$schema",
     "id",
     "name",
     "name_kana",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../docs/ref-parsed/dyeing-material.json",
   "id": "cherry",
   "name": "桜",
   "name_kana": "さくら",

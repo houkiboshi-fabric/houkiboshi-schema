@@ -4,6 +4,7 @@ title: Raw material
 description: Product の原材料です。
 type: object
 required:
+  - $schema
   - id
   - name
   - name_kana
