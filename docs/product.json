@@ -79,6 +79,12 @@
     },
     "dyeing_materials": {
       "$ref": "#/definitions/dyeing_materials"
+    },
+    "created_at": {
+      "$ref": "page.json#/definitions/created_at"
+    },
+    "modified_at": {
+      "$ref": "page.json#/definitions/modified_at"
     }
   },
   "definitions": {

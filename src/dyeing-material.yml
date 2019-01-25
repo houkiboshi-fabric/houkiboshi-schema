@@ -40,6 +40,10 @@ properties:
     $ref: '#/definitions/images_alt'
   dyeing_material_type_id:
     $ref: '#/definitions/dyeing_material_type_id'
+  created_at:
+    $ref: 'page.json#/definitions/created_at'
+  modified_at:
+    $ref: 'page.json#/definitions/modified_at'
 
 definitions:
   id:

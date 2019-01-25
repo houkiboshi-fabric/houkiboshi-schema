@@ -31,6 +31,10 @@ properties:
     $ref: '#/definitions/body'
   media_image:
     $ref: '#/definitions/media_image'
+  created_at:
+    $ref: 'page.json#/definitions/created_at'
+  modified_at:
+    $ref: 'page.json#/definitions/modified_at'
 
 definitions:
   id:

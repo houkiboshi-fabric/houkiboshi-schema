@@ -22,6 +22,10 @@ properties:
     $ref: '#/definitions/media_image'
   body:
     $ref: '#/definitions/body'
+  created_at:
+    $ref: '#/definitions/created_at'
+  modified_at:
+    $ref: '#/definitions/modified_at'
 
 definitions:
   title:
@@ -72,3 +76,23 @@ definitions:
       - type: 'null'
     examples:
       - body.md
+  created_at:
+    type: string
+    format: date-time
+    description: |-
+      作成日時です。
+      フォーマットは RFC 3339, section 5.6 に準拠します。
+      タイムゾーンは UTC です。
+      https://tools.ietf.org/html/rfc3339#section-5.6
+    examples:
+      - 2019-01-01T07:39:05.000Z
+  modified_at:
+    type: string
+    format: date-time
+    description: |-
+      更新日時です。
+      フォーマットは RFC 3339, section 5.6 に準拠します。
+      タイムゾーンは UTC です。
+      https://tools.ietf.org/html/rfc3339#section-5.6
+    examples:
+      - 2019-01-25T10:26:57.000Z
