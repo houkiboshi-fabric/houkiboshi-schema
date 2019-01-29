@@ -239,7 +239,7 @@
         "width_mm",
         "depth_mm"
       ],
-      "additionalItems": false,
+      "additionalProperties": false,
       "examples": [
         {
           "width_mm": 250,
@@ -364,6 +364,7 @@
               "percentage",
               "decorator"
             ],
+            "additionalProperties": false,
             "dependencies": {
               "decorator": [
                 "percentage"
@@ -464,6 +465,7 @@
         "required": [
           "dyeing_material_ids"
         ],
+        "additionalProperties": false,
         "properties": {
           "dyeing_material_ids": {
             "description": "Dyeing material の id のリストです。",

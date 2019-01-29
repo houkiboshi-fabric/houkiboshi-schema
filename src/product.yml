@@ -206,7 +206,7 @@ definitions:
     required:
       - width_mm
       - depth_mm
-    additionalItems: false
+    additionalProperties: false
     examples:
       - width_mm: 250
         depth_mm: 250
@@ -308,6 +308,7 @@ definitions:
           required:
             - percentage
             - decorator
+          additionalProperties: false
           dependencies:
             decorator:
               - percentage
@@ -378,6 +379,7 @@ definitions:
           used_at: 表生地
       required:
         - dyeing_material_ids
+      additionalProperties: false
       properties:
         dyeing_material_ids:
           description: |-
