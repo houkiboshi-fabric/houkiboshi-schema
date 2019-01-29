@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "blog-entry.json",
+  "title": "Blog Entry",
+  "description": "Blog Entry のメタデータです。",
+  "type": "object",
+  "required": [
+    "$schema",
+    "title",
+    "description",
+    "media_image",
+    "body",
+    "tag_ids"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "$ref": "index.json#/definitions/$schema"
+    },
+    "title": {
+      "$ref": "page.json#/definitions/title"
+    },
+    "description": {
+      "$ref": "page.json#/definitions/description"
+    },
+    "body": {
+      "$ref": "page.json#/definitions/body"
+    },
+    "media_image": {
+      "$ref": "page.json#/definitions/media_image"
+    },
+    "tag_ids": {
+      "$ref": "#/definitions/tag_ids"
+    },
+    "tag_entities": {
+      "$ref": "#/definitions/tag_entities"
+    },
+    "created_at": {
+      "$ref": "page.json#/definitions/created_at"
+    },
+    "modified_at": {
+      "$ref": "page.json#/definitions/modified_at"
+    }
+  },
+  "definitions": {
+    "tag_ids": {
+      "description": "Tag id のリストです。",
+      "type": "array",
+      "uniqueItems": true,
+      "examples": [
+        [
+          "tag-notifications",
+          "tag-events",
+          "tag-wool"
+        ]
+      ],
+      "items": {
+        "$ref": "tags.json#/definitions/tags/items/properties/id"
+      }
+    },
+    "tag_entities": {
+      "description": "tag_ids を元に参照した Tag のリストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "tags.json"
+      }
+    }
+  }
+}

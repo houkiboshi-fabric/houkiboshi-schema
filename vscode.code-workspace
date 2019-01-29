@@ -50,6 +50,18 @@
         ],
         "url": "./docs/page.json"
       },
+      {
+        "fileMatch": [
+          "/examples/tags.json"
+        ],
+        "url": "./docs/tags.json"
+      },
+      {
+        "fileMatch": [
+          "/examples/blog-entry.json"
+        ],
+        "url": "./docs/blog-entry.json"
+      }
     ],
     "yaml.completion": true,
     "yaml.hover": true,

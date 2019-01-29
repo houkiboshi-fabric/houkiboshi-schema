@@ -1,0 +1,8 @@
+{
+  "$schema": "../docs/ref-parsed/blog-entry.json",
+  "title": "サンプルブログエントリー タイトル",
+  "description": "サンプルブログエントリーの description です。",
+  "media_image": null,
+  "body": "body.md",
+  "tag_ids": ["tag-events", "tag-notifications"]
+}

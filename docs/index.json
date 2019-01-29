@@ -4,6 +4,12 @@
   "title": "Schema index",
   "description": "参照用",
   "properties": {
+    "blog-entry": {
+      "$ref": "blog-entry.json#"
+    },
+    "tags": {
+      "$ref": "tags.json#"
+    },
     "product": {
       "$ref": "product.json#"
     },
