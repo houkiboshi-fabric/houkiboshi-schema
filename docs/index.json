@@ -37,7 +37,8 @@
     },
     "id": {
       "type": "string",
-      "pattern": "^[a-z0-9\\-]+$"
+      "pattern": "^[a-z0-9\\-]+$",
+      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
     },
     "name_kana": {
       "type": "string",

@@ -25,14 +25,14 @@
       ]
     },
     "id": {
-      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
       "examples": [
         "plant-dyes",
         "resin-pigments",
         "ready-made"
       ],
       "type": "string",
-      "pattern": "^[a-z0-9\\-]+$"
+      "pattern": "^[a-z0-9\\-]+$",
+      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
     },
     "name": {
       "description": "Dyeing material type の名前です。",
@@ -104,7 +104,7 @@
     "created_at": {
       "type": "string",
       "format": "date-time",
-      "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+      "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
       "examples": [
         "2019-01-01T07:39:05.000Z"
       ]
@@ -112,7 +112,7 @@
     "modified_at": {
       "type": "string",
       "format": "date-time",
-      "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+      "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
       "examples": [
         "2019-01-25T10:26:57.000Z"
       ]
@@ -120,14 +120,14 @@
   },
   "definitions": {
     "id": {
-      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
       "examples": [
         "plant-dyes",
         "resin-pigments",
         "ready-made"
       ],
       "type": "string",
-      "pattern": "^[a-z0-9\\-]+$"
+      "pattern": "^[a-z0-9\\-]+$",
+      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
     },
     "name": {
       "description": "Dyeing material type の名前です。",

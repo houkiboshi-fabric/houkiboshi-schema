@@ -69,10 +69,6 @@ properties:
 definitions:
   id:
     $ref: 'index.json#/definitions/id'
-    description: |-
-      Product の id です。
-      半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。
-      この文字列は URI の一部として利用できる必要があります。
     examples:
       - rakuda
       - yama-no-odori

@@ -32,6 +32,10 @@ definitions:
   id:
     type: string
     pattern: '^[a-z0-9\-]+$'
+    description: |-
+      id です。
+      半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。
+      この文字列は URI の一部として利用できる必要があります。
   name_kana:
     type: string
     pattern: '^[0-9ぁ-んー]+$'

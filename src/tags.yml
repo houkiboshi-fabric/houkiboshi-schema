@@ -37,8 +37,6 @@ definitions:
       properties:
         id:
           $ref: 'index.json#/definitions/id'
-          description: |-
-            Tag の id です。
           examples:
             - tag-notifications
             - tag-events

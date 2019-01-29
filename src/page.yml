@@ -84,6 +84,7 @@ definitions:
       フォーマットは RFC 3339, section 5.6 に準拠します。
       タイムゾーンは UTC です。
       https://tools.ietf.org/html/rfc3339#section-5.6
+      このプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。
     examples:
       - 2019-01-01T07:39:05.000Z
   modified_at:
@@ -94,5 +95,6 @@ definitions:
       フォーマットは RFC 3339, section 5.6 に準拠します。
       タイムゾーンは UTC です。
       https://tools.ietf.org/html/rfc3339#section-5.6
+      このプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。
     examples:
       - 2019-01-25T10:26:57.000Z
