@@ -292,6 +292,14 @@ definitions:
           uniqueItems: true
           items:
             $ref: 'raw-material.json#/properties/id'
+        raw_material_entities:
+          description: |-
+            raw_material_ids を元に参照した Raw material のリストです。
+            このプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。
+          type: array
+          uniqueItems: true
+          items:
+            $ref: 'raw-material.json'
         used_at:
           description: |-
             この原材料が使われている Product の場所です。
@@ -388,6 +396,14 @@ definitions:
           uniqueItems: true
           items:
             $ref: 'dyeing-material.json#/properties/id'
+        dyeing_material_entities:
+          description: |-
+            dyeing_material_ids を元に参照した Dyeing material のリストです。
+            このプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。
+          type: array
+          uniqueItems: true
+          items:
+            $ref: 'dyeing-material.json'
         used_at:
           description: |-
             この原材料が使われている Product の場所です。

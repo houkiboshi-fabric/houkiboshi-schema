@@ -333,6 +333,281 @@
                   "pattern": "^[a-z0-9\\-]+$"
                 }
               },
+              "raw_material_entities": {
+                "description": "raw_material_ids を元に参照した Raw material のリストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$schema": "http://json-schema.org/draft-06/schema#",
+                  "$id": "raw-material.json",
+                  "title": "Raw material",
+                  "description": "Product の原材料です。",
+                  "type": "object",
+                  "required": [
+                    "$schema",
+                    "id",
+                    "name",
+                    "name_kana",
+                    "title",
+                    "description",
+                    "body",
+                    "media_image",
+                    "image",
+                    "images_alt"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "$schema": {
+                      "type": "string",
+                      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+                      "examples": [
+                        "../../schemas/product.json",
+                        "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+                      ]
+                    },
+                    "id": {
+                      "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "cotton",
+                        "wool",
+                        "hakushu-cotton"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "name": {
+                      "description": "Raw material の名前です。",
+                      "type": "string",
+                      "examples": [
+                        "綿",
+                        "ウール",
+                        "伯州綿"
+                      ]
+                    },
+                    "name_kana": {
+                      "description": "Raw material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                      "examples": [
+                        "めん",
+                        "うーる",
+                        "はくしゅうめん"
+                      ],
+                      "type": "string",
+                      "pattern": "^[0-9ぁ-んー]+$"
+                    },
+                    "title": {
+                      "examples": [
+                        "綿",
+                        "ウール",
+                        "伯州綿"
+                      ],
+                      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "description": {
+                      "examples": [
+                        "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
+                      ],
+                      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "body": {
+                      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "body.md"
+                      ]
+                    },
+                    "media_image": {
+                      "examples": [
+                        "raw-materials/cotton/media.jpg"
+                      ],
+                      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "image": {
+                      "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "raw-materials/cotton/main.jpg"
+                      ]
+                    },
+                    "images_alt": {
+                      "description": "この Raw material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
+                      "type": "array",
+                      "uniqueItems": true,
+                      "examples": [
+                        [],
+                        [
+                          "raw-materials/cotton/01.jpg",
+                          "raw-materials/cotton/02.jpg",
+                          "raw-materials/cotton/03.jpg"
+                        ]
+                      ],
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "examples": [
+                          "raw-materials/cotton/01.jpg",
+                          "raw-materials/cotton/02.jpg",
+                          "raw-materials/cotton/03.jpg"
+                        ]
+                      }
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                      "examples": [
+                        "2019-01-01T07:39:05.000Z"
+                      ]
+                    },
+                    "modified_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                      "examples": [
+                        "2019-01-25T10:26:57.000Z"
+                      ]
+                    }
+                  },
+                  "definitions": {
+                    "id": {
+                      "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "cotton",
+                        "wool",
+                        "hakushu-cotton"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "name": {
+                      "description": "Raw material の名前です。",
+                      "type": "string",
+                      "examples": [
+                        "綿",
+                        "ウール",
+                        "伯州綿"
+                      ]
+                    },
+                    "name_kana": {
+                      "description": "Raw material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                      "examples": [
+                        "めん",
+                        "うーる",
+                        "はくしゅうめん"
+                      ],
+                      "type": "string",
+                      "pattern": "^[0-9ぁ-んー]+$"
+                    },
+                    "title": {
+                      "examples": [
+                        "綿",
+                        "ウール",
+                        "伯州綿"
+                      ],
+                      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "description": {
+                      "examples": [
+                        "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
+                      ],
+                      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "body": {
+                      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "body.md"
+                      ]
+                    },
+                    "media_image": {
+                      "examples": [
+                        "raw-materials/cotton/media.jpg"
+                      ],
+                      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "image": {
+                      "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "raw-materials/cotton/main.jpg"
+                      ]
+                    },
+                    "images_alt": {
+                      "description": "この Raw material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
+                      "type": "array",
+                      "uniqueItems": true,
+                      "examples": [
+                        [],
+                        [
+                          "raw-materials/cotton/01.jpg",
+                          "raw-materials/cotton/02.jpg",
+                          "raw-materials/cotton/03.jpg"
+                        ]
+                      ],
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "examples": [
+                          "raw-materials/cotton/01.jpg",
+                          "raw-materials/cotton/02.jpg",
+                          "raw-materials/cotton/03.jpg"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
               "used_at": {
                 "description": "この原材料が使われている Product の場所です。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
                 "type": "string",
@@ -467,6 +742,510 @@
                   ],
                   "type": "string",
                   "pattern": "^[a-z0-9\\-]+$"
+                }
+              },
+              "dyeing_material_entities": {
+                "description": "dyeing_material_ids を元に参照した Dyeing material のリストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$schema": "http://json-schema.org/draft-06/schema#",
+                  "$id": "dyeing-material.json",
+                  "title": "Dyeing material",
+                  "description": "Product に使用されている染色素材です。",
+                  "type": "object",
+                  "required": [
+                    "$schema",
+                    "id",
+                    "name",
+                    "name_kana",
+                    "title",
+                    "description",
+                    "body",
+                    "media_image",
+                    "image",
+                    "images_alt",
+                    "dyeing_material_type_id"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "$schema": {
+                      "type": "string",
+                      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+                      "examples": [
+                        "../../schemas/product.json",
+                        "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+                      ]
+                    },
+                    "id": {
+                      "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "cherry",
+                        "kumquat",
+                        "citrus",
+                        "madder"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "name": {
+                      "description": "Dyeing material の名前です。",
+                      "type": "string",
+                      "examples": [
+                        "桜",
+                        "金柑",
+                        "柚子",
+                        "茜"
+                      ]
+                    },
+                    "name_kana": {
+                      "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                      "examples": [
+                        "さくら",
+                        "きんかん",
+                        "ゆず",
+                        "あかね"
+                      ],
+                      "type": "string",
+                      "pattern": "^[0-9ぁ-んー]+$"
+                    },
+                    "title": {
+                      "examples": [
+                        "桜",
+                        "金柑",
+                        "柚子",
+                        "茜"
+                      ],
+                      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "description": {
+                      "examples": [
+                        "赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。"
+                      ],
+                      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "body": {
+                      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "body.md"
+                      ]
+                    },
+                    "media_image": {
+                      "examples": [
+                        "dyeing-materials/dyeing-material-1/media.jpg"
+                      ],
+                      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "image": {
+                      "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "dyeing-materials/cherry/main.jpg"
+                      ]
+                    },
+                    "images_alt": {
+                      "description": "この Dyeing material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は空の配列を指定します。",
+                      "type": "array",
+                      "uniqueItems": true,
+                      "examples": [
+                        [],
+                        [
+                          "dyeing-materials/cherry/01.jpg",
+                          "dyeing-materials/cherry/02.jpg",
+                          "dyeing-materials/cherry/03.jpg"
+                        ]
+                      ],
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "examples": [
+                          "dyeing-materials/cherry/01.jpg",
+                          "dyeing-materials/cherry/02.jpg",
+                          "dyeing-materials/cherry/03.jpg"
+                        ]
+                      }
+                    },
+                    "dyeing_material_type_id": {
+                      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "plant-dyes",
+                        "resin-pigments",
+                        "ready-made"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                      "examples": [
+                        "2019-01-01T07:39:05.000Z"
+                      ]
+                    },
+                    "modified_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                      "examples": [
+                        "2019-01-25T10:26:57.000Z"
+                      ]
+                    }
+                  },
+                  "definitions": {
+                    "id": {
+                      "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "cherry",
+                        "kumquat",
+                        "citrus",
+                        "madder"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "name": {
+                      "description": "Dyeing material の名前です。",
+                      "type": "string",
+                      "examples": [
+                        "桜",
+                        "金柑",
+                        "柚子",
+                        "茜"
+                      ]
+                    },
+                    "name_kana": {
+                      "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                      "examples": [
+                        "さくら",
+                        "きんかん",
+                        "ゆず",
+                        "あかね"
+                      ],
+                      "type": "string",
+                      "pattern": "^[0-9ぁ-んー]+$"
+                    },
+                    "title": {
+                      "examples": [
+                        "桜",
+                        "金柑",
+                        "柚子",
+                        "茜"
+                      ],
+                      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "description": {
+                      "examples": [
+                        "赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。"
+                      ],
+                      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "body": {
+                      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "body.md"
+                      ]
+                    },
+                    "media_image": {
+                      "examples": [
+                        "dyeing-materials/dyeing-material-1/media.jpg"
+                      ],
+                      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "dyeing_material_type_id": {
+                      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "plant-dyes",
+                        "resin-pigments",
+                        "ready-made"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "dyeing_material_type_entity": {
+                      "description": "dyeing_material_type_id を元に参照した Dyeing material type です。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+                      "$schema": "http://json-schema.org/draft-06/schema#",
+                      "$id": "dyeing-material-type.json",
+                      "title": "Dyeing material type",
+                      "type": "object",
+                      "required": [
+                        "$schema",
+                        "id",
+                        "name",
+                        "name_kana",
+                        "title",
+                        "description",
+                        "body",
+                        "media_image"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "$schema": {
+                          "type": "string",
+                          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+                          "examples": [
+                            "../../schemas/product.json",
+                            "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+                          ]
+                        },
+                        "id": {
+                          "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                          "examples": [
+                            "plant-dyes",
+                            "resin-pigments",
+                            "ready-made"
+                          ],
+                          "type": "string",
+                          "pattern": "^[a-z0-9\\-]+$"
+                        },
+                        "name": {
+                          "description": "Dyeing material type の名前です。",
+                          "type": "string",
+                          "examples": [
+                            "植物染料",
+                            "樹脂顔料",
+                            "既製品"
+                          ]
+                        },
+                        "name_kana": {
+                          "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                          "examples": [
+                            "しょくぶつせんりょう",
+                            "じゅしがんりょう",
+                            "きせいひん"
+                          ],
+                          "type": "string",
+                          "pattern": "^[0-9ぁ-んー]+$"
+                        },
+                        "title": {
+                          "examples": [
+                            "植物染料",
+                            "樹脂顔料",
+                            "既製品"
+                          ],
+                          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                          "type": "string"
+                        },
+                        "description": {
+                          "examples": [
+                            "草や木、花や根など、植物の色素を染料とします。多くの植物染料が高温で煮出すことによって使用できるようになり、金属イオンとの結合によって発色し、色が定着します。金属イオンとの結合を媒染と呼び、ミョウバンに含まれるアルミ、銅・鉄などがよく用いられます。",
+                            "型染めに使う絵の具です。バインダーという定着剤を同時に用いることで、樹脂顔料を布に定着させます。バインダーが多ければ仕上がりが固く、少なければ布の風合いを残します。型染めは沖縄の紅型が有名です。布用絵の具も樹脂顔料の一種でバインダーが予め混ざっているんじゃないかと思います。",
+                            "染色工程を省き、綿・羊毛本来の色のまま利用したもの、または染色済みの既製品・加工済みの部品を利用したものです。"
+                          ],
+                          "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                          "type": "string"
+                        },
+                        "body": {
+                          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "examples": [
+                            "body.md"
+                          ]
+                        },
+                        "media_image": {
+                          "examples": [
+                            null,
+                            "dyeing-material-types/dyeing-material-type-1/media.jpg"
+                          ],
+                          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "format": "uri-reference"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                          "examples": [
+                            "2019-01-01T07:39:05.000Z"
+                          ]
+                        },
+                        "modified_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                          "examples": [
+                            "2019-01-25T10:26:57.000Z"
+                          ]
+                        }
+                      },
+                      "definitions": {
+                        "id": {
+                          "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                          "examples": [
+                            "plant-dyes",
+                            "resin-pigments",
+                            "ready-made"
+                          ],
+                          "type": "string",
+                          "pattern": "^[a-z0-9\\-]+$"
+                        },
+                        "name": {
+                          "description": "Dyeing material type の名前です。",
+                          "type": "string",
+                          "examples": [
+                            "植物染料",
+                            "樹脂顔料",
+                            "既製品"
+                          ]
+                        },
+                        "name_kana": {
+                          "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                          "examples": [
+                            "しょくぶつせんりょう",
+                            "じゅしがんりょう",
+                            "きせいひん"
+                          ],
+                          "type": "string",
+                          "pattern": "^[0-9ぁ-んー]+$"
+                        },
+                        "title": {
+                          "examples": [
+                            "植物染料",
+                            "樹脂顔料",
+                            "既製品"
+                          ],
+                          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                          "type": "string"
+                        },
+                        "description": {
+                          "examples": [
+                            "草や木、花や根など、植物の色素を染料とします。多くの植物染料が高温で煮出すことによって使用できるようになり、金属イオンとの結合によって発色し、色が定着します。金属イオンとの結合を媒染と呼び、ミョウバンに含まれるアルミ、銅・鉄などがよく用いられます。",
+                            "型染めに使う絵の具です。バインダーという定着剤を同時に用いることで、樹脂顔料を布に定着させます。バインダーが多ければ仕上がりが固く、少なければ布の風合いを残します。型染めは沖縄の紅型が有名です。布用絵の具も樹脂顔料の一種でバインダーが予め混ざっているんじゃないかと思います。",
+                            "染色工程を省き、綿・羊毛本来の色のまま利用したもの、または染色済みの既製品・加工済みの部品を利用したものです。"
+                          ],
+                          "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                          "type": "string"
+                        },
+                        "body": {
+                          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "examples": [
+                            "body.md"
+                          ]
+                        },
+                        "media_image": {
+                          "examples": [
+                            null,
+                            "dyeing-material-types/dyeing-material-type-1/media.jpg"
+                          ],
+                          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "format": "uri-reference"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "image": {
+                      "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "dyeing-materials/cherry/main.jpg"
+                      ]
+                    },
+                    "images_alt": {
+                      "description": "この Dyeing material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は空の配列を指定します。",
+                      "type": "array",
+                      "uniqueItems": true,
+                      "examples": [
+                        [],
+                        [
+                          "dyeing-materials/cherry/01.jpg",
+                          "dyeing-materials/cherry/02.jpg",
+                          "dyeing-materials/cherry/03.jpg"
+                        ]
+                      ],
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "examples": [
+                          "dyeing-materials/cherry/01.jpg",
+                          "dyeing-materials/cherry/02.jpg",
+                          "dyeing-materials/cherry/03.jpg"
+                        ]
+                      }
+                    }
+                  }
                 }
               },
               "used_at": {
@@ -791,6 +1570,281 @@
                   "pattern": "^[a-z0-9\\-]+$"
                 }
               },
+              "raw_material_entities": {
+                "description": "raw_material_ids を元に参照した Raw material のリストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$schema": "http://json-schema.org/draft-06/schema#",
+                  "$id": "raw-material.json",
+                  "title": "Raw material",
+                  "description": "Product の原材料です。",
+                  "type": "object",
+                  "required": [
+                    "$schema",
+                    "id",
+                    "name",
+                    "name_kana",
+                    "title",
+                    "description",
+                    "body",
+                    "media_image",
+                    "image",
+                    "images_alt"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "$schema": {
+                      "type": "string",
+                      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+                      "examples": [
+                        "../../schemas/product.json",
+                        "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+                      ]
+                    },
+                    "id": {
+                      "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "cotton",
+                        "wool",
+                        "hakushu-cotton"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "name": {
+                      "description": "Raw material の名前です。",
+                      "type": "string",
+                      "examples": [
+                        "綿",
+                        "ウール",
+                        "伯州綿"
+                      ]
+                    },
+                    "name_kana": {
+                      "description": "Raw material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                      "examples": [
+                        "めん",
+                        "うーる",
+                        "はくしゅうめん"
+                      ],
+                      "type": "string",
+                      "pattern": "^[0-9ぁ-んー]+$"
+                    },
+                    "title": {
+                      "examples": [
+                        "綿",
+                        "ウール",
+                        "伯州綿"
+                      ],
+                      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "description": {
+                      "examples": [
+                        "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
+                      ],
+                      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "body": {
+                      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "body.md"
+                      ]
+                    },
+                    "media_image": {
+                      "examples": [
+                        "raw-materials/cotton/media.jpg"
+                      ],
+                      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "image": {
+                      "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "raw-materials/cotton/main.jpg"
+                      ]
+                    },
+                    "images_alt": {
+                      "description": "この Raw material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
+                      "type": "array",
+                      "uniqueItems": true,
+                      "examples": [
+                        [],
+                        [
+                          "raw-materials/cotton/01.jpg",
+                          "raw-materials/cotton/02.jpg",
+                          "raw-materials/cotton/03.jpg"
+                        ]
+                      ],
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "examples": [
+                          "raw-materials/cotton/01.jpg",
+                          "raw-materials/cotton/02.jpg",
+                          "raw-materials/cotton/03.jpg"
+                        ]
+                      }
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                      "examples": [
+                        "2019-01-01T07:39:05.000Z"
+                      ]
+                    },
+                    "modified_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                      "examples": [
+                        "2019-01-25T10:26:57.000Z"
+                      ]
+                    }
+                  },
+                  "definitions": {
+                    "id": {
+                      "description": "Raw material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "cotton",
+                        "wool",
+                        "hakushu-cotton"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "name": {
+                      "description": "Raw material の名前です。",
+                      "type": "string",
+                      "examples": [
+                        "綿",
+                        "ウール",
+                        "伯州綿"
+                      ]
+                    },
+                    "name_kana": {
+                      "description": "Raw material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                      "examples": [
+                        "めん",
+                        "うーる",
+                        "はくしゅうめん"
+                      ],
+                      "type": "string",
+                      "pattern": "^[0-9ぁ-んー]+$"
+                    },
+                    "title": {
+                      "examples": [
+                        "綿",
+                        "ウール",
+                        "伯州綿"
+                      ],
+                      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "description": {
+                      "examples": [
+                        "綿は草木染めでは染まりにくい素材です。絹や羊毛は動物性タンパク質があるため染まりやすいのですが、綿にはタンパク質が少ないため、染めるには工夫が必要です。高温で染めたり、あらかじめ大豆の汁を使ってタンパク質を染み込ませておいたりと、いろんな工夫がなされます。"
+                      ],
+                      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "body": {
+                      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "body.md"
+                      ]
+                    },
+                    "media_image": {
+                      "examples": [
+                        "raw-materials/cotton/media.jpg"
+                      ],
+                      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "image": {
+                      "description": "この Raw material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "raw-materials/cotton/main.jpg"
+                      ]
+                    },
+                    "images_alt": {
+                      "description": "この Raw material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nimage プロパティで指定したパスを含める必要はありません。\n画像がない場合は空の配列を指定します。",
+                      "type": "array",
+                      "uniqueItems": true,
+                      "examples": [
+                        [],
+                        [
+                          "raw-materials/cotton/01.jpg",
+                          "raw-materials/cotton/02.jpg",
+                          "raw-materials/cotton/03.jpg"
+                        ]
+                      ],
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "examples": [
+                          "raw-materials/cotton/01.jpg",
+                          "raw-materials/cotton/02.jpg",
+                          "raw-materials/cotton/03.jpg"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
               "used_at": {
                 "description": "この原材料が使われている Product の場所です。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
                 "type": "string",
@@ -925,6 +1979,510 @@
                   ],
                   "type": "string",
                   "pattern": "^[a-z0-9\\-]+$"
+                }
+              },
+              "dyeing_material_entities": {
+                "description": "dyeing_material_ids を元に参照した Dyeing material のリストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$schema": "http://json-schema.org/draft-06/schema#",
+                  "$id": "dyeing-material.json",
+                  "title": "Dyeing material",
+                  "description": "Product に使用されている染色素材です。",
+                  "type": "object",
+                  "required": [
+                    "$schema",
+                    "id",
+                    "name",
+                    "name_kana",
+                    "title",
+                    "description",
+                    "body",
+                    "media_image",
+                    "image",
+                    "images_alt",
+                    "dyeing_material_type_id"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "$schema": {
+                      "type": "string",
+                      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+                      "examples": [
+                        "../../schemas/product.json",
+                        "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+                      ]
+                    },
+                    "id": {
+                      "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "cherry",
+                        "kumquat",
+                        "citrus",
+                        "madder"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "name": {
+                      "description": "Dyeing material の名前です。",
+                      "type": "string",
+                      "examples": [
+                        "桜",
+                        "金柑",
+                        "柚子",
+                        "茜"
+                      ]
+                    },
+                    "name_kana": {
+                      "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                      "examples": [
+                        "さくら",
+                        "きんかん",
+                        "ゆず",
+                        "あかね"
+                      ],
+                      "type": "string",
+                      "pattern": "^[0-9ぁ-んー]+$"
+                    },
+                    "title": {
+                      "examples": [
+                        "桜",
+                        "金柑",
+                        "柚子",
+                        "茜"
+                      ],
+                      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "description": {
+                      "examples": [
+                        "赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。"
+                      ],
+                      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "body": {
+                      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "body.md"
+                      ]
+                    },
+                    "media_image": {
+                      "examples": [
+                        "dyeing-materials/dyeing-material-1/media.jpg"
+                      ],
+                      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "image": {
+                      "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "dyeing-materials/cherry/main.jpg"
+                      ]
+                    },
+                    "images_alt": {
+                      "description": "この Dyeing material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は空の配列を指定します。",
+                      "type": "array",
+                      "uniqueItems": true,
+                      "examples": [
+                        [],
+                        [
+                          "dyeing-materials/cherry/01.jpg",
+                          "dyeing-materials/cherry/02.jpg",
+                          "dyeing-materials/cherry/03.jpg"
+                        ]
+                      ],
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "examples": [
+                          "dyeing-materials/cherry/01.jpg",
+                          "dyeing-materials/cherry/02.jpg",
+                          "dyeing-materials/cherry/03.jpg"
+                        ]
+                      }
+                    },
+                    "dyeing_material_type_id": {
+                      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "plant-dyes",
+                        "resin-pigments",
+                        "ready-made"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                      "examples": [
+                        "2019-01-01T07:39:05.000Z"
+                      ]
+                    },
+                    "modified_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                      "examples": [
+                        "2019-01-25T10:26:57.000Z"
+                      ]
+                    }
+                  },
+                  "definitions": {
+                    "id": {
+                      "description": "Dyeing material の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "cherry",
+                        "kumquat",
+                        "citrus",
+                        "madder"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "name": {
+                      "description": "Dyeing material の名前です。",
+                      "type": "string",
+                      "examples": [
+                        "桜",
+                        "金柑",
+                        "柚子",
+                        "茜"
+                      ]
+                    },
+                    "name_kana": {
+                      "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                      "examples": [
+                        "さくら",
+                        "きんかん",
+                        "ゆず",
+                        "あかね"
+                      ],
+                      "type": "string",
+                      "pattern": "^[0-9ぁ-んー]+$"
+                    },
+                    "title": {
+                      "examples": [
+                        "桜",
+                        "金柑",
+                        "柚子",
+                        "茜"
+                      ],
+                      "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "description": {
+                      "examples": [
+                        "赤い色を染めるときに使います。堅牢度が高く、洗濯の必要があるアイテムにも使いやすい染料です。染液を煮出すときにあまり高温にしないこと、また、酸性で煮出すことで、きれいな赤を抽出できます。染料店で購入します。"
+                      ],
+                      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                      "type": "string"
+                    },
+                    "body": {
+                      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "body.md"
+                      ]
+                    },
+                    "media_image": {
+                      "examples": [
+                        "dyeing-materials/dyeing-material-1/media.jpg"
+                      ],
+                      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "dyeing_material_type_id": {
+                      "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                      "examples": [
+                        "plant-dyes",
+                        "resin-pigments",
+                        "ready-made"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$"
+                    },
+                    "dyeing_material_type_entity": {
+                      "description": "dyeing_material_type_id を元に参照した Dyeing material type です。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+                      "$schema": "http://json-schema.org/draft-06/schema#",
+                      "$id": "dyeing-material-type.json",
+                      "title": "Dyeing material type",
+                      "type": "object",
+                      "required": [
+                        "$schema",
+                        "id",
+                        "name",
+                        "name_kana",
+                        "title",
+                        "description",
+                        "body",
+                        "media_image"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "$schema": {
+                          "type": "string",
+                          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+                          "examples": [
+                            "../../schemas/product.json",
+                            "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+                          ]
+                        },
+                        "id": {
+                          "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                          "examples": [
+                            "plant-dyes",
+                            "resin-pigments",
+                            "ready-made"
+                          ],
+                          "type": "string",
+                          "pattern": "^[a-z0-9\\-]+$"
+                        },
+                        "name": {
+                          "description": "Dyeing material type の名前です。",
+                          "type": "string",
+                          "examples": [
+                            "植物染料",
+                            "樹脂顔料",
+                            "既製品"
+                          ]
+                        },
+                        "name_kana": {
+                          "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                          "examples": [
+                            "しょくぶつせんりょう",
+                            "じゅしがんりょう",
+                            "きせいひん"
+                          ],
+                          "type": "string",
+                          "pattern": "^[0-9ぁ-んー]+$"
+                        },
+                        "title": {
+                          "examples": [
+                            "植物染料",
+                            "樹脂顔料",
+                            "既製品"
+                          ],
+                          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                          "type": "string"
+                        },
+                        "description": {
+                          "examples": [
+                            "草や木、花や根など、植物の色素を染料とします。多くの植物染料が高温で煮出すことによって使用できるようになり、金属イオンとの結合によって発色し、色が定着します。金属イオンとの結合を媒染と呼び、ミョウバンに含まれるアルミ、銅・鉄などがよく用いられます。",
+                            "型染めに使う絵の具です。バインダーという定着剤を同時に用いることで、樹脂顔料を布に定着させます。バインダーが多ければ仕上がりが固く、少なければ布の風合いを残します。型染めは沖縄の紅型が有名です。布用絵の具も樹脂顔料の一種でバインダーが予め混ざっているんじゃないかと思います。",
+                            "染色工程を省き、綿・羊毛本来の色のまま利用したもの、または染色済みの既製品・加工済みの部品を利用したものです。"
+                          ],
+                          "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                          "type": "string"
+                        },
+                        "body": {
+                          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "examples": [
+                            "body.md"
+                          ]
+                        },
+                        "media_image": {
+                          "examples": [
+                            null,
+                            "dyeing-material-types/dyeing-material-type-1/media.jpg"
+                          ],
+                          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "format": "uri-reference"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                          "examples": [
+                            "2019-01-01T07:39:05.000Z"
+                          ]
+                        },
+                        "modified_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+                          "examples": [
+                            "2019-01-25T10:26:57.000Z"
+                          ]
+                        }
+                      },
+                      "definitions": {
+                        "id": {
+                          "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+                          "examples": [
+                            "plant-dyes",
+                            "resin-pigments",
+                            "ready-made"
+                          ],
+                          "type": "string",
+                          "pattern": "^[a-z0-9\\-]+$"
+                        },
+                        "name": {
+                          "description": "Dyeing material type の名前です。",
+                          "type": "string",
+                          "examples": [
+                            "植物染料",
+                            "樹脂顔料",
+                            "既製品"
+                          ]
+                        },
+                        "name_kana": {
+                          "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+                          "examples": [
+                            "しょくぶつせんりょう",
+                            "じゅしがんりょう",
+                            "きせいひん"
+                          ],
+                          "type": "string",
+                          "pattern": "^[0-9ぁ-んー]+$"
+                        },
+                        "title": {
+                          "examples": [
+                            "植物染料",
+                            "樹脂顔料",
+                            "既製品"
+                          ],
+                          "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                          "type": "string"
+                        },
+                        "description": {
+                          "examples": [
+                            "草や木、花や根など、植物の色素を染料とします。多くの植物染料が高温で煮出すことによって使用できるようになり、金属イオンとの結合によって発色し、色が定着します。金属イオンとの結合を媒染と呼び、ミョウバンに含まれるアルミ、銅・鉄などがよく用いられます。",
+                            "型染めに使う絵の具です。バインダーという定着剤を同時に用いることで、樹脂顔料を布に定着させます。バインダーが多ければ仕上がりが固く、少なければ布の風合いを残します。型染めは沖縄の紅型が有名です。布用絵の具も樹脂顔料の一種でバインダーが予め混ざっているんじゃないかと思います。",
+                            "染色工程を省き、綿・羊毛本来の色のまま利用したもの、または染色済みの既製品・加工済みの部品を利用したものです。"
+                          ],
+                          "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+                          "type": "string"
+                        },
+                        "body": {
+                          "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "examples": [
+                            "body.md"
+                          ]
+                        },
+                        "media_image": {
+                          "examples": [
+                            null,
+                            "dyeing-material-types/dyeing-material-type-1/media.jpg"
+                          ],
+                          "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "format": "uri-reference"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "image": {
+                      "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "format": "uri-reference"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "examples": [
+                        "dyeing-materials/cherry/main.jpg"
+                      ]
+                    },
+                    "images_alt": {
+                      "description": "この Dyeing material の画像ファイルパスのリストです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は空の配列を指定します。",
+                      "type": "array",
+                      "uniqueItems": true,
+                      "examples": [
+                        [],
+                        [
+                          "dyeing-materials/cherry/01.jpg",
+                          "dyeing-materials/cherry/02.jpg",
+                          "dyeing-materials/cherry/03.jpg"
+                        ]
+                      ],
+                      "items": {
+                        "type": "string",
+                        "format": "uri-reference",
+                        "examples": [
+                          "dyeing-materials/cherry/01.jpg",
+                          "dyeing-materials/cherry/02.jpg",
+                          "dyeing-materials/cherry/03.jpg"
+                        ]
+                      }
+                    }
+                  }
                 }
               },
               "used_at": {
@@ -1469,6 +3027,206 @@
           ],
           "type": "string",
           "pattern": "^[a-z0-9\\-]+$"
+        },
+        "dyeing_material_type_entity": {
+          "description": "dyeing_material_type_id を元に参照した Dyeing material type です。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+          "$schema": "http://json-schema.org/draft-06/schema#",
+          "$id": "dyeing-material-type.json",
+          "title": "Dyeing material type",
+          "type": "object",
+          "required": [
+            "$schema",
+            "id",
+            "name",
+            "name_kana",
+            "title",
+            "description",
+            "body",
+            "media_image"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "$schema": {
+              "type": "string",
+              "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+              "examples": [
+                "../../schemas/product.json",
+                "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+              ]
+            },
+            "id": {
+              "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+              "examples": [
+                "plant-dyes",
+                "resin-pigments",
+                "ready-made"
+              ],
+              "type": "string",
+              "pattern": "^[a-z0-9\\-]+$"
+            },
+            "name": {
+              "description": "Dyeing material type の名前です。",
+              "type": "string",
+              "examples": [
+                "植物染料",
+                "樹脂顔料",
+                "既製品"
+              ]
+            },
+            "name_kana": {
+              "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+              "examples": [
+                "しょくぶつせんりょう",
+                "じゅしがんりょう",
+                "きせいひん"
+              ],
+              "type": "string",
+              "pattern": "^[0-9ぁ-んー]+$"
+            },
+            "title": {
+              "examples": [
+                "植物染料",
+                "樹脂顔料",
+                "既製品"
+              ],
+              "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+              "type": "string"
+            },
+            "description": {
+              "examples": [
+                "草や木、花や根など、植物の色素を染料とします。多くの植物染料が高温で煮出すことによって使用できるようになり、金属イオンとの結合によって発色し、色が定着します。金属イオンとの結合を媒染と呼び、ミョウバンに含まれるアルミ、銅・鉄などがよく用いられます。",
+                "型染めに使う絵の具です。バインダーという定着剤を同時に用いることで、樹脂顔料を布に定着させます。バインダーが多ければ仕上がりが固く、少なければ布の風合いを残します。型染めは沖縄の紅型が有名です。布用絵の具も樹脂顔料の一種でバインダーが予め混ざっているんじゃないかと思います。",
+                "染色工程を省き、綿・羊毛本来の色のまま利用したもの、または染色済みの既製品・加工済みの部品を利用したものです。"
+              ],
+              "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+              "type": "string"
+            },
+            "body": {
+              "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "examples": [
+                "body.md"
+              ]
+            },
+            "media_image": {
+              "examples": [
+                null,
+                "dyeing-material-types/dyeing-material-type-1/media.jpg"
+              ],
+              "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uri-reference"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+              "examples": [
+                "2019-01-01T07:39:05.000Z"
+              ]
+            },
+            "modified_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6",
+              "examples": [
+                "2019-01-25T10:26:57.000Z"
+              ]
+            }
+          },
+          "definitions": {
+            "id": {
+              "description": "Dyeing material type の id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+              "examples": [
+                "plant-dyes",
+                "resin-pigments",
+                "ready-made"
+              ],
+              "type": "string",
+              "pattern": "^[a-z0-9\\-]+$"
+            },
+            "name": {
+              "description": "Dyeing material type の名前です。",
+              "type": "string",
+              "examples": [
+                "植物染料",
+                "樹脂顔料",
+                "既製品"
+              ]
+            },
+            "name_kana": {
+              "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+              "examples": [
+                "しょくぶつせんりょう",
+                "じゅしがんりょう",
+                "きせいひん"
+              ],
+              "type": "string",
+              "pattern": "^[0-9ぁ-んー]+$"
+            },
+            "title": {
+              "examples": [
+                "植物染料",
+                "樹脂顔料",
+                "既製品"
+              ],
+              "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+              "type": "string"
+            },
+            "description": {
+              "examples": [
+                "草や木、花や根など、植物の色素を染料とします。多くの植物染料が高温で煮出すことによって使用できるようになり、金属イオンとの結合によって発色し、色が定着します。金属イオンとの結合を媒染と呼び、ミョウバンに含まれるアルミ、銅・鉄などがよく用いられます。",
+                "型染めに使う絵の具です。バインダーという定着剤を同時に用いることで、樹脂顔料を布に定着させます。バインダーが多ければ仕上がりが固く、少なければ布の風合いを残します。型染めは沖縄の紅型が有名です。布用絵の具も樹脂顔料の一種でバインダーが予め混ざっているんじゃないかと思います。",
+                "染色工程を省き、綿・羊毛本来の色のまま利用したもの、または染色済みの既製品・加工済みの部品を利用したものです。"
+              ],
+              "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+              "type": "string"
+            },
+            "body": {
+              "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "examples": [
+                "body.md"
+              ]
+            },
+            "media_image": {
+              "examples": [
+                null,
+                "dyeing-material-types/dyeing-material-type-1/media.jpg"
+              ],
+              "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uri-reference"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
         },
         "image": {
           "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",

@@ -349,6 +349,14 @@
               "$ref": "raw-material.json#/properties/id"
             }
           },
+          "raw_material_entities": {
+            "description": "raw_material_ids を元に参照した Raw material のリストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "$ref": "raw-material.json"
+            }
+          },
           "used_at": {
             "description": "この原材料が使われている Product の場所です。\n参照) 繊維製品の表示について｜消費者庁 http://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html",
             "type": "string",
@@ -473,6 +481,14 @@
             "uniqueItems": true,
             "items": {
               "$ref": "dyeing-material.json#/properties/id"
+            }
+          },
+          "dyeing_material_entities": {
+            "description": "dyeing_material_ids を元に参照した Dyeing material のリストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "$ref": "dyeing-material.json"
             }
           },
           "used_at": {

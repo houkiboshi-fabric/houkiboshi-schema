@@ -117,6 +117,10 @@
     "dyeing_material_type_id": {
       "$ref": "dyeing-material-type.json#/definitions/id"
     },
+    "dyeing_material_type_entity": {
+      "$ref": "dyeing-material-type.json",
+      "description": "dyeing_material_type_id を元に参照した Dyeing material type です。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。"
+    },
     "image": {
       "description": "この Dyeing material を象徴するメイン画像のファイルパスです。\nassets repository からオリジナル画像を取得する際に利用します。\nフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\n画像がない場合は null を指定します。",
       "oneOf": [

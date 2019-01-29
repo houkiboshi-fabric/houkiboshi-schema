@@ -95,6 +95,11 @@ definitions:
       - dyeing-materials/dyeing-material-1/media.jpg
   dyeing_material_type_id:
     $ref: 'dyeing-material-type.json#/definitions/id'
+  dyeing_material_type_entity:
+    $ref: 'dyeing-material-type.json'
+    description: |-
+      dyeing_material_type_id を元に参照した Dyeing material type です。
+      このプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。
   image:
     description: |-
       この Dyeing material を象徴するメイン画像のファイルパスです。
