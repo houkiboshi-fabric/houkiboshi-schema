@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "tag.json",
+  "title": "Tag",
+  "type": "object",
+  "description": "Tag です。",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "label",
+    "description"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/id"
+    },
+    "label": {
+      "$ref": "#/definitions/label"
+    },
+    "description": {
+      "$ref": "#/definitions/description"
+    }
+  },
+  "definitions": {
+    "id": {
+      "$ref": "index.json#/definitions/id",
+      "examples": [
+        "tag-notifications",
+        "tag-events",
+        "tag-wool"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "description": "Tag のラベルです。",
+      "examples": [
+        "Notifications",
+        "Events",
+        "Wool"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Tag の説明です。",
+      "examples": [
+        "お知らせです。",
+        "イベントへの出展やイベント終了後の感想などを書きます。",
+        "毛を使った製作について書きます。"
+      ]
+    }
+  }
+}

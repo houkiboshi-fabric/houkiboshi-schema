@@ -113,6 +113,9 @@
                 "type": "array",
                 "uniqueItems": true,
                 "items": {
+                  "$schema": "http://json-schema.org/draft-06/schema#",
+                  "$id": "tag.json",
+                  "title": "Tag",
                   "type": "object",
                   "description": "Tag です。",
                   "additionalProperties": false,
@@ -122,6 +125,36 @@
                     "description"
                   ],
                   "properties": {
+                    "id": {
+                      "examples": [
+                        "tag-notifications",
+                        "tag-events",
+                        "tag-wool"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$",
+                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                    },
+                    "label": {
+                      "type": "string",
+                      "description": "Tag のラベルです。",
+                      "examples": [
+                        "Notifications",
+                        "Events",
+                        "Wool"
+                      ]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Tag の説明です。",
+                      "examples": [
+                        "お知らせです。",
+                        "イベントへの出展やイベント終了後の感想などを書きます。",
+                        "毛を使った製作について書きます。"
+                      ]
+                    }
+                  },
+                  "definitions": {
                     "id": {
                       "examples": [
                         "tag-notifications",
@@ -176,6 +209,9 @@
                 "type": "array",
                 "uniqueItems": true,
                 "items": {
+                  "$schema": "http://json-schema.org/draft-06/schema#",
+                  "$id": "tag.json",
+                  "title": "Tag",
                   "type": "object",
                   "description": "Tag です。",
                   "additionalProperties": false,
@@ -185,6 +221,36 @@
                     "description"
                   ],
                   "properties": {
+                    "id": {
+                      "examples": [
+                        "tag-notifications",
+                        "tag-events",
+                        "tag-wool"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$",
+                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                    },
+                    "label": {
+                      "type": "string",
+                      "description": "Tag のラベルです。",
+                      "examples": [
+                        "Notifications",
+                        "Events",
+                        "Wool"
+                      ]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Tag の説明です。",
+                      "examples": [
+                        "お知らせです。",
+                        "イベントへの出展やイベント終了後の感想などを書きます。",
+                        "毛を使った製作について書きます。"
+                      ]
+                    }
+                  },
+                  "definitions": {
                     "id": {
                       "examples": [
                         "tag-notifications",
@@ -288,6 +354,9 @@
                 "type": "array",
                 "uniqueItems": true,
                 "items": {
+                  "$schema": "http://json-schema.org/draft-06/schema#",
+                  "$id": "tag.json",
+                  "title": "Tag",
                   "type": "object",
                   "description": "Tag です。",
                   "additionalProperties": false,
@@ -297,6 +366,36 @@
                     "description"
                   ],
                   "properties": {
+                    "id": {
+                      "examples": [
+                        "tag-notifications",
+                        "tag-events",
+                        "tag-wool"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$",
+                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                    },
+                    "label": {
+                      "type": "string",
+                      "description": "Tag のラベルです。",
+                      "examples": [
+                        "Notifications",
+                        "Events",
+                        "Wool"
+                      ]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Tag の説明です。",
+                      "examples": [
+                        "お知らせです。",
+                        "イベントへの出展やイベント終了後の感想などを書きます。",
+                        "毛を使った製作について書きます。"
+                      ]
+                    }
+                  },
+                  "definitions": {
                     "id": {
                       "examples": [
                         "tag-notifications",
@@ -351,6 +450,9 @@
                 "type": "array",
                 "uniqueItems": true,
                 "items": {
+                  "$schema": "http://json-schema.org/draft-06/schema#",
+                  "$id": "tag.json",
+                  "title": "Tag",
                   "type": "object",
                   "description": "Tag です。",
                   "additionalProperties": false,
@@ -360,6 +462,36 @@
                     "description"
                   ],
                   "properties": {
+                    "id": {
+                      "examples": [
+                        "tag-notifications",
+                        "tag-events",
+                        "tag-wool"
+                      ],
+                      "type": "string",
+                      "pattern": "^[a-z0-9\\-]+$",
+                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                    },
+                    "label": {
+                      "type": "string",
+                      "description": "Tag のラベルです。",
+                      "examples": [
+                        "Notifications",
+                        "Events",
+                        "Wool"
+                      ]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Tag の説明です。",
+                      "examples": [
+                        "お知らせです。",
+                        "イベントへの出展やイベント終了後の感想などを書きます。",
+                        "毛を使った製作について書きます。"
+                      ]
+                    }
+                  },
+                  "definitions": {
                     "id": {
                       "examples": [
                         "tag-notifications",
@@ -421,6 +553,9 @@
           "type": "array",
           "uniqueItems": true,
           "items": {
+            "$schema": "http://json-schema.org/draft-06/schema#",
+            "$id": "tag.json",
+            "title": "Tag",
             "type": "object",
             "description": "Tag です。",
             "additionalProperties": false,
@@ -430,6 +565,36 @@
               "description"
             ],
             "properties": {
+              "id": {
+                "examples": [
+                  "tag-notifications",
+                  "tag-events",
+                  "tag-wool"
+                ],
+                "type": "string",
+                "pattern": "^[a-z0-9\\-]+$",
+                "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+              },
+              "label": {
+                "type": "string",
+                "description": "Tag のラベルです。",
+                "examples": [
+                  "Notifications",
+                  "Events",
+                  "Wool"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "description": "Tag の説明です。",
+                "examples": [
+                  "お知らせです。",
+                  "イベントへの出展やイベント終了後の感想などを書きます。",
+                  "毛を使った製作について書きます。"
+                ]
+              }
+            },
+            "definitions": {
               "id": {
                 "examples": [
                   "tag-notifications",
@@ -484,6 +649,9 @@
           "type": "array",
           "uniqueItems": true,
           "items": {
+            "$schema": "http://json-schema.org/draft-06/schema#",
+            "$id": "tag.json",
+            "title": "Tag",
             "type": "object",
             "description": "Tag です。",
             "additionalProperties": false,
@@ -493,6 +661,36 @@
               "description"
             ],
             "properties": {
+              "id": {
+                "examples": [
+                  "tag-notifications",
+                  "tag-events",
+                  "tag-wool"
+                ],
+                "type": "string",
+                "pattern": "^[a-z0-9\\-]+$",
+                "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+              },
+              "label": {
+                "type": "string",
+                "description": "Tag のラベルです。",
+                "examples": [
+                  "Notifications",
+                  "Events",
+                  "Wool"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "description": "Tag の説明です。",
+                "examples": [
+                  "お知らせです。",
+                  "イベントへの出展やイベント終了後の感想などを書きます。",
+                  "毛を使った製作について書きます。"
+                ]
+              }
+            },
+            "definitions": {
               "id": {
                 "examples": [
                   "tag-notifications",

@@ -43,7 +43,7 @@ definitions:
         - tag-events
         - tag-wool
     items:
-      $ref: 'tags.json#/definitions/tags/items/properties/id'
+      $ref: 'tag.json#/properties/id'
   tag_entities:
     description: |-
       tag_ids を元に参照した Tag のリストです。
