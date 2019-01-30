@@ -7,7 +7,7 @@ properties:
   blog-entry:
     $ref: 'blog-entry.json#'
   tags:
-    $ref: tags.json#
+    $ref: 'tags.json#'
   product:
     $ref: 'product.json#'
   raw-material:

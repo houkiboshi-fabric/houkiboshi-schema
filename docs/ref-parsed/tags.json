@@ -23,8 +23,8 @@
       "type": "array",
       "uniqueItems": true,
       "items": {
+        "$id": "tag-entity-in-tags",
         "$schema": "http://json-schema.org/draft-06/schema#",
-        "$id": "tag.json",
         "title": "Tag",
         "type": "object",
         "description": "Tag です。",
@@ -119,8 +119,8 @@
       "type": "array",
       "uniqueItems": true,
       "items": {
+        "$id": "tag-entity-in-tags",
         "$schema": "http://json-schema.org/draft-06/schema#",
-        "$id": "tag.json",
         "title": "Tag",
         "type": "object",
         "description": "Tag です。",

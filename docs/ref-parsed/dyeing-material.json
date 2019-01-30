@@ -259,9 +259,9 @@
       "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
     },
     "dyeing_material_type_entity": {
+      "$id": "dyeing-material-type-entity-in-dyeing-material",
       "description": "dyeing_material_type_id を元に参照した Dyeing material type です。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
       "$schema": "http://json-schema.org/draft-06/schema#",
-      "$id": "dyeing-material-type.json",
       "title": "Dyeing material type",
       "type": "object",
       "required": [

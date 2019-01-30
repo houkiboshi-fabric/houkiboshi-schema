@@ -55,7 +55,7 @@
         ]
       ],
       "items": {
-        "$ref": "tag.json#/properties/id"
+        "$ref": "tag.json#/definitions/id"
       }
     },
     "tag_entities": {
@@ -63,7 +63,8 @@
       "type": "array",
       "uniqueItems": true,
       "items": {
-        "$ref": "tags.json"
+        "$ref": "tag.json",
+        "$id": "tag-entity-in-blog-entry"
       }
     }
   }

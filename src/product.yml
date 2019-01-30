@@ -296,6 +296,7 @@ definitions:
           uniqueItems: true
           items:
             $ref: 'raw-material.json'
+            $id: 'raw-material-entity-in-product'
         used_at:
           description: |-
             この原材料が使われている Product の場所です。
@@ -400,6 +401,7 @@ definitions:
           uniqueItems: true
           items:
             $ref: 'dyeing-material.json'
+            $id: 'dyeing-material-entity-in-product'
         used_at:
           description: |-
             この原材料が使われている Product の場所です。

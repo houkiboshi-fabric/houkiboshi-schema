@@ -29,7 +29,8 @@
       "type": "array",
       "uniqueItems": true,
       "items": {
-        "$ref": "tag.json"
+        "$ref": "tag.json",
+        "$id": "tag-entity-in-tags"
       }
     }
   }

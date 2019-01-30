@@ -89,198 +89,75 @@
           "type": "array",
           "uniqueItems": true,
           "items": {
+            "$id": "tag-entity-in-blog-entry",
             "$schema": "http://json-schema.org/draft-06/schema#",
-            "$id": "tags.json",
-            "title": "Tags",
-            "description": "Tag の定義です。",
+            "title": "Tag",
             "type": "object",
-            "required": [
-              "$schema",
-              "tags"
-            ],
+            "description": "Tag です。",
             "additionalProperties": false,
+            "required": [
+              "id",
+              "label",
+              "description"
+            ],
             "properties": {
-              "$schema": {
-                "type": "string",
-                "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+              "id": {
                 "examples": [
-                  "../../schemas/product.json",
-                  "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+                  "tag-notifications",
+                  "tag-events",
+                  "tag-wool"
+                ],
+                "type": "string",
+                "pattern": "^[a-z0-9\\-]+$",
+                "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+              },
+              "label": {
+                "type": "string",
+                "description": "Tag のラベルです。",
+                "examples": [
+                  "Notifications",
+                  "Events",
+                  "Wool"
                 ]
               },
-              "tags": {
-                "description": "Tag のリストです。",
-                "type": "array",
-                "uniqueItems": true,
-                "items": {
-                  "$schema": "http://json-schema.org/draft-06/schema#",
-                  "$id": "tag.json",
-                  "title": "Tag",
-                  "type": "object",
-                  "description": "Tag です。",
-                  "additionalProperties": false,
-                  "required": [
-                    "id",
-                    "label",
-                    "description"
-                  ],
-                  "properties": {
-                    "id": {
-                      "examples": [
-                        "tag-notifications",
-                        "tag-events",
-                        "tag-wool"
-                      ],
-                      "type": "string",
-                      "pattern": "^[a-z0-9\\-]+$",
-                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
-                    },
-                    "label": {
-                      "type": "string",
-                      "description": "Tag のラベルです。",
-                      "examples": [
-                        "Notifications",
-                        "Events",
-                        "Wool"
-                      ]
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "Tag の説明です。",
-                      "examples": [
-                        "お知らせです。",
-                        "イベントへの出展やイベント終了後の感想などを書きます。",
-                        "毛を使った製作について書きます。"
-                      ]
-                    }
-                  },
-                  "definitions": {
-                    "id": {
-                      "examples": [
-                        "tag-notifications",
-                        "tag-events",
-                        "tag-wool"
-                      ],
-                      "type": "string",
-                      "pattern": "^[a-z0-9\\-]+$",
-                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
-                    },
-                    "label": {
-                      "type": "string",
-                      "description": "Tag のラベルです。",
-                      "examples": [
-                        "Notifications",
-                        "Events",
-                        "Wool"
-                      ]
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "Tag の説明です。",
-                      "examples": [
-                        "お知らせです。",
-                        "イベントへの出展やイベント終了後の感想などを書きます。",
-                        "毛を使った製作について書きます。"
-                      ]
-                    }
-                  }
-                }
-              },
-              "created_at": {
+              "description": {
                 "type": "string",
-                "format": "date-time",
-                "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+                "description": "Tag の説明です。",
                 "examples": [
-                  "2019-01-01T07:39:05.000Z"
-                ]
-              },
-              "modified_at": {
-                "type": "string",
-                "format": "date-time",
-                "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
-                "examples": [
-                  "2019-01-25T10:26:57.000Z"
+                  "お知らせです。",
+                  "イベントへの出展やイベント終了後の感想などを書きます。",
+                  "毛を使った製作について書きます。"
                 ]
               }
             },
             "definitions": {
-              "tags": {
-                "description": "Tag のリストです。",
-                "type": "array",
-                "uniqueItems": true,
-                "items": {
-                  "$schema": "http://json-schema.org/draft-06/schema#",
-                  "$id": "tag.json",
-                  "title": "Tag",
-                  "type": "object",
-                  "description": "Tag です。",
-                  "additionalProperties": false,
-                  "required": [
-                    "id",
-                    "label",
-                    "description"
-                  ],
-                  "properties": {
-                    "id": {
-                      "examples": [
-                        "tag-notifications",
-                        "tag-events",
-                        "tag-wool"
-                      ],
-                      "type": "string",
-                      "pattern": "^[a-z0-9\\-]+$",
-                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
-                    },
-                    "label": {
-                      "type": "string",
-                      "description": "Tag のラベルです。",
-                      "examples": [
-                        "Notifications",
-                        "Events",
-                        "Wool"
-                      ]
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "Tag の説明です。",
-                      "examples": [
-                        "お知らせです。",
-                        "イベントへの出展やイベント終了後の感想などを書きます。",
-                        "毛を使った製作について書きます。"
-                      ]
-                    }
-                  },
-                  "definitions": {
-                    "id": {
-                      "examples": [
-                        "tag-notifications",
-                        "tag-events",
-                        "tag-wool"
-                      ],
-                      "type": "string",
-                      "pattern": "^[a-z0-9\\-]+$",
-                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
-                    },
-                    "label": {
-                      "type": "string",
-                      "description": "Tag のラベルです。",
-                      "examples": [
-                        "Notifications",
-                        "Events",
-                        "Wool"
-                      ]
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "Tag の説明です。",
-                      "examples": [
-                        "お知らせです。",
-                        "イベントへの出展やイベント終了後の感想などを書きます。",
-                        "毛を使った製作について書きます。"
-                      ]
-                    }
-                  }
-                }
+              "id": {
+                "examples": [
+                  "tag-notifications",
+                  "tag-events",
+                  "tag-wool"
+                ],
+                "type": "string",
+                "pattern": "^[a-z0-9\\-]+$",
+                "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+              },
+              "label": {
+                "type": "string",
+                "description": "Tag のラベルです。",
+                "examples": [
+                  "Notifications",
+                  "Events",
+                  "Wool"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "description": "Tag の説明です。",
+                "examples": [
+                  "お知らせです。",
+                  "イベントへの出展やイベント終了後の感想などを書きます。",
+                  "毛を使った製作について書きます。"
+                ]
               }
             }
           }
@@ -330,198 +207,75 @@
           "type": "array",
           "uniqueItems": true,
           "items": {
+            "$id": "tag-entity-in-blog-entry",
             "$schema": "http://json-schema.org/draft-06/schema#",
-            "$id": "tags.json",
-            "title": "Tags",
-            "description": "Tag の定義です。",
+            "title": "Tag",
             "type": "object",
-            "required": [
-              "$schema",
-              "tags"
-            ],
+            "description": "Tag です。",
             "additionalProperties": false,
+            "required": [
+              "id",
+              "label",
+              "description"
+            ],
             "properties": {
-              "$schema": {
-                "type": "string",
-                "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+              "id": {
                 "examples": [
-                  "../../schemas/product.json",
-                  "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+                  "tag-notifications",
+                  "tag-events",
+                  "tag-wool"
+                ],
+                "type": "string",
+                "pattern": "^[a-z0-9\\-]+$",
+                "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+              },
+              "label": {
+                "type": "string",
+                "description": "Tag のラベルです。",
+                "examples": [
+                  "Notifications",
+                  "Events",
+                  "Wool"
                 ]
               },
-              "tags": {
-                "description": "Tag のリストです。",
-                "type": "array",
-                "uniqueItems": true,
-                "items": {
-                  "$schema": "http://json-schema.org/draft-06/schema#",
-                  "$id": "tag.json",
-                  "title": "Tag",
-                  "type": "object",
-                  "description": "Tag です。",
-                  "additionalProperties": false,
-                  "required": [
-                    "id",
-                    "label",
-                    "description"
-                  ],
-                  "properties": {
-                    "id": {
-                      "examples": [
-                        "tag-notifications",
-                        "tag-events",
-                        "tag-wool"
-                      ],
-                      "type": "string",
-                      "pattern": "^[a-z0-9\\-]+$",
-                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
-                    },
-                    "label": {
-                      "type": "string",
-                      "description": "Tag のラベルです。",
-                      "examples": [
-                        "Notifications",
-                        "Events",
-                        "Wool"
-                      ]
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "Tag の説明です。",
-                      "examples": [
-                        "お知らせです。",
-                        "イベントへの出展やイベント終了後の感想などを書きます。",
-                        "毛を使った製作について書きます。"
-                      ]
-                    }
-                  },
-                  "definitions": {
-                    "id": {
-                      "examples": [
-                        "tag-notifications",
-                        "tag-events",
-                        "tag-wool"
-                      ],
-                      "type": "string",
-                      "pattern": "^[a-z0-9\\-]+$",
-                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
-                    },
-                    "label": {
-                      "type": "string",
-                      "description": "Tag のラベルです。",
-                      "examples": [
-                        "Notifications",
-                        "Events",
-                        "Wool"
-                      ]
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "Tag の説明です。",
-                      "examples": [
-                        "お知らせです。",
-                        "イベントへの出展やイベント終了後の感想などを書きます。",
-                        "毛を使った製作について書きます。"
-                      ]
-                    }
-                  }
-                }
-              },
-              "created_at": {
+              "description": {
                 "type": "string",
-                "format": "date-time",
-                "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+                "description": "Tag の説明です。",
                 "examples": [
-                  "2019-01-01T07:39:05.000Z"
-                ]
-              },
-              "modified_at": {
-                "type": "string",
-                "format": "date-time",
-                "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
-                "examples": [
-                  "2019-01-25T10:26:57.000Z"
+                  "お知らせです。",
+                  "イベントへの出展やイベント終了後の感想などを書きます。",
+                  "毛を使った製作について書きます。"
                 ]
               }
             },
             "definitions": {
-              "tags": {
-                "description": "Tag のリストです。",
-                "type": "array",
-                "uniqueItems": true,
-                "items": {
-                  "$schema": "http://json-schema.org/draft-06/schema#",
-                  "$id": "tag.json",
-                  "title": "Tag",
-                  "type": "object",
-                  "description": "Tag です。",
-                  "additionalProperties": false,
-                  "required": [
-                    "id",
-                    "label",
-                    "description"
-                  ],
-                  "properties": {
-                    "id": {
-                      "examples": [
-                        "tag-notifications",
-                        "tag-events",
-                        "tag-wool"
-                      ],
-                      "type": "string",
-                      "pattern": "^[a-z0-9\\-]+$",
-                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
-                    },
-                    "label": {
-                      "type": "string",
-                      "description": "Tag のラベルです。",
-                      "examples": [
-                        "Notifications",
-                        "Events",
-                        "Wool"
-                      ]
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "Tag の説明です。",
-                      "examples": [
-                        "お知らせです。",
-                        "イベントへの出展やイベント終了後の感想などを書きます。",
-                        "毛を使った製作について書きます。"
-                      ]
-                    }
-                  },
-                  "definitions": {
-                    "id": {
-                      "examples": [
-                        "tag-notifications",
-                        "tag-events",
-                        "tag-wool"
-                      ],
-                      "type": "string",
-                      "pattern": "^[a-z0-9\\-]+$",
-                      "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
-                    },
-                    "label": {
-                      "type": "string",
-                      "description": "Tag のラベルです。",
-                      "examples": [
-                        "Notifications",
-                        "Events",
-                        "Wool"
-                      ]
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "Tag の説明です。",
-                      "examples": [
-                        "お知らせです。",
-                        "イベントへの出展やイベント終了後の感想などを書きます。",
-                        "毛を使った製作について書きます。"
-                      ]
-                    }
-                  }
-                }
+              "id": {
+                "examples": [
+                  "tag-notifications",
+                  "tag-events",
+                  "tag-wool"
+                ],
+                "type": "string",
+                "pattern": "^[a-z0-9\\-]+$",
+                "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+              },
+              "label": {
+                "type": "string",
+                "description": "Tag のラベルです。",
+                "examples": [
+                  "Notifications",
+                  "Events",
+                  "Wool"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "description": "Tag の説明です。",
+                "examples": [
+                  "お知らせです。",
+                  "イベントへの出展やイベント終了後の感想などを書きます。",
+                  "毛を使った製作について書きます。"
+                ]
               }
             }
           }
@@ -553,8 +307,8 @@
           "type": "array",
           "uniqueItems": true,
           "items": {
+            "$id": "tag-entity-in-tags",
             "$schema": "http://json-schema.org/draft-06/schema#",
-            "$id": "tag.json",
             "title": "Tag",
             "type": "object",
             "description": "Tag です。",
@@ -649,8 +403,8 @@
           "type": "array",
           "uniqueItems": true,
           "items": {
+            "$id": "tag-entity-in-tags",
             "$schema": "http://json-schema.org/draft-06/schema#",
-            "$id": "tag.json",
             "title": "Tag",
             "type": "object",
             "description": "Tag です。",
@@ -1058,8 +812,8 @@
                 "type": "array",
                 "uniqueItems": true,
                 "items": {
+                  "$id": "raw-material-entity-in-product",
                   "$schema": "http://json-schema.org/draft-06/schema#",
-                  "$id": "raw-material.json",
                   "title": "Raw material",
                   "description": "Product の原材料です。",
                   "type": "object",
@@ -1469,8 +1223,8 @@
                 "type": "array",
                 "uniqueItems": true,
                 "items": {
+                  "$id": "dyeing-material-entity-in-product",
                   "$schema": "http://json-schema.org/draft-06/schema#",
-                  "$id": "dyeing-material.json",
                   "title": "Dyeing material",
                   "description": "Product に使用されている染色素材です。",
                   "type": "object",
@@ -1729,9 +1483,9 @@
                       "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
                     },
                     "dyeing_material_type_entity": {
+                      "$id": "dyeing-material-type-entity-in-dyeing-material",
                       "description": "dyeing_material_type_id を元に参照した Dyeing material type です。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
                       "$schema": "http://json-schema.org/draft-06/schema#",
-                      "$id": "dyeing-material-type.json",
                       "title": "Dyeing material type",
                       "type": "object",
                       "required": [
@@ -2295,8 +2049,8 @@
                 "type": "array",
                 "uniqueItems": true,
                 "items": {
+                  "$id": "raw-material-entity-in-product",
                   "$schema": "http://json-schema.org/draft-06/schema#",
-                  "$id": "raw-material.json",
                   "title": "Raw material",
                   "description": "Product の原材料です。",
                   "type": "object",
@@ -2706,8 +2460,8 @@
                 "type": "array",
                 "uniqueItems": true,
                 "items": {
+                  "$id": "dyeing-material-entity-in-product",
                   "$schema": "http://json-schema.org/draft-06/schema#",
-                  "$id": "dyeing-material.json",
                   "title": "Dyeing material",
                   "description": "Product に使用されている染色素材です。",
                   "type": "object",
@@ -2966,9 +2720,9 @@
                       "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
                     },
                     "dyeing_material_type_entity": {
+                      "$id": "dyeing-material-type-entity-in-dyeing-material",
                       "description": "dyeing_material_type_id を元に参照した Dyeing material type です。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
                       "$schema": "http://json-schema.org/draft-06/schema#",
-                      "$id": "dyeing-material-type.json",
                       "title": "Dyeing material type",
                       "type": "object",
                       "required": [
@@ -3749,9 +3503,9 @@
           "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
         },
         "dyeing_material_type_entity": {
+          "$id": "dyeing-material-type-entity-in-dyeing-material",
           "description": "dyeing_material_type_id を元に参照した Dyeing material type です。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
           "$schema": "http://json-schema.org/draft-06/schema#",
-          "$id": "dyeing-material-type.json",
           "title": "Dyeing material type",
           "type": "object",
           "required": [

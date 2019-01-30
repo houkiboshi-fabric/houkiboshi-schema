@@ -353,7 +353,8 @@
             "type": "array",
             "uniqueItems": true,
             "items": {
-              "$ref": "raw-material.json"
+              "$ref": "raw-material.json",
+              "$id": "raw-material-entity-in-product"
             }
           },
           "used_at": {
@@ -487,7 +488,8 @@
             "type": "array",
             "uniqueItems": true,
             "items": {
-              "$ref": "dyeing-material.json"
+              "$ref": "dyeing-material.json",
+              "$id": "dyeing-material-entity-in-product"
             }
           },
           "used_at": {

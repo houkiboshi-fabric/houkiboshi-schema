@@ -118,6 +118,7 @@
     },
     "dyeing_material_type_entity": {
       "$ref": "dyeing-material-type.json",
+      "$id": "dyeing-material-type-entity-in-dyeing-material",
       "description": "dyeing_material_type_id を元に参照した Dyeing material type です。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。"
     },
     "image": {

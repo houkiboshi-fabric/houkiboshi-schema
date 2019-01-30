@@ -43,7 +43,7 @@ definitions:
         - tag-events
         - tag-wool
     items:
-      $ref: 'tag.json#/properties/id'
+      $ref: 'tag.json#/definitions/id'
   tag_entities:
     description: |-
       tag_ids を元に参照した Tag のリストです。
@@ -51,4 +51,5 @@ definitions:
     type: array
     uniqueItems: true
     items:
-      $ref: 'tags.json'
+      $ref: 'tag.json'
+      $id: 'tag-entity-in-blog-entry'
