@@ -40,6 +40,8 @@ properties:
     $ref: '#/definitions/images_alt'
   dyeing_material_type_id:
     $ref: '#/definitions/dyeing_material_type_id'
+  dyeing_material_type_entity:
+    $ref: '#/definitions/dyeing_material_type_entity'
   created_at:
     $ref: 'page.json#/definitions/created_at'
   modified_at:
