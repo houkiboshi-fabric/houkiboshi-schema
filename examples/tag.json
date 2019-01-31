@@ -1,0 +1,9 @@
+{
+  "$schema": "../docs/ref-parsed/tag.json",
+  "id": "tag-notifications",
+  "name": "Notifications",
+  "title": "Notifications",
+  "media_image": null,
+  "body": null,
+  "description": "お知らせです。"
+}

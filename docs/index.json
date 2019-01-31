@@ -7,8 +7,8 @@
     "blog-entry": {
       "$ref": "blog-entry.json#"
     },
-    "tags": {
-      "$ref": "tags.json#"
+    "tag": {
+      "$ref": "tag.json#"
     },
     "product": {
       "$ref": "product.json#"

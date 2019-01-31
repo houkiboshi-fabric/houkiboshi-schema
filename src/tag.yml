@@ -6,17 +6,33 @@ description: |-
   Tag です。
 additionalProperties: false
 required:
+  - $schema
   - id
-  - label
+  - name
+  - title
   - description
+  - media_image
+  - body
 
 properties:
+  $schema:
+    $ref: 'index.json#/definitions/$schema'
   id:
     $ref: '#/definitions/id'
-  label:
-    $ref: '#/definitions/label'
+  name:
+    $ref: '#/definitions/name'
+  title:
+    $ref: '#/definitions/title'
   description:
     $ref: '#/definitions/description'
+  media_image:
+    $ref: 'page.json#/definitions/media_image'
+  body:
+    $ref: 'page.json#/definitions/body'
+  created_at:
+    $ref: 'page.json#/definitions/created_at'
+  modified_at:
+    $ref: 'page.json#/definitions/modified_at'
 
 definitions:
   id:
@@ -25,18 +41,24 @@ definitions:
       - tag-notifications
       - tag-events
       - tag-wool
-  label:
-    type: string
+  name:
     description: |-
-      Tag のラベルです。
+      Tag のラベルとなる名前です。
+    type: string
+    examples:
+      - Notifications
+      - Events
+      - Wool
+  title:
+    $ref: 'page.json#/definitions/title'
+    description: |-
+      Tag の Page タイトルです。
     examples:
       - Notifications
       - Events
       - Wool
   description:
-    type: string
-    description: |-
-      Tag の説明です。
+    $ref: 'page.json#/definitions/description'
     examples:
       - お知らせです。
       - イベントへの出展やイベント終了後の感想などを書きます。
