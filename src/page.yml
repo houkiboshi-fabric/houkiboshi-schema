@@ -26,6 +26,8 @@ properties:
     $ref: '#/definitions/created_at'
   modified_at:
     $ref: '#/definitions/modified_at'
+  path:
+    $ref: '#/definitions/path'
 
 definitions:
   title:
@@ -98,3 +100,15 @@ definitions:
       このプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。
     examples:
       - 2019-01-25T10:26:57.000Z
+  path:
+    type: string
+    format: uri-reference
+    description: |-
+      Page の相対 URI です。
+      URI のフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。
+      参考 https://tools.ietf.org/html/rfc3986#section-4.1
+      このプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。
+    examples:
+      - /
+      - /blog
+      - /products

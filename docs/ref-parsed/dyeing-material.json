@@ -271,6 +271,16 @@
           "examples": [
             "2019-01-25T10:26:57.000Z"
           ]
+        },
+        "path": {
+          "type": "string",
+          "format": "uri-reference",
+          "description": "Page の相対 URI です。\nURI のフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+          "examples": [
+            "/",
+            "/blog",
+            "/products"
+          ]
         }
       },
       "definitions": {
@@ -367,6 +377,16 @@
       "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
       "examples": [
         "2019-01-25T10:26:57.000Z"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "format": "uri-reference",
+      "description": "Page の相対 URI です。\nURI のフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+      "examples": [
+        "/",
+        "/blog",
+        "/products"
       ]
     }
   },
@@ -577,6 +597,16 @@
           "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
           "examples": [
             "2019-01-25T10:26:57.000Z"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "format": "uri-reference",
+          "description": "Page の相対 URI です。\nURI のフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+          "examples": [
+            "/",
+            "/blog",
+            "/products"
           ]
         }
       },

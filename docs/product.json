@@ -85,6 +85,9 @@
     },
     "modified_at": {
       "$ref": "page.json#/definitions/modified_at"
+    },
+    "path": {
+      "$ref": "page.json#/definitions/path"
     }
   },
   "definitions": {
