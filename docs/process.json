@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "process.json",
+  "title": "Process",
+  "type": "object",
+  "description": "Process は Product の製法です。",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "id",
+    "name",
+    "name_kana",
+    "title",
+    "description",
+    "media_image",
+    "body"
+  ],
+  "properties": {
+    "$schema": {
+      "$ref": "index.json#/definitions/$schema"
+    },
+    "id": {
+      "$ref": "#/definitions/id"
+    },
+    "name": {
+      "$ref": "#/definitions/name"
+    },
+    "name_kana": {
+      "$ref": "#/definitions/name_kana"
+    },
+    "title": {
+      "$ref": "#/definitions/title"
+    },
+    "description": {
+      "$ref": "#/definitions/description"
+    },
+    "media_image": {
+      "$ref": "page.json#/definitions/media_image"
+    },
+    "body": {
+      "$ref": "page.json#/definitions/body"
+    },
+    "created_at": {
+      "$ref": "page.json#/definitions/created_at"
+    },
+    "modified_at": {
+      "$ref": "page.json#/definitions/modified_at"
+    },
+    "path": {
+      "$ref": "page.json#/definitions/path"
+    }
+  },
+  "definitions": {
+    "id": {
+      "$ref": "index.json#/definitions/id",
+      "description": "id です。\n常に \"process-\" から開始します。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "pattern": "^process-[a-z0-9\\-]+$",
+      "examples": [
+        "process-kusaki-zome",
+        "process-katazome",
+        "process-hand-spinning"
+      ]
+    },
+    "name": {
+      "description": "Process のラベルとなる名前です。",
+      "type": "string",
+      "examples": [
+        "草木染め",
+        "型染め",
+        "手紡ぎ"
+      ]
+    },
+    "name_kana": {
+      "$ref": "index.json#/definitions/name_kana",
+      "description": "Process の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+      "examples": [
+        "くさきぞめ",
+        "かたぞめ",
+        "てつむぎ"
+      ]
+    },
+    "title": {
+      "$ref": "page.json#/definitions/title",
+      "description": "Process の Page タイトルです。",
+      "examples": [
+        "草木染め",
+        "型染め",
+        "手紡ぎ"
+      ]
+    },
+    "description": {
+      "$ref": "page.json#/definitions/description",
+      "examples": [
+        "植物の根・皮・葉・実などから抽出した染料による染色方法です。",
+        "型紙・木型・金型、その他の染型を用いて布地に模様を染める方法です。",
+        "手作業で紡いた糸を使っています。"
+      ]
+    }
+  }
+}

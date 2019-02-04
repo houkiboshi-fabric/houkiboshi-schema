@@ -1,0 +1,10 @@
+{
+  "$schema": "../docs/ref-parsed/process.json",
+  "id": "process-kusaki-zome",
+  "name": "草木染め",
+  "name_kana": "くさきぞめ",
+  "title": "草木染め",
+  "description": "",
+  "media_image": null,
+  "body": null
+}

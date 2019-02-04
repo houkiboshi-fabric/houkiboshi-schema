@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "process.json",
+  "title": "Process",
+  "type": "object",
+  "description": "Process は Product の製法です。",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "id",
+    "name",
+    "name_kana",
+    "title",
+    "description",
+    "media_image",
+    "body"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+      "examples": [
+        "../../schemas/product.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
+      ]
+    },
+    "id": {
+      "description": "id です。\n常に \"process-\" から開始します。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "pattern": "^process-[a-z0-9\\-]+$",
+      "examples": [
+        "process-kusaki-zome",
+        "process-katazome",
+        "process-hand-spinning"
+      ],
+      "type": "string"
+    },
+    "name": {
+      "description": "Process のラベルとなる名前です。",
+      "type": "string",
+      "examples": [
+        "草木染め",
+        "型染め",
+        "手紡ぎ"
+      ]
+    },
+    "name_kana": {
+      "description": "Process の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+      "examples": [
+        "くさきぞめ",
+        "かたぞめ",
+        "てつむぎ"
+      ],
+      "type": "string",
+      "pattern": "^[0-9ぁ-んー]+$"
+    },
+    "title": {
+      "description": "Process の Page タイトルです。",
+      "examples": [
+        "草木染め",
+        "型染め",
+        "手紡ぎ"
+      ],
+      "type": "string"
+    },
+    "description": {
+      "examples": [
+        "植物の根・皮・葉・実などから抽出した染料による染色方法です。",
+        "型紙・木型・金型、その他の染型を用いて布地に模様を染める方法です。",
+        "手作業で紡いた糸を使っています。"
+      ],
+      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+      "type": "string"
+    },
+    "media_image": {
+      "description": "OGP や Twitter Card で利用する画像です。\n画像がない場合は null を指定します。\n推奨アスペクト比を満たさない場合、画像の一部が自動的に切り取られて表示される場合があります。\n\n推奨解像度: 1200 * 630 px 以上\n推奨アスペクト比: 1.91:1\nサポートされる画像フォーマット: jpg, png, webp, gif\n\nファイルパスは assets repository からオリジナル画像を取得する際に利用します。\nファイルパスのフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "body": {
+      "description": "本文の情報を持つファイルへの相対パスです。\nファイルフォーマットは Markdown 形式です。\n本文を必要としない場合は null を指定します。",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "examples": [
+        "body.md"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "作成日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "modified_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "更新日時です。\nフォーマットは RFC 3339, section 5.6 に準拠します。\nタイムゾーンは UTC です。\nhttps://tools.ietf.org/html/rfc3339#section-5.6\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+      "examples": [
+        "2019-01-25T10:26:57.000Z"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "format": "uri-reference",
+      "description": "Page の相対 URI です。\nURI のフォーマットは RFC3986 Section-4.1 に準拠する相対パスです。\n参考 https://tools.ietf.org/html/rfc3986#section-4.1\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+      "examples": [
+        "/",
+        "/blog",
+        "/products"
+      ]
+    }
+  },
+  "definitions": {
+    "id": {
+      "description": "id です。\n常に \"process-\" から開始します。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
+      "pattern": "^process-[a-z0-9\\-]+$",
+      "examples": [
+        "process-kusaki-zome",
+        "process-katazome",
+        "process-hand-spinning"
+      ],
+      "type": "string"
+    },
+    "name": {
+      "description": "Process のラベルとなる名前です。",
+      "type": "string",
+      "examples": [
+        "草木染め",
+        "型染め",
+        "手紡ぎ"
+      ]
+    },
+    "name_kana": {
+      "description": "Process の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
+      "examples": [
+        "くさきぞめ",
+        "かたぞめ",
+        "てつむぎ"
+      ],
+      "type": "string",
+      "pattern": "^[0-9ぁ-んー]+$"
+    },
+    "title": {
+      "description": "Process の Page タイトルです。",
+      "examples": [
+        "草木染め",
+        "型染め",
+        "手紡ぎ"
+      ],
+      "type": "string"
+    },
+    "description": {
+      "examples": [
+        "植物の根・皮・葉・実などから抽出した染料による染色方法です。",
+        "型紙・木型・金型、その他の染型を用いて布地に模様を染める方法です。",
+        "手作業で紡いた糸を使っています。"
+      ],
+      "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
+      "type": "string"
+    }
+  }
+}

@@ -18,6 +18,8 @@ properties:
     $ref: 'dyeing-material-type.json#'
   page:
     $ref: 'page.json#'
+  process:
+    $ref: 'process.json#'
 
 definitions:
   $schema:

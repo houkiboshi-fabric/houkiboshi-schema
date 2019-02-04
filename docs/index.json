@@ -24,6 +24,9 @@
     },
     "page": {
       "$ref": "page.json#"
+    },
+    "process": {
+      "$ref": "process.json#"
     }
   },
   "definitions": {

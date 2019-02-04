@@ -61,6 +61,12 @@
           "/examples/blog-entry.json"
         ],
         "url": "./docs/blog-entry.json"
+      },
+      {
+        "fileMatch": [
+          "/examples/process.json"
+        ],
+        "url": "./docs/process.json"
       }
     ],
     "yaml.completion": true,
