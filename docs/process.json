@@ -17,7 +17,7 @@
   ],
   "properties": {
     "$schema": {
-      "$ref": "index.json#/definitions/$schema"
+      "$ref": "#/definitions/$schema"
     },
     "id": {
       "$ref": "#/definitions/id"
@@ -51,6 +51,14 @@
     }
   },
   "definitions": {
+    "$schema": {
+      "$ref": "index.json#/definitions/$schema",
+      "pattern": "(^|/)process\\.json$",
+      "examples": [
+        "../../../schemas/process.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/process.json"
+      ]
+    },
     "id": {
       "$ref": "index.json#/definitions/id",
       "description": "id です。\n常に \"process-\" から開始します。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",

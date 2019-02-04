@@ -17,7 +17,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": {
-      "$ref": "index.json#/definitions/$schema"
+      "$ref": "#/definitions/$schema"
     },
     "id": {
       "$ref": "#/definitions/id"
@@ -51,6 +51,14 @@
     }
   },
   "definitions": {
+    "$schema": {
+      "$ref": "index.json#/definitions/$schema",
+      "pattern": "(^|/)dyeing-material-type\\.json$",
+      "examples": [
+        "../../../schemas/dyeing-material-type.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/dyeing-material-type.json"
+      ]
+    },
     "id": {
       "$ref": "index.json#/definitions/id",
       "examples": [

@@ -26,7 +26,7 @@ additionalProperties: false
 
 properties:
   $schema:
-    $ref: 'index.json#/definitions/$schema'
+    $ref: '#/definitions/$schema'
   id:
     $ref: '#/definitions/id'
   name:
@@ -69,6 +69,12 @@ properties:
     $ref: 'page.json#/definitions/path'
 
 definitions:
+  $schema:
+    $ref: 'index.json#/definitions/$schema'
+    pattern: '(^|/)product\.json$'
+    examples:
+      - ../../../schemas/product.json
+      - https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json
   id:
     $ref: 'index.json#/definitions/id'
     examples:

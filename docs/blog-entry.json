@@ -15,7 +15,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": {
-      "$ref": "index.json#/definitions/$schema"
+      "$ref": "#/definitions/$schema"
     },
     "title": {
       "$ref": "page.json#/definitions/title"
@@ -46,6 +46,14 @@
     }
   },
   "definitions": {
+    "$schema": {
+      "$ref": "index.json#/definitions/$schema",
+      "pattern": "(^|/)blog-entry\\.json$",
+      "examples": [
+        "../../../schemas/blog-entry.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/blog-entry.json"
+      ]
+    },
     "tag_ids": {
       "description": "Tag id のリストです。",
       "type": "array",

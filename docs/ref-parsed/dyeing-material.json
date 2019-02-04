@@ -20,12 +20,13 @@
   "additionalProperties": false,
   "properties": {
     "$schema": {
-      "type": "string",
-      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+      "pattern": "(^|/)dyeing-material\\.json$",
       "examples": [
-        "../../schemas/product.json",
-        "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
-      ]
+        "../../../schemas/dyeing-material.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/dyeing-material.json"
+      ],
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
     },
     "id": {
       "examples": [
@@ -171,12 +172,13 @@
       "additionalProperties": false,
       "properties": {
         "$schema": {
-          "type": "string",
-          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+          "pattern": "(^|/)dyeing-material\\.json$",
           "examples": [
-            "../../schemas/product.json",
-            "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
-          ]
+            "../../../schemas/dyeing-material.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/dyeing-material.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
         },
         "id": {
           "examples": [
@@ -284,6 +286,15 @@
         }
       },
       "definitions": {
+        "$schema": {
+          "pattern": "(^|/)dyeing-material-type\\.json$",
+          "examples": [
+            "../../../schemas/dyeing-material-type.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/dyeing-material-type.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
         "id": {
           "examples": [
             "plant-dyes",
@@ -391,6 +402,15 @@
     }
   },
   "definitions": {
+    "$schema": {
+      "pattern": "(^|/)dyeing-material\\.json$",
+      "examples": [
+        "../../../schemas/dyeing-material.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/dyeing-material.json"
+      ],
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+    },
     "id": {
       "examples": [
         "cherry",
@@ -498,12 +518,13 @@
       "additionalProperties": false,
       "properties": {
         "$schema": {
-          "type": "string",
-          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+          "pattern": "(^|/)dyeing-material\\.json$",
           "examples": [
-            "../../schemas/product.json",
-            "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
-          ]
+            "../../../schemas/dyeing-material.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/dyeing-material.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
         },
         "id": {
           "examples": [
@@ -611,6 +632,15 @@
         }
       },
       "definitions": {
+        "$schema": {
+          "pattern": "(^|/)dyeing-material-type\\.json$",
+          "examples": [
+            "../../../schemas/dyeing-material-type.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/dyeing-material-type.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
         "id": {
           "examples": [
             "plant-dyes",

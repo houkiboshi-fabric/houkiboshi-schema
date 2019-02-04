@@ -13,7 +13,7 @@ additionalProperties: false
 
 properties:
   $schema:
-    $ref: 'index.json#/definitions/$schema'
+    $ref: '#/definitions/$schema'
   title:
     $ref: '#/definitions/title'
   description:
@@ -30,6 +30,12 @@ properties:
     $ref: '#/definitions/path'
 
 definitions:
+  $schema:
+    $ref: 'index.json#/definitions/$schema'
+    pattern: '(^|/)page\.json$'
+    examples:
+      - ../../../schemas/page.json
+      - https://houkiboshi-fabric.github.io/schema/ref-parsed/page.json
   title:
     description: |-
       ページタイトルです。

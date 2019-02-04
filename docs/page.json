@@ -14,7 +14,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": {
-      "$ref": "index.json#/definitions/$schema"
+      "$ref": "#/definitions/$schema"
     },
     "title": {
       "$ref": "#/definitions/title"
@@ -39,6 +39,14 @@
     }
   },
   "definitions": {
+    "$schema": {
+      "$ref": "index.json#/definitions/$schema",
+      "pattern": "(^|/)page\\.json$",
+      "examples": [
+        "../../../schemas/page.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/page.json"
+      ]
+    },
     "title": {
       "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
       "type": "string"

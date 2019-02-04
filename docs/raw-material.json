@@ -19,7 +19,7 @@
   "additionalProperties": false,
   "properties": {
     "$schema": {
-      "$ref": "index.json#/definitions/$schema"
+      "$ref": "#/definitions/$schema"
     },
     "id": {
       "$ref": "#/definitions/id"
@@ -59,6 +59,14 @@
     }
   },
   "definitions": {
+    "$schema": {
+      "$ref": "index.json#/definitions/$schema",
+      "pattern": "(^|/)raw-material\\.json$",
+      "examples": [
+        "../../../schemas/raw-material.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/raw-material.json"
+      ]
+    },
     "id": {
       "$ref": "index.json#/definitions/id",
       "examples": [

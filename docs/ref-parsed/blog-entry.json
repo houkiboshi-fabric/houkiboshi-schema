@@ -15,12 +15,13 @@
   "additionalProperties": false,
   "properties": {
     "$schema": {
-      "type": "string",
-      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+      "pattern": "(^|/)blog-entry\\.json$",
       "examples": [
-        "../../schemas/product.json",
-        "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
-      ]
+        "../../../schemas/blog-entry.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/blog-entry.json"
+      ],
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
     },
     "title": {
       "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
@@ -100,12 +101,13 @@
         ],
         "properties": {
           "$schema": {
-            "type": "string",
-            "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+            "pattern": "(^|/)tag\\.json$",
             "examples": [
-              "../../schemas/product.json",
-              "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
-            ]
+              "../../../schemas/tag.json",
+              "https://houkiboshi-fabric.github.io/schema/ref-parsed/tag.json"
+            ],
+            "type": "string",
+            "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
           },
           "id": {
             "description": "id です。\n常に \"tag-\" から開始します。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
@@ -198,6 +200,15 @@
           }
         },
         "definitions": {
+          "$schema": {
+            "pattern": "(^|/)tag\\.json$",
+            "examples": [
+              "../../../schemas/tag.json",
+              "https://houkiboshi-fabric.github.io/schema/ref-parsed/tag.json"
+            ],
+            "type": "string",
+            "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+          },
           "id": {
             "description": "id です。\n常に \"tag-\" から開始します。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
             "pattern": "^tag-[a-z0-9\\-]+$",
@@ -266,6 +277,15 @@
     }
   },
   "definitions": {
+    "$schema": {
+      "pattern": "(^|/)blog-entry\\.json$",
+      "examples": [
+        "../../../schemas/blog-entry.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/blog-entry.json"
+      ],
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+    },
     "tag_ids": {
       "description": "Tag id のリストです。",
       "type": "array",
@@ -310,12 +330,13 @@
         ],
         "properties": {
           "$schema": {
-            "type": "string",
-            "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+            "pattern": "(^|/)tag\\.json$",
             "examples": [
-              "../../schemas/product.json",
-              "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
-            ]
+              "../../../schemas/tag.json",
+              "https://houkiboshi-fabric.github.io/schema/ref-parsed/tag.json"
+            ],
+            "type": "string",
+            "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
           },
           "id": {
             "description": "id です。\n常に \"tag-\" から開始します。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
@@ -408,6 +429,15 @@
           }
         },
         "definitions": {
+          "$schema": {
+            "pattern": "(^|/)tag\\.json$",
+            "examples": [
+              "../../../schemas/tag.json",
+              "https://houkiboshi-fabric.github.io/schema/ref-parsed/tag.json"
+            ],
+            "type": "string",
+            "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+          },
           "id": {
             "description": "id です。\n常に \"tag-\" から開始します。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。",
             "pattern": "^tag-[a-z0-9\\-]+$",

@@ -14,12 +14,13 @@
   "additionalProperties": false,
   "properties": {
     "$schema": {
-      "type": "string",
-      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。",
+      "pattern": "(^|/)page\\.json$",
       "examples": [
-        "../../schemas/product.json",
-        "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
-      ]
+        "../../../schemas/page.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/page.json"
+      ],
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
     },
     "title": {
       "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
@@ -83,6 +84,15 @@
     }
   },
   "definitions": {
+    "$schema": {
+      "pattern": "(^|/)page\\.json$",
+      "examples": [
+        "../../../schemas/page.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/page.json"
+      ],
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+    },
     "title": {
       "description": "ページタイトルです。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 60 文字以下\n全角: 約 30 文字以下\nこれらの文字数を超える場合、Google などの検索結果で\n表示しきれなかったタイトルの一部が省略される可能性があります。\nより詳細な title の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
       "type": "string"
