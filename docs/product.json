@@ -22,7 +22,8 @@
     "size",
     "weight_g",
     "raw_materials",
-    "dyeing_materials"
+    "dyeing_materials",
+    "process_ids"
   ],
   "additionalProperties": false,
   "properties": {
@@ -79,6 +80,12 @@
     },
     "dyeing_materials": {
       "$ref": "#/definitions/dyeing_materials"
+    },
+    "process_ids": {
+      "$ref": "#/definitions/process_ids"
+    },
+    "process_entities": {
+      "$ref": "#/definitions/process_entities"
     },
     "created_at": {
       "$ref": "page.json#/definitions/created_at"
@@ -512,6 +519,29 @@
             ]
           }
         }
+      }
+    },
+    "process_ids": {
+      "description": "この Product の製法を表す Process id のリストです。",
+      "type": "array",
+      "uniqueItems": true,
+      "examples": [
+        [
+          "process-kusaki-zome",
+          "process-hand-spinning"
+        ]
+      ],
+      "items": {
+        "$ref": "process.json#/properties/id"
+      }
+    },
+    "process_entities": {
+      "description": "process_ids を元に参照した Process のリストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "process.json",
+        "$id": "process-entity-in-product"
       }
     }
   }
