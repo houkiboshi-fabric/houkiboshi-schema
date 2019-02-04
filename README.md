@@ -54,6 +54,16 @@ build & watch task for development:
 
 ```console
 $ yarn start
+// or
+$ yarn watch
+```
+
+#### Validate
+
+format, build, then validate:
+
+```console
+$ yarn validate
 ```
 
 ## Author
