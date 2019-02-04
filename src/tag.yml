@@ -39,6 +39,11 @@ properties:
 definitions:
   id:
     $ref: 'index.json#/definitions/id'
+    description: |-
+      id です。
+      常に "tag-" から開始します。
+      半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。
+      この文字列は URI の一部として利用できる必要があります。
     pattern: '^tag-[a-z0-9\-]+$'
     examples:
       - tag-notifications
