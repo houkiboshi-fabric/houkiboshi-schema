@@ -39,6 +39,7 @@ properties:
 definitions:
   id:
     $ref: 'index.json#/definitions/id'
+    pattern: '^tag-[a-z0-9\-]+$'
     examples:
       - tag-notifications
       - tag-events
