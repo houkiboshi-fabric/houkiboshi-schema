@@ -92,7 +92,7 @@
   },
   "definitions": {
     "$schema": {
-      "$ref": "index.json#/definitions/$schema",
+      "$ref": "_definitions.json#/definitions/$schema",
       "pattern": "(^|/)product\\.json$",
       "examples": [
         "../../../schemas/product.json",
@@ -100,7 +100,7 @@
       ]
     },
     "id": {
-      "$ref": "index.json#/definitions/id",
+      "$ref": "_definitions.json#/definitions/id",
       "examples": [
         "rakuda",
         "yama-no-odori",
@@ -119,7 +119,7 @@
       "type": "string"
     },
     "name_kana": {
-      "$ref": "index.json#/definitions/name_kana",
+      "$ref": "_definitions.json#/definitions/name_kana",
       "description": "Product の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
       "examples": [
         "らくだ",
@@ -138,7 +138,7 @@
       ]
     },
     "name_alt_kana": {
-      "$ref": "index.json#/definitions/name_kana",
+      "$ref": "_definitions.json#/definitions/name_kana",
       "description": "Product の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
       "examples": [
         "くさきぞめいとのすとーる",

@@ -40,13 +40,13 @@ properties:
 
 definitions:
   $schema:
-    $ref: 'index.json#/definitions/$schema'
+    $ref: '_definitions.json#/definitions/$schema'
     pattern: '(^|/)dyeing-material-type\.json$'
     examples:
       - ../../../schemas/dyeing-material-type.json
       - https://houkiboshi-fabric.github.io/schema/ref-parsed/dyeing-material-type.json
   id:
-    $ref: 'index.json#/definitions/id'
+    $ref: '_definitions.json#/definitions/id'
     examples:
       - plant-dyes
       - resin-pigments
@@ -60,7 +60,7 @@ definitions:
       - 樹脂顔料
       - 既製品
   name_kana:
-    $ref: 'index.json#/definitions/name_kana'
+    $ref: '_definitions.json#/definitions/name_kana'
     description: |-
       Dyeing material type の name の読み仮名です。
       全角平仮名と半角数字のみ使用できます。

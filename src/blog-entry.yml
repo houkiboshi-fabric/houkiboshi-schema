@@ -36,7 +36,7 @@ properties:
 
 definitions:
   $schema:
-    $ref: 'index.json#/definitions/$schema'
+    $ref: '_definitions.json#/definitions/$schema'
     pattern: '(^|/)blog-entry\.json$'
     examples:
       - ../../../schemas/blog-entry.json

@@ -1,9 +1,8 @@
 'use strict';
 
-const path = require('path');
 const glob = require('glob');
 const { mkdirSync, readFileSync, writeFileSync } = require('fs');
-const { relative } = require('path');
+const { basename, format, parse, relative, resolve } = require('path');
 
 const $RefParser = require('json-schema-ref-parser');
 const consola = require('consola');
@@ -37,17 +36,17 @@ const loadYaml = yamlPath => {
 
 const writeFile = (distPath, data) => {
   try {
-    mkdirSync(path.parse(distPath).dir, { recursive: true });
+    mkdirSync(parse(distPath).dir, { recursive: true });
   } catch (err) {
     consola.error(err);
   }
   writeFileSync(distPath, data);
-  consola.success('Export:', path.relative(rootDir, distPath));
+  consola.success('Export:', relative(rootDir, distPath));
 };
 
 const srcPathToDist = yamlPath => {
-  const { dir, name } = path.parse(yamlPath);
-  return path.format({
+  const { dir, name } = parse(yamlPath);
+  return format({
     dir: dir.replace(src, dist),
     name,
     ext: '.json'
@@ -61,15 +60,28 @@ const buildSchema = ({ yamlPath, data }) => {
 };
 
 const buildSchemaRefParsed = ({ yamlPath }) => {
-  const { dir, name } = path.parse(yamlPath);
+  const { dir, name } = parse(yamlPath);
   const jsonPath = srcPathToDist(yamlPath);
   const refParsedData = dereference(jsonPath);
-  const refParsedDistPath = path.format({
-    dir: path.resolve(dir.replace(src, dist), 'ref-parsed'),
+  const refParsedDistPath = format({
+    dir: resolve(dir.replace(src, dist), 'ref-parsed'),
     name,
     ext: '.json'
   });
   writeFile(refParsedDistPath, JSON.stringify(refParsedData, null, 2));
+};
+
+const buildIndex = () => {
+  const files = glob.sync(resolve(dist, 'ref-parsed', '*.json'));
+  const content = files.map(filePath => {
+    const value = JSON.parse(readFileSync(filePath));
+    return {
+      id: value['$id'],
+      value
+    };
+  });
+  const distPath = resolve(dist, 'ref-parsed', 'index.json');
+  writeFileSync(distPath, JSON.stringify(content, null, 2));
 };
 
 const buildAll = () => {
@@ -82,6 +94,7 @@ const buildAll = () => {
   });
   schemas.forEach(buildSchema);
   schemas.forEach(buildSchemaRefParsed);
+  buildIndex();
 };
 
 module.exports = {

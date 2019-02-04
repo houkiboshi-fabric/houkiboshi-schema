@@ -70,13 +70,13 @@ properties:
 
 definitions:
   $schema:
-    $ref: 'index.json#/definitions/$schema'
+    $ref: '_definitions.json#/definitions/$schema'
     pattern: '(^|/)product\.json$'
     examples:
       - ../../../schemas/product.json
       - https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json
   id:
-    $ref: 'index.json#/definitions/id'
+    $ref: '_definitions.json#/definitions/id'
     examples:
       - rakuda
       - yama-no-odori
@@ -91,7 +91,7 @@ definitions:
       - 裂織のかばん
     type: string
   name_kana:
-    $ref: 'index.json#/definitions/name_kana'
+    $ref: '_definitions.json#/definitions/name_kana'
     description: |-
       Product の name の読み仮名です。
       全角平仮名と半角数字のみ使用できます。
@@ -110,7 +110,7 @@ definitions:
       - 飾る布
       - 草木染色腹帯
   name_alt_kana:
-    $ref: 'index.json#/definitions/name_kana'
+    $ref: '_definitions.json#/definitions/name_kana'
     description: |-
       Product の名前の読み方を表す仮名です。
       全角平仮名と半角数字のみ使用できます。

@@ -60,7 +60,7 @@
   },
   "definitions": {
     "$schema": {
-      "$ref": "index.json#/definitions/$schema",
+      "$ref": "_definitions.json#/definitions/$schema",
       "pattern": "(^|/)raw-material\\.json$",
       "examples": [
         "../../../schemas/raw-material.json",
@@ -68,7 +68,7 @@
       ]
     },
     "id": {
-      "$ref": "index.json#/definitions/id",
+      "$ref": "_definitions.json#/definitions/id",
       "examples": [
         "cotton",
         "wool",
@@ -85,7 +85,7 @@
       ]
     },
     "name_kana": {
-      "$ref": "index.json#/definitions/name_kana",
+      "$ref": "_definitions.json#/definitions/name_kana",
       "description": "Raw material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
       "examples": [
         "めん",

@@ -67,7 +67,7 @@
   },
   "definitions": {
     "$schema": {
-      "$ref": "index.json#/definitions/$schema",
+      "$ref": "_definitions.json#/definitions/$schema",
       "pattern": "(^|/)dyeing-material\\.json$",
       "examples": [
         "../../../schemas/dyeing-material.json",
@@ -75,7 +75,7 @@
       ]
     },
     "id": {
-      "$ref": "index.json#/definitions/id",
+      "$ref": "_definitions.json#/definitions/id",
       "examples": [
         "cherry",
         "kumquat",
@@ -94,7 +94,7 @@
       ]
     },
     "name_kana": {
-      "$ref": "index.json#/definitions/name_kana",
+      "$ref": "_definitions.json#/definitions/name_kana",
       "description": "Dyeing material の名前の読み方を表す仮名です。\n全角平仮名と半角数字のみ使用できます。",
       "examples": [
         "さくら",

@@ -52,7 +52,7 @@
   },
   "definitions": {
     "$schema": {
-      "$ref": "index.json#/definitions/$schema",
+      "$ref": "_definitions.json#/definitions/$schema",
       "pattern": "(^|/)dyeing-material-type\\.json$",
       "examples": [
         "../../../schemas/dyeing-material-type.json",
@@ -60,7 +60,7 @@
       ]
     },
     "id": {
-      "$ref": "index.json#/definitions/id",
+      "$ref": "_definitions.json#/definitions/id",
       "examples": [
         "plant-dyes",
         "resin-pigments",
@@ -77,7 +77,7 @@
       ]
     },
     "name_kana": {
-      "$ref": "index.json#/definitions/name_kana",
+      "$ref": "_definitions.json#/definitions/name_kana",
       "description": "Dyeing material type の name の読み仮名です。\n全角平仮名と半角数字のみ使用できます。",
       "examples": [
         "しょくぶつせんりょう",

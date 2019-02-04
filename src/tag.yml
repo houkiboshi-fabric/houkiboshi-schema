@@ -38,13 +38,13 @@ properties:
 
 definitions:
   $schema:
-    $ref: 'index.json#/definitions/$schema'
+    $ref: '_definitions.json#/definitions/$schema'
     pattern: '(^|/)tag\.json$'
     examples:
       - ../../../schemas/tag.json
       - https://houkiboshi-fabric.github.io/schema/ref-parsed/tag.json
   id:
-    $ref: 'index.json#/definitions/id'
+    $ref: '_definitions.json#/definitions/id'
     description: |-
       id です。
       常に "tag-" から開始します。

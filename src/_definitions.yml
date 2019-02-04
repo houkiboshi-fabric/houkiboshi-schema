@@ -1,25 +1,7 @@
 $schema: http://json-schema.org/draft-06/schema#
-$id: index.json
-title: Schema index
+$id: _definitions.json
+title: definitions
 description: 参照用
-
-properties:
-  blog-entry:
-    $ref: 'blog-entry.json#'
-  tag:
-    $ref: 'tag.json#'
-  product:
-    $ref: 'product.json#'
-  raw-material:
-    $ref: 'raw-material.json#'
-  dyeing-material:
-    $ref: 'dyeing-material.json#'
-  dyeing-material-type:
-    $ref: 'dyeing-material-type.json#'
-  page:
-    $ref: 'page.json#'
-  process:
-    $ref: 'process.json#'
 
 definitions:
   $schema:
