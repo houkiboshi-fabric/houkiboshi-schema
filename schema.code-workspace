@@ -67,6 +67,12 @@
           "/examples/process.json"
         ],
         "url": "./docs/process.json"
+      },
+      {
+        "fileMatch": [
+          "/examples/instructions.json"
+        ],
+        "url": "./docs/instructions.json"
       }
     ],
     "yaml.completion": true,

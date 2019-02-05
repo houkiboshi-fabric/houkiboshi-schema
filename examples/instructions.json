@@ -1,0 +1,29 @@
+{
+  "$schema": "../docs/ref-parsed/instructions.json",
+  "instructions": [
+    {
+      "id": "hand-wash",
+      "instruction_category_id": "washing",
+      "value": "型崩れを防ぐため、手洗いをおすすめします。"
+    },
+    {
+      "id": "machine-wash",
+      "instruction_category_id": "washing",
+      "value": "洗濯機で洗えます。"
+    }
+  ],
+  "instruction_categories": [
+    {
+      "id": "washing",
+      "label": "洗濯"
+    },
+    {
+      "id": "using",
+      "label": "使用"
+    },
+    {
+      "id": "keeping",
+      "label": "保管"
+    }
+  ]
+}
