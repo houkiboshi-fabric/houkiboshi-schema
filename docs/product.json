@@ -23,7 +23,8 @@
     "weight_g",
     "raw_materials",
     "dyeing_materials",
-    "process_ids"
+    "process_ids",
+    "instructions"
   ],
   "additionalProperties": false,
   "properties": {
@@ -86,6 +87,9 @@
     },
     "process_entities": {
       "$ref": "#/definitions/process_entities"
+    },
+    "instructions": {
+      "$ref": "#/definitions/instructions"
     },
     "created_at": {
       "$ref": "page.json#/definitions/created_at"
@@ -542,6 +546,158 @@
       "items": {
         "$ref": "process.json",
         "$id": "process-entity-in-product"
+      }
+    },
+    "instructions": {
+      "description": "この Product の取扱説明です。\nitems プロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。\n自動処理で対応できない Product 固有の追記事項は additional_items プロパティで定義します。",
+      "type": "object",
+      "required": [
+        "additional_items"
+      ],
+      "additionalProperties": false,
+      "examples": [
+        {
+          "items": [
+            {
+              "id": "hand-wash",
+              "value": "型崩れを防ぐため、手洗いをおすすめします。",
+              "instruction_category_id": "washing"
+            },
+            {
+              "id": "machine-wash",
+              "value": "洗濯機で洗えます。",
+              "instruction_category_id": "washing"
+            }
+          ]
+        },
+        {
+          "additional_items": [
+            {
+              "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+              "instruction_category_id": "using"
+            },
+            {
+              "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+              "instruction_category_id": "disclaimer"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "items": {
+          "$ref": "#/definitions/instruction_items"
+        },
+        "additional_items": {
+          "$ref": "#/definitions/instruction_additional_items"
+        }
+      }
+    },
+    "instruction_items": {
+      "description": "この Product の取扱説明リストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+      "type": "array",
+      "uniqueItems": true,
+      "examples": [
+        [
+          {
+            "id": "hand-wash",
+            "value": "型崩れを防ぐため、手洗いをおすすめします。",
+            "instruction_category_id": "washing"
+          },
+          {
+            "id": "machine-wash",
+            "value": "洗濯機で洗えます。",
+            "instruction_category_id": "washing"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/instruction_item"
+      }
+    },
+    "instruction_item": {
+      "description": "この Product の取扱説明です。",
+      "type": "object",
+      "required": [
+        "id",
+        "value",
+        "instruction_category_id"
+      ],
+      "additionalProperties": false,
+      "examples": [
+        {
+          "id": "hand-wash",
+          "value": "型崩れを防ぐため、手洗いをおすすめします。",
+          "instruction_category_id": "washing"
+        },
+        {
+          "id": "machine-wash",
+          "value": "洗濯機で洗えます。",
+          "instruction_category_id": "washing"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "instructions.json#/definitions/instruction/properties/id"
+        },
+        "value": {
+          "$ref": "instructions.json#/definitions/instruction/properties/value"
+        },
+        "instruction_category_id": {
+          "$ref": "instructions.json#/definitions/instruction_category/properties/id"
+        },
+        "instruction_category_entity": {
+          "$ref": "instructions.json#/definitions/instruction_category"
+        }
+      }
+    },
+    "instruction_additional_items": {
+      "description": "この Product の取扱説明の追記事項リストです。",
+      "type": "array",
+      "uniqueItems": true,
+      "examples": [
+        [
+          {
+            "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+            "instruction_category_id": "using"
+          },
+          {
+            "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+            "instruction_category_id": "disclaimer"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/instruction_additional_item"
+      }
+    },
+    "instruction_additional_item": {
+      "description": "この Product の取扱説明の追記事項です。",
+      "type": "object",
+      "required": [
+        "value",
+        "instruction_category_id"
+      ],
+      "additionalProperties": false,
+      "examples": [
+        {
+          "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+          "instruction_category_id": "using"
+        },
+        {
+          "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+          "instruction_category_id": "disclaimer"
+        }
+      ],
+      "properties": {
+        "value": {
+          "$ref": "instructions.json#/definitions/instruction/properties/value"
+        },
+        "instruction_category_id": {
+          "$ref": "instructions.json#/definitions/instruction_category/properties/id"
+        },
+        "instruction_category_entity": {
+          "$ref": "instructions.json#/definitions/instruction_category"
+        }
       }
     }
   }

@@ -2311,7 +2311,8 @@
         "weight_g",
         "raw_materials",
         "dyeing_materials",
-        "process_ids"
+        "process_ids",
+        "instructions"
       ],
       "additionalProperties": false,
       "properties": {
@@ -4033,6 +4034,279 @@
                 ],
                 "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
                 "type": "string"
+              }
+            }
+          }
+        },
+        "instructions": {
+          "description": "この Product の取扱説明です。\nitems プロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。\n自動処理で対応できない Product 固有の追記事項は additional_items プロパティで定義します。",
+          "type": "object",
+          "required": [
+            "additional_items"
+          ],
+          "additionalProperties": false,
+          "examples": [
+            {
+              "items": [
+                {
+                  "id": "hand-wash",
+                  "value": "型崩れを防ぐため、手洗いをおすすめします。",
+                  "instruction_category_id": "washing"
+                },
+                {
+                  "id": "machine-wash",
+                  "value": "洗濯機で洗えます。",
+                  "instruction_category_id": "washing"
+                }
+              ]
+            },
+            {
+              "additional_items": [
+                {
+                  "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+                  "instruction_category_id": "using"
+                },
+                {
+                  "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+                  "instruction_category_id": "disclaimer"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "items": {
+              "description": "この Product の取扱説明リストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+              "type": "array",
+              "uniqueItems": true,
+              "examples": [
+                [
+                  {
+                    "id": "hand-wash",
+                    "value": "型崩れを防ぐため、手洗いをおすすめします。",
+                    "instruction_category_id": "washing"
+                  },
+                  {
+                    "id": "machine-wash",
+                    "value": "洗濯機で洗えます。",
+                    "instruction_category_id": "washing"
+                  }
+                ]
+              ],
+              "items": {
+                "description": "この Product の取扱説明です。",
+                "type": "object",
+                "required": [
+                  "id",
+                  "value",
+                  "instruction_category_id"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                  {
+                    "id": "hand-wash",
+                    "value": "型崩れを防ぐため、手洗いをおすすめします。",
+                    "instruction_category_id": "washing"
+                  },
+                  {
+                    "id": "machine-wash",
+                    "value": "洗濯機で洗えます。",
+                    "instruction_category_id": "washing"
+                  }
+                ],
+                "properties": {
+                  "id": {
+                    "examples": [
+                      "hand-wash",
+                      "machine-wash",
+                      "neutral-detergent"
+                    ],
+                    "type": "string",
+                    "pattern": "^[a-z0-9\\-]+$",
+                    "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                  },
+                  "value": {
+                    "description": "取扱説明の本文です。",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                      "型崩れを防ぐため、手洗いをおすすめします。",
+                      "洗濯機で洗えます。",
+                      "変色を防ぐため、中性洗剤を使用してください。"
+                    ]
+                  },
+                  "instruction_category_id": {
+                    "examples": [
+                      "washing",
+                      "keeping",
+                      "using",
+                      "disclaimer"
+                    ],
+                    "type": "string",
+                    "pattern": "^[a-z0-9\\-]+$",
+                    "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                  },
+                  "instruction_category_entity": {
+                    "descriptions": "取扱説明のカテゴリーです。",
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "label"
+                    ],
+                    "additionalProperties": false,
+                    "examples": [
+                      {
+                        "id": "washing",
+                        "label": "洗濯"
+                      },
+                      {
+                        "id": "keeping",
+                        "label": "保管"
+                      },
+                      {
+                        "id": "using",
+                        "label": "使用"
+                      },
+                      {
+                        "id": "disclaimer",
+                        "label": "免責"
+                      }
+                    ],
+                    "properties": {
+                      "id": {
+                        "examples": [
+                          "washing",
+                          "keeping",
+                          "using",
+                          "disclaimer"
+                        ],
+                        "type": "string",
+                        "pattern": "^[a-z0-9\\-]+$",
+                        "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                      },
+                      "label": {
+                        "description": "取扱説明のカテゴリー名となるラベルです。",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                          "洗濯",
+                          "保管",
+                          "使用",
+                          "免責"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "additional_items": {
+              "description": "この Product の取扱説明の追記事項リストです。",
+              "type": "array",
+              "uniqueItems": true,
+              "examples": [
+                [
+                  {
+                    "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+                    "instruction_category_id": "using"
+                  },
+                  {
+                    "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+                    "instruction_category_id": "disclaimer"
+                  }
+                ]
+              ],
+              "items": {
+                "description": "この Product の取扱説明の追記事項です。",
+                "type": "object",
+                "required": [
+                  "value",
+                  "instruction_category_id"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                  {
+                    "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+                    "instruction_category_id": "using"
+                  },
+                  {
+                    "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+                    "instruction_category_id": "disclaimer"
+                  }
+                ],
+                "properties": {
+                  "value": {
+                    "description": "取扱説明の本文です。",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                      "型崩れを防ぐため、手洗いをおすすめします。",
+                      "洗濯機で洗えます。",
+                      "変色を防ぐため、中性洗剤を使用してください。"
+                    ]
+                  },
+                  "instruction_category_id": {
+                    "examples": [
+                      "washing",
+                      "keeping",
+                      "using",
+                      "disclaimer"
+                    ],
+                    "type": "string",
+                    "pattern": "^[a-z0-9\\-]+$",
+                    "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                  },
+                  "instruction_category_entity": {
+                    "descriptions": "取扱説明のカテゴリーです。",
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "label"
+                    ],
+                    "additionalProperties": false,
+                    "examples": [
+                      {
+                        "id": "washing",
+                        "label": "洗濯"
+                      },
+                      {
+                        "id": "keeping",
+                        "label": "保管"
+                      },
+                      {
+                        "id": "using",
+                        "label": "使用"
+                      },
+                      {
+                        "id": "disclaimer",
+                        "label": "免責"
+                      }
+                    ],
+                    "properties": {
+                      "id": {
+                        "examples": [
+                          "washing",
+                          "keeping",
+                          "using",
+                          "disclaimer"
+                        ],
+                        "type": "string",
+                        "pattern": "^[a-z0-9\\-]+$",
+                        "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                      },
+                      "label": {
+                        "description": "取扱説明のカテゴリー名となるラベルです。",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                          "洗濯",
+                          "保管",
+                          "使用",
+                          "免責"
+                        ]
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -5783,6 +6057,713 @@
                 ],
                 "description": "概要です。\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624",
                 "type": "string"
+              }
+            }
+          }
+        },
+        "instructions": {
+          "description": "この Product の取扱説明です。\nitems プロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。\n自動処理で対応できない Product 固有の追記事項は additional_items プロパティで定義します。",
+          "type": "object",
+          "required": [
+            "additional_items"
+          ],
+          "additionalProperties": false,
+          "examples": [
+            {
+              "items": [
+                {
+                  "id": "hand-wash",
+                  "value": "型崩れを防ぐため、手洗いをおすすめします。",
+                  "instruction_category_id": "washing"
+                },
+                {
+                  "id": "machine-wash",
+                  "value": "洗濯機で洗えます。",
+                  "instruction_category_id": "washing"
+                }
+              ]
+            },
+            {
+              "additional_items": [
+                {
+                  "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+                  "instruction_category_id": "using"
+                },
+                {
+                  "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+                  "instruction_category_id": "disclaimer"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "items": {
+              "description": "この Product の取扱説明リストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+              "type": "array",
+              "uniqueItems": true,
+              "examples": [
+                [
+                  {
+                    "id": "hand-wash",
+                    "value": "型崩れを防ぐため、手洗いをおすすめします。",
+                    "instruction_category_id": "washing"
+                  },
+                  {
+                    "id": "machine-wash",
+                    "value": "洗濯機で洗えます。",
+                    "instruction_category_id": "washing"
+                  }
+                ]
+              ],
+              "items": {
+                "description": "この Product の取扱説明です。",
+                "type": "object",
+                "required": [
+                  "id",
+                  "value",
+                  "instruction_category_id"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                  {
+                    "id": "hand-wash",
+                    "value": "型崩れを防ぐため、手洗いをおすすめします。",
+                    "instruction_category_id": "washing"
+                  },
+                  {
+                    "id": "machine-wash",
+                    "value": "洗濯機で洗えます。",
+                    "instruction_category_id": "washing"
+                  }
+                ],
+                "properties": {
+                  "id": {
+                    "examples": [
+                      "hand-wash",
+                      "machine-wash",
+                      "neutral-detergent"
+                    ],
+                    "type": "string",
+                    "pattern": "^[a-z0-9\\-]+$",
+                    "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                  },
+                  "value": {
+                    "description": "取扱説明の本文です。",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                      "型崩れを防ぐため、手洗いをおすすめします。",
+                      "洗濯機で洗えます。",
+                      "変色を防ぐため、中性洗剤を使用してください。"
+                    ]
+                  },
+                  "instruction_category_id": {
+                    "examples": [
+                      "washing",
+                      "keeping",
+                      "using",
+                      "disclaimer"
+                    ],
+                    "type": "string",
+                    "pattern": "^[a-z0-9\\-]+$",
+                    "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                  },
+                  "instruction_category_entity": {
+                    "descriptions": "取扱説明のカテゴリーです。",
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "label"
+                    ],
+                    "additionalProperties": false,
+                    "examples": [
+                      {
+                        "id": "washing",
+                        "label": "洗濯"
+                      },
+                      {
+                        "id": "keeping",
+                        "label": "保管"
+                      },
+                      {
+                        "id": "using",
+                        "label": "使用"
+                      },
+                      {
+                        "id": "disclaimer",
+                        "label": "免責"
+                      }
+                    ],
+                    "properties": {
+                      "id": {
+                        "examples": [
+                          "washing",
+                          "keeping",
+                          "using",
+                          "disclaimer"
+                        ],
+                        "type": "string",
+                        "pattern": "^[a-z0-9\\-]+$",
+                        "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                      },
+                      "label": {
+                        "description": "取扱説明のカテゴリー名となるラベルです。",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                          "洗濯",
+                          "保管",
+                          "使用",
+                          "免責"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "additional_items": {
+              "description": "この Product の取扱説明の追記事項リストです。",
+              "type": "array",
+              "uniqueItems": true,
+              "examples": [
+                [
+                  {
+                    "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+                    "instruction_category_id": "using"
+                  },
+                  {
+                    "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+                    "instruction_category_id": "disclaimer"
+                  }
+                ]
+              ],
+              "items": {
+                "description": "この Product の取扱説明の追記事項です。",
+                "type": "object",
+                "required": [
+                  "value",
+                  "instruction_category_id"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                  {
+                    "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+                    "instruction_category_id": "using"
+                  },
+                  {
+                    "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+                    "instruction_category_id": "disclaimer"
+                  }
+                ],
+                "properties": {
+                  "value": {
+                    "description": "取扱説明の本文です。",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                      "型崩れを防ぐため、手洗いをおすすめします。",
+                      "洗濯機で洗えます。",
+                      "変色を防ぐため、中性洗剤を使用してください。"
+                    ]
+                  },
+                  "instruction_category_id": {
+                    "examples": [
+                      "washing",
+                      "keeping",
+                      "using",
+                      "disclaimer"
+                    ],
+                    "type": "string",
+                    "pattern": "^[a-z0-9\\-]+$",
+                    "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                  },
+                  "instruction_category_entity": {
+                    "descriptions": "取扱説明のカテゴリーです。",
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "label"
+                    ],
+                    "additionalProperties": false,
+                    "examples": [
+                      {
+                        "id": "washing",
+                        "label": "洗濯"
+                      },
+                      {
+                        "id": "keeping",
+                        "label": "保管"
+                      },
+                      {
+                        "id": "using",
+                        "label": "使用"
+                      },
+                      {
+                        "id": "disclaimer",
+                        "label": "免責"
+                      }
+                    ],
+                    "properties": {
+                      "id": {
+                        "examples": [
+                          "washing",
+                          "keeping",
+                          "using",
+                          "disclaimer"
+                        ],
+                        "type": "string",
+                        "pattern": "^[a-z0-9\\-]+$",
+                        "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                      },
+                      "label": {
+                        "description": "取扱説明のカテゴリー名となるラベルです。",
+                        "type": "string",
+                        "minLength": 1,
+                        "examples": [
+                          "洗濯",
+                          "保管",
+                          "使用",
+                          "免責"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "instruction_items": {
+          "description": "この Product の取扱説明リストです。\nこのプロパティはビルドタスクなどで自動的に追加するユースケースを想定しています。",
+          "type": "array",
+          "uniqueItems": true,
+          "examples": [
+            [
+              {
+                "id": "hand-wash",
+                "value": "型崩れを防ぐため、手洗いをおすすめします。",
+                "instruction_category_id": "washing"
+              },
+              {
+                "id": "machine-wash",
+                "value": "洗濯機で洗えます。",
+                "instruction_category_id": "washing"
+              }
+            ]
+          ],
+          "items": {
+            "description": "この Product の取扱説明です。",
+            "type": "object",
+            "required": [
+              "id",
+              "value",
+              "instruction_category_id"
+            ],
+            "additionalProperties": false,
+            "examples": [
+              {
+                "id": "hand-wash",
+                "value": "型崩れを防ぐため、手洗いをおすすめします。",
+                "instruction_category_id": "washing"
+              },
+              {
+                "id": "machine-wash",
+                "value": "洗濯機で洗えます。",
+                "instruction_category_id": "washing"
+              }
+            ],
+            "properties": {
+              "id": {
+                "examples": [
+                  "hand-wash",
+                  "machine-wash",
+                  "neutral-detergent"
+                ],
+                "type": "string",
+                "pattern": "^[a-z0-9\\-]+$",
+                "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+              },
+              "value": {
+                "description": "取扱説明の本文です。",
+                "type": "string",
+                "minLength": 1,
+                "examples": [
+                  "型崩れを防ぐため、手洗いをおすすめします。",
+                  "洗濯機で洗えます。",
+                  "変色を防ぐため、中性洗剤を使用してください。"
+                ]
+              },
+              "instruction_category_id": {
+                "examples": [
+                  "washing",
+                  "keeping",
+                  "using",
+                  "disclaimer"
+                ],
+                "type": "string",
+                "pattern": "^[a-z0-9\\-]+$",
+                "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+              },
+              "instruction_category_entity": {
+                "descriptions": "取扱説明のカテゴリーです。",
+                "type": "object",
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                  {
+                    "id": "washing",
+                    "label": "洗濯"
+                  },
+                  {
+                    "id": "keeping",
+                    "label": "保管"
+                  },
+                  {
+                    "id": "using",
+                    "label": "使用"
+                  },
+                  {
+                    "id": "disclaimer",
+                    "label": "免責"
+                  }
+                ],
+                "properties": {
+                  "id": {
+                    "examples": [
+                      "washing",
+                      "keeping",
+                      "using",
+                      "disclaimer"
+                    ],
+                    "type": "string",
+                    "pattern": "^[a-z0-9\\-]+$",
+                    "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                  },
+                  "label": {
+                    "description": "取扱説明のカテゴリー名となるラベルです。",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                      "洗濯",
+                      "保管",
+                      "使用",
+                      "免責"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "instruction_item": {
+          "description": "この Product の取扱説明です。",
+          "type": "object",
+          "required": [
+            "id",
+            "value",
+            "instruction_category_id"
+          ],
+          "additionalProperties": false,
+          "examples": [
+            {
+              "id": "hand-wash",
+              "value": "型崩れを防ぐため、手洗いをおすすめします。",
+              "instruction_category_id": "washing"
+            },
+            {
+              "id": "machine-wash",
+              "value": "洗濯機で洗えます。",
+              "instruction_category_id": "washing"
+            }
+          ],
+          "properties": {
+            "id": {
+              "examples": [
+                "hand-wash",
+                "machine-wash",
+                "neutral-detergent"
+              ],
+              "type": "string",
+              "pattern": "^[a-z0-9\\-]+$",
+              "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+            },
+            "value": {
+              "description": "取扱説明の本文です。",
+              "type": "string",
+              "minLength": 1,
+              "examples": [
+                "型崩れを防ぐため、手洗いをおすすめします。",
+                "洗濯機で洗えます。",
+                "変色を防ぐため、中性洗剤を使用してください。"
+              ]
+            },
+            "instruction_category_id": {
+              "examples": [
+                "washing",
+                "keeping",
+                "using",
+                "disclaimer"
+              ],
+              "type": "string",
+              "pattern": "^[a-z0-9\\-]+$",
+              "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+            },
+            "instruction_category_entity": {
+              "descriptions": "取扱説明のカテゴリーです。",
+              "type": "object",
+              "required": [
+                "id",
+                "label"
+              ],
+              "additionalProperties": false,
+              "examples": [
+                {
+                  "id": "washing",
+                  "label": "洗濯"
+                },
+                {
+                  "id": "keeping",
+                  "label": "保管"
+                },
+                {
+                  "id": "using",
+                  "label": "使用"
+                },
+                {
+                  "id": "disclaimer",
+                  "label": "免責"
+                }
+              ],
+              "properties": {
+                "id": {
+                  "examples": [
+                    "washing",
+                    "keeping",
+                    "using",
+                    "disclaimer"
+                  ],
+                  "type": "string",
+                  "pattern": "^[a-z0-9\\-]+$",
+                  "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                },
+                "label": {
+                  "description": "取扱説明のカテゴリー名となるラベルです。",
+                  "type": "string",
+                  "minLength": 1,
+                  "examples": [
+                    "洗濯",
+                    "保管",
+                    "使用",
+                    "免責"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "instruction_additional_items": {
+          "description": "この Product の取扱説明の追記事項リストです。",
+          "type": "array",
+          "uniqueItems": true,
+          "examples": [
+            [
+              {
+                "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+                "instruction_category_id": "using"
+              },
+              {
+                "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+                "instruction_category_id": "disclaimer"
+              }
+            ]
+          ],
+          "items": {
+            "description": "この Product の取扱説明の追記事項です。",
+            "type": "object",
+            "required": [
+              "value",
+              "instruction_category_id"
+            ],
+            "additionalProperties": false,
+            "examples": [
+              {
+                "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+                "instruction_category_id": "using"
+              },
+              {
+                "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+                "instruction_category_id": "disclaimer"
+              }
+            ],
+            "properties": {
+              "value": {
+                "description": "取扱説明の本文です。",
+                "type": "string",
+                "minLength": 1,
+                "examples": [
+                  "型崩れを防ぐため、手洗いをおすすめします。",
+                  "洗濯機で洗えます。",
+                  "変色を防ぐため、中性洗剤を使用してください。"
+                ]
+              },
+              "instruction_category_id": {
+                "examples": [
+                  "washing",
+                  "keeping",
+                  "using",
+                  "disclaimer"
+                ],
+                "type": "string",
+                "pattern": "^[a-z0-9\\-]+$",
+                "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+              },
+              "instruction_category_entity": {
+                "descriptions": "取扱説明のカテゴリーです。",
+                "type": "object",
+                "required": [
+                  "id",
+                  "label"
+                ],
+                "additionalProperties": false,
+                "examples": [
+                  {
+                    "id": "washing",
+                    "label": "洗濯"
+                  },
+                  {
+                    "id": "keeping",
+                    "label": "保管"
+                  },
+                  {
+                    "id": "using",
+                    "label": "使用"
+                  },
+                  {
+                    "id": "disclaimer",
+                    "label": "免責"
+                  }
+                ],
+                "properties": {
+                  "id": {
+                    "examples": [
+                      "washing",
+                      "keeping",
+                      "using",
+                      "disclaimer"
+                    ],
+                    "type": "string",
+                    "pattern": "^[a-z0-9\\-]+$",
+                    "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                  },
+                  "label": {
+                    "description": "取扱説明のカテゴリー名となるラベルです。",
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                      "洗濯",
+                      "保管",
+                      "使用",
+                      "免責"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "instruction_additional_item": {
+          "description": "この Product の取扱説明の追記事項です。",
+          "type": "object",
+          "required": [
+            "value",
+            "instruction_category_id"
+          ],
+          "additionalProperties": false,
+          "examples": [
+            {
+              "value": "布目の荒い部分が引っ掛かりやすいためご注意ください。",
+              "instruction_category_id": "using"
+            },
+            {
+              "value": "お手持ちの鍵の大きさと製品サイズを確認の上ご購入ください。",
+              "instruction_category_id": "disclaimer"
+            }
+          ],
+          "properties": {
+            "value": {
+              "description": "取扱説明の本文です。",
+              "type": "string",
+              "minLength": 1,
+              "examples": [
+                "型崩れを防ぐため、手洗いをおすすめします。",
+                "洗濯機で洗えます。",
+                "変色を防ぐため、中性洗剤を使用してください。"
+              ]
+            },
+            "instruction_category_id": {
+              "examples": [
+                "washing",
+                "keeping",
+                "using",
+                "disclaimer"
+              ],
+              "type": "string",
+              "pattern": "^[a-z0-9\\-]+$",
+              "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+            },
+            "instruction_category_entity": {
+              "descriptions": "取扱説明のカテゴリーです。",
+              "type": "object",
+              "required": [
+                "id",
+                "label"
+              ],
+              "additionalProperties": false,
+              "examples": [
+                {
+                  "id": "washing",
+                  "label": "洗濯"
+                },
+                {
+                  "id": "keeping",
+                  "label": "保管"
+                },
+                {
+                  "id": "using",
+                  "label": "使用"
+                },
+                {
+                  "id": "disclaimer",
+                  "label": "免責"
+                }
+              ],
+              "properties": {
+                "id": {
+                  "examples": [
+                    "washing",
+                    "keeping",
+                    "using",
+                    "disclaimer"
+                  ],
+                  "type": "string",
+                  "pattern": "^[a-z0-9\\-]+$",
+                  "description": "id です。\n半角アルファベット小文字, 半角数字, ハイフン(-) のみ使用できます。\nこの文字列は URI の一部として利用できる必要があります。"
+                },
+                "label": {
+                  "description": "取扱説明のカテゴリー名となるラベルです。",
+                  "type": "string",
+                  "minLength": 1,
+                  "examples": [
+                    "洗濯",
+                    "保管",
+                    "使用",
+                    "免責"
+                  ]
+                }
               }
             }
           }

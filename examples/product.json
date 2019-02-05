@@ -41,5 +41,8 @@
       "dyeing_material_ids": ["cherry"]
     }
   ],
-  "process_ids": ["process-kusaki-zome", "process-hand-spinning"]
+  "process_ids": ["process-kusaki-zome", "process-hand-spinning"],
+  "instructions": {
+    "additional_items": []
+  }
 }
