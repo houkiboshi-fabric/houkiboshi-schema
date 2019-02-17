@@ -94,6 +94,9 @@
             "洗濯機で洗えます。",
             "変色を防ぐため、中性洗剤を使用してください。"
           ]
+        },
+        "instruction_category_entity": {
+          "$ref": "#/definitions/instruction_category"
         }
       }
     },
