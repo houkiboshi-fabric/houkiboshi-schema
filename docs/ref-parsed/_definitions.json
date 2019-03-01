@@ -12,6 +12,94 @@
         "https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json"
       ]
     },
+    "@context": {
+      "type": "string",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+      "enum": [
+        "http://schema.org/"
+      ],
+      "examples": [
+        "http://schema.org/"
+      ]
+    },
+    "@type": {
+      "type": "string",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type",
+      "examples": [
+        "ImageObject",
+        "Organization",
+        "Person",
+        "WebSite",
+        "Blog",
+        "BlogPosting",
+        "Product",
+        "https://schema.org/ImageObject",
+        "https://schema.org/Organization",
+        "https://schema.org/Person",
+        "https://schema.org/WebSite",
+        "https://schema.org/Blog",
+        "https://schema.org/BlogPosting",
+        "https://schema.org/Product"
+      ]
+    },
+    "@id": {
+      "type": "string",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n外部から JSON-LD の node を参照する際の id となる IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\nhttps://w3c.github.io/json-ld-syntax/#node-identifiers"
+    },
+    "image_object": {
+      "type": "object",
+      "description": "https://schema.org/ImageObject",
+      "required": [
+        "@type",
+        "url",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "ImageObject"
+          ],
+          "examples": [
+            "ImageObject"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "url": {
+          "type": "string",
+          "description": "画像ファイルのパスです。",
+          "examples": [
+            "../../assets/products/chojo/main.jpg"
+          ]
+        },
+        "width": {
+          "type": "integer",
+          "description": "画像ファイルの幅 (px) です。",
+          "examples": [
+            1000
+          ]
+        },
+        "height": {
+          "type": "integer",
+          "description": "画像ファイルの高さ (px) です。",
+          "examples": [
+            1000
+          ]
+        }
+      }
+    },
     "id": {
       "type": "string",
       "pattern": "^[a-z0-9\\-]+$",

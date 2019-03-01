@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "social.json",
+  "title": "Social media",
+  "description": "ソーシャルメディアアカウントに関係する設定です。",
+  "type": "object",
+  "required": [
+    "$schema",
+    "accounts",
+    "facebook_app_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "$ref": "#/definitions/$schema"
+    },
+    "accounts": {
+      "$ref": "#/definitions/accounts"
+    },
+    "facebook_app_id": {
+      "$ref": "#/definitions/facebook_app_id"
+    }
+  },
+  "definitions": {
+    "$schema": {
+      "$ref": "_definitions.json#/definitions/$schema",
+      "pattern": "(^|/)social\\.json$",
+      "examples": [
+        "../../../schemas/author.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+      ]
+    },
+    "accounts": {
+      "type": "array",
+      "description": "Social media account のリストです。",
+      "items": {
+        "$ref": "#/definitions/account"
+      },
+      "examples": [
+        [
+          {
+            "id": "twitter",
+            "user_id": "houkiboshifab",
+            "uri": "https://twitter.com/houkiboshifab"
+          },
+          {
+            "id": "github",
+            "user_id": "houkiboshi-fabric",
+            "uri": "https://github.com/houkiboshi-fabric"
+          },
+          {
+            "id": "instagram",
+            "user_id": "houkiboshifabric",
+            "uri": "https://www.instagram.com/houkiboshifabric/"
+          }
+        ]
+      ]
+    },
+    "account": {
+      "type": "object",
+      "description": "Social media account です。",
+      "required": [
+        "id",
+        "user_id",
+        "uri"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "",
+          "examples": [
+            "twitter"
+          ]
+        },
+        "user_id": {
+          "type": "string",
+          "description": "",
+          "examples": [
+            "houkiboshifab"
+          ]
+        },
+        "uri": {
+          "type": "string",
+          "description": "",
+          "format": "uri",
+          "examples": [
+            "https://twitter.com/houkiboshifab"
+          ]
+        }
+      },
+      "examples": [
+        {
+          "id": "twitter",
+          "user_id": "houkiboshifab",
+          "uri": "https://twitter.com/houkiboshifab"
+        },
+        {
+          "id": "github",
+          "user_id": "houkiboshi-fabric",
+          "uri": "https://github.com/houkiboshi-fabric"
+        },
+        {
+          "id": "instagram",
+          "user_id": "houkiboshifabric",
+          "uri": "https://www.instagram.com/houkiboshifabric/"
+        }
+      ]
+    },
+    "facebook_app_id": {
+      "type": "integer",
+      "description": "Facebook App ID です。",
+      "examples": [
+        280562095941455
+      ]
+    }
+  }
+}

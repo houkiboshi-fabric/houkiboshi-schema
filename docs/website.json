@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "website.json",
+  "title": "Website",
+  "description": "Web サイトのメタデータです。\nフォーマットは JSON-LD です。\nhttps://json-ld.org/\nhttps://schema.org/WebSite",
+  "type": "object",
+  "required": [
+    "$schema",
+    "@context",
+    "@type",
+    "@id",
+    "inLanguage",
+    "url",
+    "name",
+    "description",
+    "image"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "$ref": "#/definitions/$schema"
+    },
+    "@context": {
+      "$ref": "#/definitions/@context"
+    },
+    "@type": {
+      "$ref": "#/definitions/@type"
+    },
+    "@id": {
+      "$ref": "#/definitions/@id"
+    },
+    "inLanguage": {
+      "$ref": "#/definitions/inLanguage"
+    },
+    "url": {
+      "$ref": "#/definitions/url"
+    },
+    "name": {
+      "$ref": "#/definitions/name"
+    },
+    "description": {
+      "$ref": "#/definitions/description"
+    },
+    "image": {
+      "$ref": "#/definitions/image"
+    }
+  },
+  "definitions": {
+    "$schema": {
+      "$ref": "_definitions.json#/definitions/$schema",
+      "pattern": "(^|/)website\\.json$",
+      "examples": [
+        "../../../schemas/author.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+      ]
+    },
+    "@context": {
+      "$ref": "_definitions.json#/definitions/@context"
+    },
+    "@type": {
+      "$ref": "_definitions.json#/definitions/@type",
+      "enum": [
+        "WebSite"
+      ],
+      "examples": [
+        "WebSite"
+      ]
+    },
+    "@id": {
+      "$ref": "_definitions.json#/definitions/@id",
+      "examples": [
+        "https://houkiboshi.co/"
+      ]
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "Website の言語コードです。\nIETF言語タグに準拠します。\nhttps://tools.ietf.org/html/rfc5646\nhttps://schema.org/inLanguage",
+      "examples": [
+        "ja"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "description": "Website の URI です。\nhttps://schema.org/url",
+      "examples": [
+        "https://houkiboshi.co/"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Website の名前です。\nhttps://schema.org/name",
+      "examples": [
+        "手織り草木染ホウキボシ"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Website の description です。\nhttps://schema.org/description\n\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624"
+    },
+    "image": {
+      "$ref": "_definitions.json#/definitions/image_object"
+    }
+  }
+}
