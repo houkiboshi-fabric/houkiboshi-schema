@@ -1,0 +1,253 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "website.json",
+  "title": "Website",
+  "description": "Web サイトのメタデータです。\nフォーマットは JSON-LD です。\nhttps://json-ld.org/\nhttps://schema.org/WebSite",
+  "type": "object",
+  "required": [
+    "$schema",
+    "@context",
+    "@type",
+    "@id",
+    "inLanguage",
+    "url",
+    "name",
+    "description",
+    "image"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "pattern": "(^|/)website\\.json$",
+      "examples": [
+        "../../../schemas/author.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+      ],
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+    },
+    "@context": {
+      "type": "string",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+      "enum": [
+        "http://schema.org/"
+      ],
+      "examples": [
+        "http://schema.org/"
+      ]
+    },
+    "@type": {
+      "enum": [
+        "WebSite"
+      ],
+      "examples": [
+        "WebSite"
+      ],
+      "type": "string",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+    },
+    "@id": {
+      "examples": [
+        "https://houkiboshi.co/"
+      ],
+      "type": "string",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n外部から JSON-LD の node を参照する際の id となる IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\nhttps://w3c.github.io/json-ld-syntax/#node-identifiers"
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "Website の言語コードです。\nIETF言語タグに準拠します。\nhttps://tools.ietf.org/html/rfc5646\nhttps://schema.org/inLanguage",
+      "examples": [
+        "ja"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "description": "Website の URI です。\nhttps://schema.org/url",
+      "examples": [
+        "https://houkiboshi.co/"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Website の名前です。\nhttps://schema.org/name",
+      "examples": [
+        "手織り草木染ホウキボシ"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Website の description です。\nhttps://schema.org/description\n\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624"
+    },
+    "image": {
+      "type": "object",
+      "description": "https://schema.org/ImageObject",
+      "required": [
+        "@type",
+        "url",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "ImageObject"
+          ],
+          "examples": [
+            "ImageObject"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "url": {
+          "type": "string",
+          "description": "画像ファイルのパスです。",
+          "examples": [
+            "../../assets/products/chojo/main.jpg"
+          ]
+        },
+        "width": {
+          "type": "integer",
+          "description": "画像ファイルの幅 (px) です。",
+          "examples": [
+            1000
+          ]
+        },
+        "height": {
+          "type": "integer",
+          "description": "画像ファイルの高さ (px) です。",
+          "examples": [
+            1000
+          ]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "$schema": {
+      "pattern": "(^|/)website\\.json$",
+      "examples": [
+        "../../../schemas/author.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+      ],
+      "type": "string",
+      "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+    },
+    "@context": {
+      "type": "string",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+      "enum": [
+        "http://schema.org/"
+      ],
+      "examples": [
+        "http://schema.org/"
+      ]
+    },
+    "@type": {
+      "enum": [
+        "WebSite"
+      ],
+      "examples": [
+        "WebSite"
+      ],
+      "type": "string",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+    },
+    "@id": {
+      "examples": [
+        "https://houkiboshi.co/"
+      ],
+      "type": "string",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n外部から JSON-LD の node を参照する際の id となる IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\nhttps://w3c.github.io/json-ld-syntax/#node-identifiers"
+    },
+    "inLanguage": {
+      "type": "string",
+      "description": "Website の言語コードです。\nIETF言語タグに準拠します。\nhttps://tools.ietf.org/html/rfc5646\nhttps://schema.org/inLanguage",
+      "examples": [
+        "ja"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "description": "Website の URI です。\nhttps://schema.org/url",
+      "examples": [
+        "https://houkiboshi.co/"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Website の名前です。\nhttps://schema.org/name",
+      "examples": [
+        "手織り草木染ホウキボシ"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Website の description です。\nhttps://schema.org/description\n\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624"
+    },
+    "image": {
+      "type": "object",
+      "description": "https://schema.org/ImageObject",
+      "required": [
+        "@type",
+        "url",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "ImageObject"
+          ],
+          "examples": [
+            "ImageObject"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "url": {
+          "type": "string",
+          "description": "画像ファイルのパスです。",
+          "examples": [
+            "../../assets/products/chojo/main.jpg"
+          ]
+        },
+        "width": {
+          "type": "integer",
+          "description": "画像ファイルの幅 (px) です。",
+          "examples": [
+            1000
+          ]
+        },
+        "height": {
+          "type": "integer",
+          "description": "画像ファイルの高さ (px) です。",
+          "examples": [
+            1000
+          ]
+        }
+      }
+    }
+  }
+}

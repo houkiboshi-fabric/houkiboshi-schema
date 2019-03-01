@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "author.json",
+  "title": "Author",
+  "description": "サイトの著者です。\nフォーマットは JSON-LD です。\nhttps://json-ld.org/\nhttps://schema.org/author",
+  "type": "object",
+  "required": [
+    "$schema",
+    "@context",
+    "@type",
+    "name",
+    "image"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "$ref": "#/definitions/$schema"
+    },
+    "@context": {
+      "$ref": "#/definitions/@context"
+    },
+    "@type": {
+      "$ref": "#/definitions/@type"
+    },
+    "name": {
+      "$ref": "#/definitions/name"
+    },
+    "image": {
+      "$ref": "#/definitions/image"
+    }
+  },
+  "definitions": {
+    "$schema": {
+      "$ref": "_definitions.json#/definitions/$schema",
+      "pattern": "(^|/)author\\.json$",
+      "examples": [
+        "../../../schemas/author.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+      ]
+    },
+    "@context": {
+      "$ref": "_definitions.json#/definitions/@context"
+    },
+    "@type": {
+      "$ref": "_definitions.json#/definitions/@type",
+      "enum": [
+        "Organization",
+        "Person"
+      ],
+      "examples": [
+        "Organization",
+        "Person"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Author の名前です。",
+      "examples": [
+        "手織り草木染ホウキボシ"
+      ]
+    },
+    "image": {
+      "$ref": "_definitions.json#/definitions/image_object"
+    }
+  }
+}

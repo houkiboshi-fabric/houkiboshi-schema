@@ -24,6 +24,12 @@ const createAjv = () => {
     allErrors: true,
     logger: consola,
     validateSchema: true,
+
+    // Extending $ref is not a standard spec in JSON Schema.
+    // enable extending, build "ref-parsed" json schema files,
+    // and use those to validate for now
+    extendRefs: true,
+
     meta: require('ajv/lib/refs/json-schema-draft-06.json')
   });
 };
