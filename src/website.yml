@@ -95,3 +95,6 @@ definitions:
       https://support.google.com/webmasters/answer/35624
   image:
     $ref: '_definitions.json#/definitions/image_object'
+    description: |-
+      Website を象徴する画像ファイルデータです。
+      https://schema.org/ImageObject
