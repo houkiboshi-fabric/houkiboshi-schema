@@ -79,8 +79,8 @@
       "description": "Website の description です。\nhttps://schema.org/description\n\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624"
     },
     "image": {
+      "description": "Website を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
       "type": "object",
-      "description": "https://schema.org/ImageObject",
       "required": [
         "@type",
         "url",
@@ -196,8 +196,8 @@
       "description": "Website の description です。\nhttps://schema.org/description\n\nこの値は Google などの検索結果に表示されることがあります。\n文字数に規定はありません。目安は次の通りです。\n半角: 約 240 文字前後\n全角: 約 120 文字前後\nより詳細な description の説明は次のページを参照してください。\nhttps://support.google.com/webmasters/answer/35624"
     },
     "image": {
+      "description": "Website を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
       "type": "object",
-      "description": "https://schema.org/ImageObject",
       "required": [
         "@type",
         "url",
