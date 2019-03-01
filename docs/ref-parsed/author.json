@@ -52,8 +52,8 @@
       ]
     },
     "image": {
+      "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
       "type": "object",
-      "description": "https://schema.org/ImageObject",
       "required": [
         "@type",
         "url",
@@ -146,8 +146,8 @@
       ]
     },
     "image": {
+      "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
       "type": "object",
-      "description": "https://schema.org/ImageObject",
       "required": [
         "@type",
         "url",
