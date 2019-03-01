@@ -53,3 +53,6 @@ definitions:
       - 手織り草木染ホウキボシ
   image:
     $ref: '_definitions.json#/definitions/image_object'
+    description: |-
+      Author を象徴する画像ファイルデータです。
+      https://schema.org/ImageObject
