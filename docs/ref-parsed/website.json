@@ -131,6 +131,892 @@
           ]
         }
       }
+    },
+    "author": {
+      "$schema": "http://json-schema.org/draft-06/schema#",
+      "$id": "author.json",
+      "title": "Author",
+      "description": "サイトの著者です。\nフォーマットは JSON-LD です。\nhttps://json-ld.org/\nhttps://schema.org/author",
+      "type": "object",
+      "required": [
+        "$schema",
+        "@context",
+        "@type",
+        "name",
+        "image",
+        "address",
+        "telephone",
+        "email"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      },
+      "definitions": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      }
+    },
+    "publisher": {
+      "description": "Website の publisher です。\nhttps://schema.org/publisher",
+      "$schema": "http://json-schema.org/draft-06/schema#",
+      "$id": "author.json",
+      "title": "Author",
+      "type": "object",
+      "required": [
+        "$schema",
+        "@context",
+        "@type",
+        "name",
+        "image",
+        "address",
+        "telephone",
+        "email"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      },
+      "definitions": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      }
+    },
+    "dateCreated": {
+      "type": "string",
+      "description": "Website の作成日時です。\nフォーマットは ISO 8601, chapter 5.4 に準拠します。\nタイムゾーンは UTC です。\nhttps://schema.org/DateTime",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "datePublished": {
+      "type": "string",
+      "description": "Website の公開日時です。\nフォーマットは ISO 8601, chapter 5.4 に準拠します。\nタイムゾーンは UTC です。\nhttps://schema.org/DateTime",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "dateModified": {
+      "type": "string",
+      "description": "Website の変更日時です。\nフォーマットは ISO 8601, chapter 5.4 に準拠します。\nタイムゾーンは UTC です。\nhttps://schema.org/DateTime",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "copyrightHolder": {
+      "description": "著作権の所有者です。\nhttps://schema.org/copyrightHolder",
+      "$schema": "http://json-schema.org/draft-06/schema#",
+      "$id": "author.json",
+      "title": "Author",
+      "type": "object",
+      "required": [
+        "$schema",
+        "@context",
+        "@type",
+        "name",
+        "image",
+        "address",
+        "telephone",
+        "email"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      },
+      "definitions": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      }
+    },
+    "copyrightYear": {
+      "type": "number",
+      "description": "著作権の発行年です。\nhttps://schema.org/copyrightYear",
+      "examples": [
+        2018
+      ]
     }
   },
   "definitions": {
@@ -248,6 +1134,892 @@
           ]
         }
       }
+    },
+    "author": {
+      "$schema": "http://json-schema.org/draft-06/schema#",
+      "$id": "author.json",
+      "title": "Author",
+      "description": "サイトの著者です。\nフォーマットは JSON-LD です。\nhttps://json-ld.org/\nhttps://schema.org/author",
+      "type": "object",
+      "required": [
+        "$schema",
+        "@context",
+        "@type",
+        "name",
+        "image",
+        "address",
+        "telephone",
+        "email"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      },
+      "definitions": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      }
+    },
+    "publisher": {
+      "description": "Website の publisher です。\nhttps://schema.org/publisher",
+      "$schema": "http://json-schema.org/draft-06/schema#",
+      "$id": "author.json",
+      "title": "Author",
+      "type": "object",
+      "required": [
+        "$schema",
+        "@context",
+        "@type",
+        "name",
+        "image",
+        "address",
+        "telephone",
+        "email"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      },
+      "definitions": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      }
+    },
+    "dateCreated": {
+      "type": "string",
+      "description": "Website の作成日時です。\nフォーマットは ISO 8601, chapter 5.4 に準拠します。\nタイムゾーンは UTC です。\nhttps://schema.org/DateTime",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "datePublished": {
+      "type": "string",
+      "description": "Website の公開日時です。\nフォーマットは ISO 8601, chapter 5.4 に準拠します。\nタイムゾーンは UTC です。\nhttps://schema.org/DateTime",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "dateModified": {
+      "type": "string",
+      "description": "Website の変更日時です。\nフォーマットは ISO 8601, chapter 5.4 に準拠します。\nタイムゾーンは UTC です。\nhttps://schema.org/DateTime",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "copyrightHolder": {
+      "description": "著作権の所有者です。\nhttps://schema.org/copyrightHolder",
+      "$schema": "http://json-schema.org/draft-06/schema#",
+      "$id": "author.json",
+      "title": "Author",
+      "type": "object",
+      "required": [
+        "$schema",
+        "@context",
+        "@type",
+        "name",
+        "image",
+        "address",
+        "telephone",
+        "email"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      },
+      "definitions": {
+        "$schema": {
+          "pattern": "(^|/)author\\.json$",
+          "examples": [
+            "../../../schemas/author.json",
+            "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+          ],
+          "type": "string",
+          "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
+        },
+        "@context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
+        "@type": {
+          "enum": [
+            "Organization",
+            "Person"
+          ],
+          "examples": [
+            "Organization",
+            "Person"
+          ],
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Author の名前です。",
+          "examples": [
+            "手織り草木染ホウキボシ"
+          ]
+        },
+        "image": {
+          "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
+          "type": "object",
+          "required": [
+            "@type",
+            "url",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "@context": {
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"@type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"@context\": \"http://schema.org/\" とある場合、\n\"@type\": \"Person\" は \"@type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+              "enum": [
+                "http://schema.org/"
+              ],
+              "examples": [
+                "http://schema.org/"
+              ]
+            },
+            "@type": {
+              "enum": [
+                "ImageObject"
+              ],
+              "examples": [
+                "ImageObject"
+              ],
+              "type": "string",
+              "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"@context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+            },
+            "url": {
+              "type": "string",
+              "description": "画像ファイルのパスです。",
+              "examples": [
+                "../../assets/products/chojo/main.jpg"
+              ]
+            },
+            "width": {
+              "type": "integer",
+              "description": "画像ファイルの幅 (px) です。",
+              "examples": [
+                1000
+              ]
+            },
+            "height": {
+              "type": "integer",
+              "description": "画像ファイルの高さ (px) です。",
+              "examples": [
+                1000
+              ]
+            }
+          }
+        },
+        "address": {
+          "type": "string",
+          "description": "Author の所在地です。",
+          "examples": [
+            "鳥取県東伯郡琴浦町槻下 977-1"
+          ]
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Author の電話番号です。",
+          "examples": [
+            "0858-53-2018"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "description": "Author の Email です。",
+          "format": "email",
+          "examples": [
+            "houkiboshi.info@gmail.com"
+          ]
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+          "examples": [
+            null
+          ],
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "description": "Author のプロフィールとなる Web ページの URI です。",
+            "format": "uri",
+            "examples": [
+              "https://twitter.com/houkiboshifab",
+              "https://github.com/houkiboshi-fabric",
+              "https://www.instagram.com/houkiboshifabric/"
+            ]
+          }
+        }
+      }
+    },
+    "copyrightYear": {
+      "type": "number",
+      "description": "著作権の発行年です。\nhttps://schema.org/copyrightYear",
+      "examples": [
+        2018
+      ]
     }
   }
 }

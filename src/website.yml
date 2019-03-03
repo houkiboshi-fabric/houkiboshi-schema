@@ -38,6 +38,20 @@ properties:
     $ref: '#/definitions/description'
   image:
     $ref: '#/definitions/image'
+  author:
+    $ref: '#/definitions/author'
+  publisher:
+    $ref: '#/definitions/publisher'
+  dateCreated:
+    $ref: '#/definitions/dateCreated'
+  datePublished:
+    $ref: '#/definitions/datePublished'
+  dateModified:
+    $ref: '#/definitions/dateModified'
+  copyrightHolder:
+    $ref: '#/definitions/copyrightHolder'
+  copyrightYear:
+    $ref: '#/definitions/copyrightYear'
 
 definitions:
   $schema:
@@ -98,3 +112,49 @@ definitions:
     description: |-
       Website を象徴する画像ファイルデータです。
       https://schema.org/ImageObject
+  author:
+    $ref: 'author.json'
+  publisher:
+    $ref: 'author.json'
+    description: |-
+      Website の publisher です。
+      https://schema.org/publisher
+  dateCreated:
+    type: string
+    description: |-
+      Website の作成日時です。
+      フォーマットは ISO 8601, chapter 5.4 に準拠します。
+      タイムゾーンは UTC です。
+      https://schema.org/DateTime
+    examples:
+      - 2019-01-01T07:39:05.000Z
+  datePublished:
+    type: string
+    description: |-
+      Website の公開日時です。
+      フォーマットは ISO 8601, chapter 5.4 に準拠します。
+      タイムゾーンは UTC です。
+      https://schema.org/DateTime
+    examples:
+      - 2019-01-01T07:39:05.000Z
+  dateModified:
+    type: string
+    description: |-
+      Website の変更日時です。
+      フォーマットは ISO 8601, chapter 5.4 に準拠します。
+      タイムゾーンは UTC です。
+      https://schema.org/DateTime
+    examples:
+      - 2019-01-01T07:39:05.000Z
+  copyrightHolder:
+    $ref: 'author.json'
+    description: |-
+      著作権の所有者です。
+      https://schema.org/copyrightHolder
+  copyrightYear:
+    type: number
+    description: |-
+      著作権の発行年です。
+      https://schema.org/copyrightYear
+    examples:
+      - 2018
