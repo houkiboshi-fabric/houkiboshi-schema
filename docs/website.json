@@ -71,8 +71,8 @@
       "$ref": "_definitions.json#/definitions/$schema",
       "pattern": "(^|/)website\\.json$",
       "examples": [
-        "../../../schemas/author.json",
-        "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
+        "../../../schemas/website.json",
+        "https://houkiboshi-fabric.github.io/schema/ref-parsed/website.json"
       ]
     },
     "@context": {
@@ -123,11 +123,60 @@
       "description": "Website を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject"
     },
     "author": {
-      "$ref": "author.json"
+      "type": "object",
+      "description": "Website の author です。",
+      "additionalProperties": false,
+      "properties": {
+        "@type": {
+          "$ref": "author.json#/definitions/@type"
+        },
+        "name": {
+          "$ref": "author.json#/definitions/name"
+        },
+        "image": {
+          "$ref": "author.json#/definitions/image"
+        },
+        "address": {
+          "$ref": "author.json#/definitions/address"
+        },
+        "telephone": {
+          "$ref": "author.json#/definitions/telephone"
+        },
+        "email": {
+          "$ref": "author.json#/definitions/email"
+        },
+        "sameAs": {
+          "$ref": "author.json#/definitions/sameAs"
+        }
+      }
     },
     "publisher": {
-      "$ref": "author.json",
-      "description": "Website の publisher です。\nhttps://schema.org/publisher"
+      "type": "object",
+      "description": "Website の publisher です。\nhttps://schema.org/publisher",
+      "additionalProperties": false,
+      "properties": {
+        "@type": {
+          "$ref": "author.json#/definitions/@type"
+        },
+        "name": {
+          "$ref": "author.json#/definitions/name"
+        },
+        "image": {
+          "$ref": "author.json#/definitions/image"
+        },
+        "address": {
+          "$ref": "author.json#/definitions/address"
+        },
+        "telephone": {
+          "$ref": "author.json#/definitions/telephone"
+        },
+        "email": {
+          "$ref": "author.json#/definitions/email"
+        },
+        "sameAs": {
+          "$ref": "author.json#/definitions/sameAs"
+        }
+      }
     },
     "dateCreated": {
       "type": "string",
@@ -151,8 +200,32 @@
       ]
     },
     "copyrightHolder": {
-      "$ref": "author.json",
-      "description": "著作権の所有者です。\nhttps://schema.org/copyrightHolder"
+      "type": "object",
+      "description": "著作権の所有者です。\nhttps://schema.org/copyrightHolder",
+      "additionalProperties": false,
+      "properties": {
+        "@type": {
+          "$ref": "author.json#/definitions/@type"
+        },
+        "name": {
+          "$ref": "author.json#/definitions/name"
+        },
+        "image": {
+          "$ref": "author.json#/definitions/image"
+        },
+        "address": {
+          "$ref": "author.json#/definitions/address"
+        },
+        "telephone": {
+          "$ref": "author.json#/definitions/telephone"
+        },
+        "email": {
+          "$ref": "author.json#/definitions/email"
+        },
+        "sameAs": {
+          "$ref": "author.json#/definitions/sameAs"
+        }
+      }
     },
     "copyrightYear": {
       "type": "number",
