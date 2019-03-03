@@ -9,7 +9,10 @@
     "@context",
     "@type",
     "name",
-    "image"
+    "image",
+    "address",
+    "telephone",
+    "email"
   ],
   "additionalProperties": false,
   "properties": {
@@ -104,6 +107,46 @@
           ]
         }
       }
+    },
+    "address": {
+      "type": "string",
+      "description": "Author の所在地です。",
+      "examples": [
+        "鳥取県東伯郡琴浦町槻下 977-1"
+      ]
+    },
+    "telephone": {
+      "type": "string",
+      "description": "Author の電話番号です。",
+      "examples": [
+        "0858-53-2018"
+      ]
+    },
+    "email": {
+      "type": "string",
+      "description": "Author の Email です。",
+      "format": "email",
+      "examples": [
+        "houkiboshi.info@gmail.com"
+      ]
+    },
+    "sameAs": {
+      "type": "array",
+      "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+      "examples": [
+        null
+      ],
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "description": "Author のプロフィールとなる Web ページの URI です。",
+        "format": "uri",
+        "examples": [
+          "https://twitter.com/houkiboshifab",
+          "https://github.com/houkiboshi-fabric",
+          "https://www.instagram.com/houkiboshifabric/"
+        ]
+      }
     }
   },
   "definitions": {
@@ -197,6 +240,46 @@
             1000
           ]
         }
+      }
+    },
+    "address": {
+      "type": "string",
+      "description": "Author の所在地です。",
+      "examples": [
+        "鳥取県東伯郡琴浦町槻下 977-1"
+      ]
+    },
+    "telephone": {
+      "type": "string",
+      "description": "Author の電話番号です。",
+      "examples": [
+        "0858-53-2018"
+      ]
+    },
+    "email": {
+      "type": "string",
+      "description": "Author の Email です。",
+      "format": "email",
+      "examples": [
+        "houkiboshi.info@gmail.com"
+      ]
+    },
+    "sameAs": {
+      "type": "array",
+      "description": "Author のプロフィールとなる Web ページの URI のリストです。\nhttps://schema.org/sameAs",
+      "examples": [
+        null
+      ],
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "description": "Author のプロフィールとなる Web ページの URI です。",
+        "format": "uri",
+        "examples": [
+          "https://twitter.com/houkiboshifab",
+          "https://github.com/houkiboshi-fabric",
+          "https://www.instagram.com/houkiboshifabric/"
+        ]
       }
     }
   }

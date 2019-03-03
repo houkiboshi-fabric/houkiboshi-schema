@@ -43,6 +43,27 @@
     },
     "image": {
       "$ref": "#/definitions/image"
+    },
+    "author": {
+      "$ref": "#/definitions/author"
+    },
+    "publisher": {
+      "$ref": "#/definitions/publisher"
+    },
+    "dateCreated": {
+      "$ref": "#/definitions/dateCreated"
+    },
+    "datePublished": {
+      "$ref": "#/definitions/datePublished"
+    },
+    "dateModified": {
+      "$ref": "#/definitions/dateModified"
+    },
+    "copyrightHolder": {
+      "$ref": "#/definitions/copyrightHolder"
+    },
+    "copyrightYear": {
+      "$ref": "#/definitions/copyrightYear"
     }
   },
   "definitions": {
@@ -100,6 +121,45 @@
     "image": {
       "$ref": "_definitions.json#/definitions/image_object",
       "description": "Website を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject"
+    },
+    "author": {
+      "$ref": "author.json"
+    },
+    "publisher": {
+      "$ref": "author.json",
+      "description": "Website の publisher です。\nhttps://schema.org/publisher"
+    },
+    "dateCreated": {
+      "type": "string",
+      "description": "Website の作成日時です。\nフォーマットは ISO 8601, chapter 5.4 に準拠します。\nタイムゾーンは UTC です。\nhttps://schema.org/DateTime",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "datePublished": {
+      "type": "string",
+      "description": "Website の公開日時です。\nフォーマットは ISO 8601, chapter 5.4 に準拠します。\nタイムゾーンは UTC です。\nhttps://schema.org/DateTime",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "dateModified": {
+      "type": "string",
+      "description": "Website の変更日時です。\nフォーマットは ISO 8601, chapter 5.4 に準拠します。\nタイムゾーンは UTC です。\nhttps://schema.org/DateTime",
+      "examples": [
+        "2019-01-01T07:39:05.000Z"
+      ]
+    },
+    "copyrightHolder": {
+      "$ref": "author.json",
+      "description": "著作権の所有者です。\nhttps://schema.org/copyrightHolder"
+    },
+    "copyrightYear": {
+      "type": "number",
+      "description": "著作権の発行年です。\nhttps://schema.org/copyrightYear",
+      "examples": [
+        2018
+      ]
     }
   }
 }
