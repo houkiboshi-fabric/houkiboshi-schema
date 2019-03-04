@@ -12,6 +12,7 @@
     "inLanguage",
     "url",
     "name",
+    "alternateName",
     "description",
     "image"
   ],
@@ -37,6 +38,9 @@
     },
     "name": {
       "$ref": "#/definitions/name"
+    },
+    "alternateName": {
+      "$ref": "#/definitions/alternateName"
     },
     "description": {
       "$ref": "#/definitions/description"
@@ -112,6 +116,13 @@
       "description": "Website の名前です。\nhttps://schema.org/name",
       "examples": [
         "手織り草木染ホウキボシ"
+      ]
+    },
+    "alternateName": {
+      "type": "string",
+      "description": "Website の別名です。\nhttps://schema.org/alternateName",
+      "examples": [
+        "houkiboshi.co"
       ]
     },
     "description": {
