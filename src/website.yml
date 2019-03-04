@@ -15,6 +15,7 @@ required:
   - inLanguage
   - url
   - name
+  - alternateName
   - description
   - image
 additionalProperties: false
@@ -34,6 +35,8 @@ properties:
     $ref: '#/definitions/url'
   name:
     $ref: '#/definitions/name'
+  alternateName:
+    $ref: '#/definitions/alternateName'
   description:
     $ref: '#/definitions/description'
   image:
@@ -95,6 +98,13 @@ definitions:
       https://schema.org/name
     examples:
       - 手織り草木染ホウキボシ
+  alternateName:
+    type: string
+    description: |-
+      Website の別名です。
+      https://schema.org/alternateName
+    examples:
+      - houkiboshi.co
   description:
     type: string
     description: |-
