@@ -13,24 +13,24 @@ definitions:
     examples:
       - ../../schemas/product.json
       - https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json
-  '@context':
+  __at__context:
     type: string
     description: |-
       JSON-LD フォーマットで定義する場合に利用します。
-      "@type" プロパティやその他のプロパティの IRI のコンテクストです。
-      例えば "@context": "http://schema.org/" とある場合、
-      "@type": "Person" は "@type": "http://schema.org/Person" と同じ意味になります。
+      "__at__type" プロパティやその他のプロパティの IRI のコンテクストです。
+      例えば "__at__context": "http://schema.org/" とある場合、
+      "__at__type": "Person" は "__at__type": "http://schema.org/Person" と同じ意味になります。
       https://w3c.github.io/json-ld-syntax/#the-context
     enum:
       - http://schema.org/
     examples:
       - http://schema.org/
-  '@type':
+  __at__type:
     type: string
     description: |-
       JSON-LD フォーマットで定義する場合に利用します。
       定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。
-      "@context" プロパティを指定すると短縮して表記できます。
+      "__at__context" プロパティを指定すると短縮して表記できます。
       https://w3c.github.io/json-ld-syntax/#specifying-the-type
     examples:
       - ImageObject
@@ -47,7 +47,7 @@ definitions:
       - https://schema.org/Blog
       - https://schema.org/BlogPosting
       - https://schema.org/Product
-  '@id':
+  __at__id:
     type: string
     description: |-
       JSON-LD フォーマットで定義する場合に利用します。
@@ -58,16 +58,16 @@ definitions:
     description: |-
       https://schema.org/ImageObject
     required:
-      - '@type'
+      - __at__type
       - url
       - width
       - height
     additionalProperties: false
     properties:
-      '@context':
-        $ref: '#/definitions/@context'
-      '@type':
-        $ref: '#/definitions/@type'
+      __at__context:
+        $ref: '#/definitions/__at__context'
+      __at__type:
+        $ref: '#/definitions/__at__type'
         enum:
           - ImageObject
         examples:

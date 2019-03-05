@@ -9,9 +9,9 @@ description: |-
 type: object
 required:
   - $schema
-  - '@context'
-  - '@type'
-  - '@id'
+  - __at__context
+  - __at__type
+  - __at__id
   - inLanguage
   - url
   - name
@@ -23,12 +23,12 @@ additionalProperties: false
 properties:
   $schema:
     $ref: '#/definitions/$schema'
-  '@context':
-    $ref: '#/definitions/@context'
-  '@type':
-    $ref: '#/definitions/@type'
-  '@id':
-    $ref: '#/definitions/@id'
+  __at__context:
+    $ref: '#/definitions/__at__context'
+  __at__type:
+    $ref: '#/definitions/__at__type'
+  __at__id:
+    $ref: '#/definitions/__at__id'
   inLanguage:
     $ref: '#/definitions/inLanguage'
   url:
@@ -63,16 +63,16 @@ definitions:
     examples:
       - '../../../schemas/website.json'
       - 'https://houkiboshi-fabric.github.io/schema/ref-parsed/website.json'
-  '@context':
-    $ref: '_definitions.json#/definitions/@context'
-  '@type':
-    $ref: '_definitions.json#/definitions/@type'
+  __at__context:
+    $ref: '_definitions.json#/definitions/__at__context'
+  __at__type:
+    $ref: '_definitions.json#/definitions/__at__type'
     enum:
       - WebSite
     examples:
       - WebSite
-  '@id':
-    $ref: '_definitions.json#/definitions/@id'
+  __at__id:
+    $ref: '_definitions.json#/definitions/__at__id'
     examples:
       - 'https://houkiboshi.co/'
   inLanguage:
@@ -128,8 +128,8 @@ definitions:
       Website の author です。
     additionalProperties: false
     properties:
-      '@type':
-        $ref: 'author.json#/definitions/@type'
+      '__at__type':
+        $ref: 'author.json#/definitions/__at__type'
       name:
         $ref: 'author.json#/definitions/name'
       image:
@@ -149,8 +149,8 @@ definitions:
       https://schema.org/publisher
     additionalProperties: false
     properties:
-      '@type':
-        $ref: 'author.json#/definitions/@type'
+      __at__type:
+        $ref: 'author.json#/definitions/__at__type'
       name:
         $ref: 'author.json#/definitions/name'
       image:
@@ -197,8 +197,8 @@ definitions:
       https://schema.org/copyrightHolder
     additionalProperties: false
     properties:
-      '@type':
-        $ref: 'author.json#/definitions/@type'
+      __at__type:
+        $ref: 'author.json#/definitions/__at__type'
       name:
         $ref: 'author.json#/definitions/name'
       image:
