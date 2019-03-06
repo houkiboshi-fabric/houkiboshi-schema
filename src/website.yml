@@ -128,7 +128,9 @@ definitions:
       Website の author です。
     additionalProperties: false
     properties:
-      'jsonld_at_type':
+      jsonld_at_context:
+        $ref: '_definitions.json#/definitions/jsonld_at_context'
+      jsonld_at_type:
         $ref: 'author.json#/definitions/jsonld_at_type'
       name:
         $ref: 'author.json#/definitions/name'
@@ -149,6 +151,8 @@ definitions:
       https://schema.org/publisher
     additionalProperties: false
     properties:
+      jsonld_at_context:
+        $ref: 'author.json#/definitions/jsonld_at_context'
       jsonld_at_type:
         $ref: 'author.json#/definitions/jsonld_at_type'
       name:
@@ -197,6 +201,8 @@ definitions:
       https://schema.org/copyrightHolder
     additionalProperties: false
     properties:
+      jsonld_at_context:
+        $ref: '_definitions.json#/definitions/jsonld_at_context'
       jsonld_at_type:
         $ref: 'author.json#/definitions/jsonld_at_type'
       name:

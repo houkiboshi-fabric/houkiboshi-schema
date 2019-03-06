@@ -145,6 +145,16 @@
       "description": "Website の author です。",
       "additionalProperties": false,
       "properties": {
+        "jsonld_at_context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
         "jsonld_at_type": {
           "enum": [
             "Organization",
@@ -265,6 +275,16 @@
       "description": "Website の publisher です。\nhttps://schema.org/publisher",
       "additionalProperties": false,
       "properties": {
+        "jsonld_at_context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
         "jsonld_at_type": {
           "enum": [
             "Organization",
@@ -406,6 +426,16 @@
       "description": "著作権の所有者です。\nhttps://schema.org/copyrightHolder",
       "additionalProperties": false,
       "properties": {
+        "jsonld_at_context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
         "jsonld_at_type": {
           "enum": [
             "Organization",
@@ -657,6 +687,16 @@
       "description": "Website の author です。",
       "additionalProperties": false,
       "properties": {
+        "jsonld_at_context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
         "jsonld_at_type": {
           "enum": [
             "Organization",
@@ -777,6 +817,16 @@
       "description": "Website の publisher です。\nhttps://schema.org/publisher",
       "additionalProperties": false,
       "properties": {
+        "jsonld_at_context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
         "jsonld_at_type": {
           "enum": [
             "Organization",
@@ -918,6 +968,16 @@
       "description": "著作権の所有者です。\nhttps://schema.org/copyrightHolder",
       "additionalProperties": false,
       "properties": {
+        "jsonld_at_context": {
+          "type": "string",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "enum": [
+            "http://schema.org/"
+          ],
+          "examples": [
+            "http://schema.org/"
+          ]
+        },
         "jsonld_at_type": {
           "enum": [
             "Organization",
