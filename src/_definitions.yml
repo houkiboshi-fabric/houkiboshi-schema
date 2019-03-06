@@ -13,24 +13,24 @@ definitions:
     examples:
       - ../../schemas/product.json
       - https://houkiboshi-fabric.github.io/schema/ref-parsed/product.json
-  __at__context:
+  jsonld_at_context:
     type: string
     description: |-
       JSON-LD フォーマットで定義する場合に利用します。
-      "__at__type" プロパティやその他のプロパティの IRI のコンテクストです。
-      例えば "__at__context": "http://schema.org/" とある場合、
-      "__at__type": "Person" は "__at__type": "http://schema.org/Person" と同じ意味になります。
+      "jsonld_at_type" プロパティやその他のプロパティの IRI のコンテクストです。
+      例えば "jsonld_at_context": "http://schema.org/" とある場合、
+      "jsonld_at_type": "Person" は "jsonld_at_type": "http://schema.org/Person" と同じ意味になります。
       https://w3c.github.io/json-ld-syntax/#the-context
     enum:
       - http://schema.org/
     examples:
       - http://schema.org/
-  __at__type:
+  jsonld_at_type:
     type: string
     description: |-
       JSON-LD フォーマットで定義する場合に利用します。
       定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。
-      "__at__context" プロパティを指定すると短縮して表記できます。
+      "jsonld_at_context" プロパティを指定すると短縮して表記できます。
       https://w3c.github.io/json-ld-syntax/#specifying-the-type
     examples:
       - ImageObject
@@ -47,7 +47,7 @@ definitions:
       - https://schema.org/Blog
       - https://schema.org/BlogPosting
       - https://schema.org/Product
-  __at__id:
+  jsonld_at_id:
     type: string
     description: |-
       JSON-LD フォーマットで定義する場合に利用します。
@@ -58,16 +58,16 @@ definitions:
     description: |-
       https://schema.org/ImageObject
     required:
-      - __at__type
+      - jsonld_at_type
       - url
       - width
       - height
     additionalProperties: false
     properties:
-      __at__context:
-        $ref: '#/definitions/__at__context'
-      __at__type:
-        $ref: '#/definitions/__at__type'
+      jsonld_at_context:
+        $ref: '#/definitions/jsonld_at_context'
+      jsonld_at_type:
+        $ref: '#/definitions/jsonld_at_type'
         enum:
           - ImageObject
         examples:

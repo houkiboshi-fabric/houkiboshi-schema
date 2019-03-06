@@ -9,9 +9,9 @@ description: |-
 type: object
 required:
   - $schema
-  - __at__context
-  - __at__type
-  - __at__id
+  - jsonld_at_context
+  - jsonld_at_type
+  - jsonld_at_id
   - inLanguage
   - url
   - name
@@ -23,12 +23,12 @@ additionalProperties: false
 properties:
   $schema:
     $ref: '#/definitions/$schema'
-  __at__context:
-    $ref: '#/definitions/__at__context'
-  __at__type:
-    $ref: '#/definitions/__at__type'
-  __at__id:
-    $ref: '#/definitions/__at__id'
+  jsonld_at_context:
+    $ref: '#/definitions/jsonld_at_context'
+  jsonld_at_type:
+    $ref: '#/definitions/jsonld_at_type'
+  jsonld_at_id:
+    $ref: '#/definitions/jsonld_at_id'
   inLanguage:
     $ref: '#/definitions/inLanguage'
   url:
@@ -63,16 +63,16 @@ definitions:
     examples:
       - '../../../schemas/website.json'
       - 'https://houkiboshi-fabric.github.io/schema/ref-parsed/website.json'
-  __at__context:
-    $ref: '_definitions.json#/definitions/__at__context'
-  __at__type:
-    $ref: '_definitions.json#/definitions/__at__type'
+  jsonld_at_context:
+    $ref: '_definitions.json#/definitions/jsonld_at_context'
+  jsonld_at_type:
+    $ref: '_definitions.json#/definitions/jsonld_at_type'
     enum:
       - WebSite
     examples:
       - WebSite
-  __at__id:
-    $ref: '_definitions.json#/definitions/__at__id'
+  jsonld_at_id:
+    $ref: '_definitions.json#/definitions/jsonld_at_id'
     examples:
       - 'https://houkiboshi.co/'
   inLanguage:
@@ -128,8 +128,8 @@ definitions:
       Website の author です。
     additionalProperties: false
     properties:
-      '__at__type':
-        $ref: 'author.json#/definitions/__at__type'
+      'jsonld_at_type':
+        $ref: 'author.json#/definitions/jsonld_at_type'
       name:
         $ref: 'author.json#/definitions/name'
       image:
@@ -149,8 +149,8 @@ definitions:
       https://schema.org/publisher
     additionalProperties: false
     properties:
-      __at__type:
-        $ref: 'author.json#/definitions/__at__type'
+      jsonld_at_type:
+        $ref: 'author.json#/definitions/jsonld_at_type'
       name:
         $ref: 'author.json#/definitions/name'
       image:
@@ -197,8 +197,8 @@ definitions:
       https://schema.org/copyrightHolder
     additionalProperties: false
     properties:
-      __at__type:
-        $ref: 'author.json#/definitions/__at__type'
+      jsonld_at_type:
+        $ref: 'author.json#/definitions/jsonld_at_type'
       name:
         $ref: 'author.json#/definitions/name'
       image:

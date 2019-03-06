@@ -6,8 +6,8 @@
   "type": "object",
   "required": [
     "$schema",
-    "__at__context",
-    "__at__type",
+    "jsonld_at_context",
+    "jsonld_at_type",
     "name",
     "image",
     "address",
@@ -25,9 +25,9 @@
       "type": "string",
       "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
     },
-    "__at__context": {
+    "jsonld_at_context": {
       "type": "string",
-      "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"__at__type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"__at__context\": \"http://schema.org/\" とある場合、\n\"__at__type\": \"Person\" は \"__at__type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
       "enum": [
         "http://schema.org/"
       ],
@@ -35,7 +35,7 @@
         "http://schema.org/"
       ]
     },
-    "__at__type": {
+    "jsonld_at_type": {
       "enum": [
         "Organization",
         "Person"
@@ -45,7 +45,7 @@
         "Person"
       ],
       "type": "string",
-      "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"__at__context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"jsonld_at_context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
     },
     "name": {
       "type": "string",
@@ -58,16 +58,16 @@
       "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
       "type": "object",
       "required": [
-        "__at__type",
+        "jsonld_at_type",
         "url",
         "width",
         "height"
       ],
       "additionalProperties": false,
       "properties": {
-        "__at__context": {
+        "jsonld_at_context": {
           "type": "string",
-          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"__at__type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"__at__context\": \"http://schema.org/\" とある場合、\n\"__at__type\": \"Person\" は \"__at__type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
           "enum": [
             "http://schema.org/"
           ],
@@ -75,7 +75,7 @@
             "http://schema.org/"
           ]
         },
-        "__at__type": {
+        "jsonld_at_type": {
           "enum": [
             "ImageObject"
           ],
@@ -83,7 +83,7 @@
             "ImageObject"
           ],
           "type": "string",
-          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"__at__context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"jsonld_at_context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
         },
         "url": {
           "type": "string",
@@ -159,9 +159,9 @@
       "type": "string",
       "description": "validation に利用する schema ファイルへのパスです。\nURI を指定すると remote ファイルを参照できます。\n相対パスで指定することで local ファイルを参照できます。"
     },
-    "__at__context": {
+    "jsonld_at_context": {
       "type": "string",
-      "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"__at__type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"__at__context\": \"http://schema.org/\" とある場合、\n\"__at__type\": \"Person\" は \"__at__type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
       "enum": [
         "http://schema.org/"
       ],
@@ -169,7 +169,7 @@
         "http://schema.org/"
       ]
     },
-    "__at__type": {
+    "jsonld_at_type": {
       "enum": [
         "Organization",
         "Person"
@@ -179,7 +179,7 @@
         "Person"
       ],
       "type": "string",
-      "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"__at__context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+      "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"jsonld_at_context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
     },
     "name": {
       "type": "string",
@@ -192,16 +192,16 @@
       "description": "Author を象徴する画像ファイルデータです。\nhttps://schema.org/ImageObject",
       "type": "object",
       "required": [
-        "__at__type",
+        "jsonld_at_type",
         "url",
         "width",
         "height"
       ],
       "additionalProperties": false,
       "properties": {
-        "__at__context": {
+        "jsonld_at_context": {
           "type": "string",
-          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"__at__type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"__at__context\": \"http://schema.org/\" とある場合、\n\"__at__type\": \"Person\" は \"__at__type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n\"jsonld_at_type\" プロパティやその他のプロパティの IRI のコンテクストです。\n例えば \"jsonld_at_context\": \"http://schema.org/\" とある場合、\n\"jsonld_at_type\": \"Person\" は \"jsonld_at_type\": \"http://schema.org/Person\" と同じ意味になります。\nhttps://w3c.github.io/json-ld-syntax/#the-context",
           "enum": [
             "http://schema.org/"
           ],
@@ -209,7 +209,7 @@
             "http://schema.org/"
           ]
         },
-        "__at__type": {
+        "jsonld_at_type": {
           "enum": [
             "ImageObject"
           ],
@@ -217,7 +217,7 @@
             "ImageObject"
           ],
           "type": "string",
-          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"__at__context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
+          "description": "JSON-LD フォーマットで定義する場合に利用します。\n定義されているプロパティの型を参照する IRI (https://www.ietf.org/rfc/rfc3987.txt) です。\n\"jsonld_at_context\" プロパティを指定すると短縮して表記できます。\nhttps://w3c.github.io/json-ld-syntax/#specifying-the-type"
         },
         "url": {
           "type": "string",
