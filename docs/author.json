@@ -6,8 +6,8 @@
   "type": "object",
   "required": [
     "$schema",
-    "__at__context",
-    "__at__type",
+    "jsonld_at_context",
+    "jsonld_at_type",
     "name",
     "image",
     "address",
@@ -19,11 +19,11 @@
     "$schema": {
       "$ref": "#/definitions/$schema"
     },
-    "__at__context": {
-      "$ref": "#/definitions/__at__context"
+    "jsonld_at_context": {
+      "$ref": "#/definitions/jsonld_at_context"
     },
-    "__at__type": {
-      "$ref": "#/definitions/__at__type"
+    "jsonld_at_type": {
+      "$ref": "#/definitions/jsonld_at_type"
     },
     "name": {
       "$ref": "#/definitions/name"
@@ -53,11 +53,11 @@
         "https://houkiboshi-fabric.github.io/schema/ref-parsed/author.json"
       ]
     },
-    "__at__context": {
-      "$ref": "_definitions.json#/definitions/__at__context"
+    "jsonld_at_context": {
+      "$ref": "_definitions.json#/definitions/jsonld_at_context"
     },
-    "__at__type": {
-      "$ref": "_definitions.json#/definitions/__at__type",
+    "jsonld_at_type": {
+      "$ref": "_definitions.json#/definitions/jsonld_at_type",
       "enum": [
         "Organization",
         "Person"
